@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alatreon Beginner's Guide</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.0/css/pico.min.css">
+    <style>
+        body {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+        }
+        .column {
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            background-color: var(--background-color-secondary);
+        }
+        @media (max-width: 768px) {
+            .columns {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <main>
+        <h1>Alatreon Beginner's Guide</h1>
+        <p>A quick and easy guide to help you defeat Alatreon in Monster Hunter World: Iceborne.</p>
+
+        <div class="columns">
+            <!-- Column 1 -->
+            <div class="column">
+                <h2>Understanding Alatreon</h2>
+                <ul>
+                    <li><strong>Elemental States</strong>:
+                        <ul>
+                            <li>Fire: Weak to Ice.</li>
+                            <li>Ice: Weak to Fire.</li>
+                            <li>Dragon: Focus on breaking horns.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Elemental Topple</strong>: 
+                        Suppresses Eschaton Judgment. Deal elemental damage to trigger this.
+                    </li>
+                    <li><strong>Flying Phase</strong>: 
+                        Use smoke bombs or wait for it to land naturally.
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="column">
+                <h2>Key Skills</h2>
+                <ul>
+                    <li><strong>Blight Resistance (Level 2)</strong>: Reduces blight durations.</li>
+                    <li><strong>Evade Window (Level 3)</strong>: Easier dodging and higher DPS uptime.</li>
+                    <li><strong>Mind’s Eye</strong>: Prevents bouncing on blue sharpness weapons.</li>
+                    <li><strong>Fortify</strong>: Boosts attack (+20%) and defense (+30%) after fainting.</li>
+                </ul>
+
+                <h2>Recommended Weapons</h2>
+                <ul>
+                    <li><strong>Elemental:</strong>
+                        <ul>
+                            <li>Kjarr Fire/Ice weapons (from Kulve Taroth).</li>
+                            <li>Alternatives: Rathalos, Glavenus, or Barioth weapons.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Raw:</strong>
+                        <ul>
+                            <li>Great Sword, Hammer, or Pierce Bowguns.</li>
+                            <li>Use Fortify to survive Eschaton Judgment.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Column 3 -->
+            <div class="column">
+                <h2>Armor Recommendations</h2>
+                <ul>
+                    <li><strong>Safijiiva Armor:</strong> High DPS if available.</li>
+                    <li>Mix high-defense parts with utility skills (Blight Resistance, Evade Window, etc.).</li>
+                </ul>
+
+                <h2>Combat Strategy</h2>
+                <ul>
+                    <li><strong>Preparation:</strong> Bring Astera Jerky, Sushifish Scales, Max Potions, and Health Boosters.</li>
+                    <li><strong>Focus Elemental Damage:</strong> 
+                        Use Fire or Ice weapons based on the current state. Aim for the forelegs.
+                    </li>
+                    <li><strong>Dragon Phase:</strong> 
+                        Break horns to prevent elemental state switching.
+                    </li>
+                </ul>
+
+                <h2>Final Tips</h2>
+                <ul>
+                    <li>Practice to learn attack patterns.</li>
+                    <li>Coordinate in multiplayer but stay flexible.</li>
+                    <li>Survival > DPS when starting out!</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
