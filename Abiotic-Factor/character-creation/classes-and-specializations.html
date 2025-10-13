@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abiotic Factor - Classes &amp; Specializations</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased">
+  <main class="max-w-6xl mx-auto px-6 py-14 space-y-12">
+    <nav class="flex flex-wrap items-center justify-between gap-3 text-sm text-slate-400">
+      <a href="./index.html" class="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 font-medium text-cyan-200 transition hover:bg-cyan-500/20">
+        <span aria-hidden="true">&larr;</span>
+        Character Creation Hub
+      </a>
+      <a href="../index.html" class="inline-flex items-center gap-2 rounded-full border border-slate-700 px-4 py-2 font-medium text-slate-300 transition hover:text-slate-100">
+        <span aria-hidden="true">&larr;</span>
+        Back to Wiki Overview
+      </a>
+    </nav>
+
+    <header class="space-y-6 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+        <div class="space-y-3">
+          <p class="text-xs uppercase tracking-[0.35em] text-slate-400">Abiotic Factor Guide</p>
+          <h1 class="text-4xl font-semibold text-slate-50 md:text-5xl">Classes &amp; Specializations</h1>
+          <p class="text-base text-slate-300">
+            Every scientist in G.A.T.E. begins with a job assignment that nudges early skill growth and trait choices.
+            Use the breakdown below to compare starting bonuses, spot forced drawbacks, and plan the trait loadout that
+            matches your solo or co-op role.
+          </p>
+        </div>
+        <aside class="flex flex-col gap-3 text-sm text-slate-300">
+          <div class="rounded-2xl border border-slate-800/80 bg-slate-900/60 px-5 py-4">
+            <h2 class="text-xs uppercase tracking-widest text-cyan-200">Workflow reminder</h2>
+            <ul class="mt-2 space-y-1 text-xs text-slate-400">
+              <li>&bull; Start with the planner: <code class="text-slate-200">classes-and-specializations.html.txt</code></li>
+              <li>&bull; Note trait experiments &amp; XP findings as you test jobs</li>
+              <li>&bull; Promote the draft once numbers and synergies are verified</li>
+            </ul>
+          </div>
+          <span class="text-xs uppercase tracking-widest text-slate-500">Sources referenced</span>
+          <ul class="space-y-1 text-xs text-slate-400">
+            <li>
+              <a href="https://selphie1999gaming.com/game-guides/abiotic-factor/abiotic-factor-jobs-list-which-option-is-best/" class="text-cyan-300 hover:text-cyan-100" target="_blank" rel="noopener">Selphie1999Gaming job breakdown</a>
+            </li>
+            <li>
+              <a href="https://gamefeedbacks.com/abiotic-factor-guide-to-jobs-and-traits-character-creation-tips/" class="text-cyan-300 hover:text-cyan-100" target="_blank" rel="noopener">GameFeedbacks trait combos</a>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </header>
+
+    <section class="space-y-6 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Job comparison at a glance</h2>
+        <p class="text-sm text-slate-300">
+          Starting points define how many trait picks you can afford before play begins. Skill bonuses establish which
+          meters level the fastest during the opening hours. XP modifiers and forced drawbacks matter most for long-term
+          builds, so note them before locking in a specialization.
+        </p>
+      </header>
+      <div class="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-900/60">
+        <table class="min-w-full divide-y divide-slate-800 text-sm text-left">
+          <thead class="bg-slate-900/80 text-slate-300">
+            <tr>
+              <th scope="col" class="px-5 py-4 font-semibold">Job</th>
+              <th scope="col" class="px-5 py-4 font-semibold">Starting points</th>
+              <th scope="col" class="px-5 py-4 font-semibold">Skill bonuses</th>
+              <th scope="col" class="px-5 py-4 font-semibold">XP modifiers &amp; perks</th>
+              <th scope="col" class="px-5 py-4 font-semibold">Best suited for</th>
+              <th scope="col" class="px-5 py-4 font-semibold">Watch-outs</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800 text-slate-200">
+            <tr class="hover:bg-slate-800/40">
+              <td class="px-5 py-4 font-medium text-cyan-200">Lab Assistant</td>
+              <td class="px-5 py-4">10</td>
+              <td class="px-5 py-4">+3 Sprinting, +3 Sneaking, +2 Strength</td>
+              <td class="px-5 py-4 text-slate-300">+50% Sneaking XP</td>
+              <td class="px-5 py-4">Solo scouts, stealth routes, objective runners</td>
+              <td class="px-5 py-4 text-slate-400">Low combat bonuses &mdash; pair with defensive traits or traps</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="px-5 py-4 font-medium text-cyan-200">Epimedical Bionomicist</td>
+              <td class="px-5 py-4">9</td>
+              <td class="px-5 py-4">+3 First Aid, +1 Cooking, +1 Agriculture</td>
+              <td class="px-5 py-4 text-slate-300">+50% First Aid XP, bonus yields crafting medical items</td>
+              <td class="px-5 py-4">Support medics, pantry managers, patch-up specialists</td>
+              <td class="px-5 py-4 text-slate-400">Minimal combat help; keep a blunt weapon or taser handy</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="px-5 py-4 font-medium text-cyan-200">Trans-Kinematic Researcher</td>
+              <td class="px-5 py-4">8</td>
+              <td class="px-5 py-4">+2 Blunt Melee, +2 Fortitude, +2 Sprinting, +2 Strength</td>
+              <td class="px-5 py-4 text-slate-300">+75% Fortitude XP, +50% Strength XP</td>
+              <td class="px-5 py-4">Front-line fighters, crowd control, tanky base clearers</td>
+              <td class="px-5 py-4 text-slate-400">Blunt focus &mdash; add Sharp/Firearms traits for flexibility</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="px-5 py-4 font-medium text-cyan-200">Archotechnic Consultant</td>
+              <td class="px-5 py-4">7</td>
+              <td class="px-5 py-4">+2 Construction, +1 Strength, +3 Crafting</td>
+              <td class="px-5 py-4 text-slate-300">Passive crafting speed boost near benches</td>
+              <td class="px-5 py-4">Base engineers, trap layers, logistics leads</td>
+              <td class="px-5 py-4 text-slate-400">Fewer starting points &mdash; budget traits carefully</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="px-5 py-4 font-medium text-cyan-200">Phytogenetic Botanist</td>
+              <td class="px-5 py-4">9</td>
+              <td class="px-5 py-4">+3 Agriculture, +2 Cooking, +2 Strength</td>
+              <td class="px-5 py-4 text-slate-300">+50% Agriculture XP</td>
+              <td class="px-5 py-4">Sustainable food loops, chemistry support, buff kitchens</td>
+              <td class="px-5 py-4 text-slate-400">Needs early garden space; coordinate with base team</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="px-5 py-4 font-medium text-cyan-200">Somatic Gastrologist</td>
+              <td class="px-5 py-4">9</td>
+              <td class="px-5 py-4">+2 Sharp Melee, +1 Fortitude, +4 Cooking</td>
+              <td class="px-5 py-4 text-slate-300">Access to advanced meal buffs earlier</td>
+              <td class="px-5 py-4">Buff chefs, morale kits, hybrid melee cooks</td>
+              <td class="px-5 py-4 text-slate-400">Fortitude gap &mdash; add Resistances or armor perks quickly</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="px-5 py-4 font-medium text-cyan-200">Paratheoretical Physicist</td>
+              <td class="px-5 py-4">8</td>
+              <td class="px-5 py-4">+3 Throwing, +3 Crafting, +1 Sneaking, +1 Reloading, +1 Construction</td>
+              <td class="px-5 py-4 text-slate-300">Broad tool proficiency without forced negatives</td>
+              <td class="px-5 py-4">Hybrid utility, science terminals, grenade specialists</td>
+              <td class="px-5 py-4 text-slate-400">Low fortitude &mdash; avoid front-line until armored</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="px-5 py-4 font-medium text-cyan-200">Defense Analyst</td>
+              <td class="px-5 py-4">5</td>
+              <td class="px-5 py-4">+2 Fortitude, +2 Strength, +1 Blunt Melee, +2 Reloading, +2 Accuracy</td>
+              <td class="px-5 py-4 text-slate-300">Forced trait: Slower Learner (‑20% XP)</td>
+              <td class="px-5 py-4">Late-game firearms, sentry duty, co-op breacher</td>
+              <td class="px-5 py-4 text-slate-400">Thin trait budget and XP penalty &mdash; consider only with party support</td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="px-5 py-4 font-medium text-cyan-200">Summer Intern</td>
+              <td class="px-5 py-4">12</td>
+              <td class="px-5 py-4 text-slate-300">No starting skill bonuses</td>
+              <td class="px-5 py-4 text-slate-300">Largest trait budget; flexible buildcrafting</td>
+              <td class="px-5 py-4">Experimentation, solo discovery runs, trait-heavy builds</td>
+              <td class="px-5 py-4 text-slate-400">No early boosts &mdash; rely on traits and loot to fill gaps</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-slate-500">
+        Values verified in build 0.8.0. Selphie1999Gaming collated skill/point data directly from the in-game creator; leverage the planner file for future patches.
+      </p>
+    </section>
+
+    <section class="space-y-6 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Trait bundles that keep momentum</h2>
+        <p class="text-sm text-slate-300">
+          Traits cost or refund points, enabling unique utility that jobs cannot provide. Combine high-impact positives
+          with manageable negatives; swap in equivalents that fit your server settings or comfort level.
+        </p>
+      </header>
+      <div class="grid gap-5 lg:grid-cols-3">
+        <article class="space-y-3 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Solo stealth package</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li><span class="font-semibold text-slate-100">Fanny Pack</span> (10 pts): +2 hotbar slots; offsets limited ammo/utility space.</li>
+            <li><span class="font-semibold text-slate-100">Inconspicuous</span>: Lowers enemy detection radius while crouched.</li>
+            <li><span class="font-semibold text-slate-100">Night Owl</span>: Stamina regen buff in darkness.</li>
+            <li><span class="font-semibold text-slate-100 text-slate-400">Negatives:</span> Weak Bladder &amp; Dry Skin add mild upkeep without touching combat stats.</li>
+          </ul>
+          <p class="text-xs text-slate-500">Pairs naturally with Lab Assistant or Summer Intern builds focused on terminals and loot runs.</p>
+        </article>
+        <article class="space-y-3 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Co-op defender toolkit</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li><span class="font-semibold text-slate-100">Self Defense</span>: Boosts Blunt &amp; Sharp damage; helps while waiting for firearms.</li>
+            <li><span class="font-semibold text-slate-100">Weathered</span>: Adds environmental resistances, great for storm runs.</li>
+            <li><span class="font-semibold text-slate-100">Resistances</span> (if unlocked): Extra hazard mitigation without needing full suits.</li>
+            <li><span class="font-semibold text-slate-100 text-slate-400">Negatives:</span> Hearty Appetite &amp; Narcoleptic keep trait points flowing but are co-op friendly.</li>
+          </ul>
+          <p class="text-xs text-slate-500">Recommended for Trans-Kinematic Researcher or Defense Analyst when a squad can cover food and rest cycles.</p>
+        </article>
+        <article class="space-y-3 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Utility scientist bundle</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li><span class="font-semibold text-slate-100">Wrinkly Brainmeat</span>: +15% XP lets support roles keep pace with fighters.</li>
+            <li><span class="font-semibold text-slate-100">Gray Matter</span>: Extra research slots for puzzle terminals.</li>
+            <li><span class="font-semibold text-slate-100">Fanny Pack</span> or <span class="font-semibold text-slate-100">Organized</span>: Carry more samples &amp; kits.</li>
+            <li><span class="font-semibold text-slate-100 text-slate-400">Negatives:</span> Slow Healer &amp; Weak Bladder are tolerable with stocked med bays.</li>
+          </ul>
+          <p class="text-xs text-slate-500">Great with Bionomicist or Paratheoretical Physicist for teams that rotate jobs or run research expeditions.</p>
+        </article>
+      </div>
+      <p class="text-xs text-slate-500">
+        Trait availability shifts as the game updates. Keep the planner synced with the in-game creator so the point costs and unlock tags stay accurate.
+      </p>
+    </section>
+
+    <section class="space-y-5 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Role archetypes &amp; coordination tips</h2>
+        <p class="text-sm text-slate-300">
+          Jobs only dictate your opening moves &mdash; long-term success comes from matching your specialization with the
+          team’s needs and the expedition plan.
+        </p>
+      </header>
+      <div class="grid gap-5 md:grid-cols-2">
+        <article class="space-y-3 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Solo explorers</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li><span class="font-semibold text-slate-200">Summer Intern</span> offers the largest trait sandbox; funnel points into mobility, storage, and survivability.</li>
+            <li><span class="font-semibold text-slate-200">Lab Assistant</span> excels at dungeon crawling once stealth perks stack.</li>
+            <li>Carry multi-role tools: taser, pry-bar, and a portable light to offset trait negatives like Night Owl.</li>
+          </ul>
+        </article>
+        <article class="space-y-3 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Co-op splits</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li><span class="font-semibold text-slate-200">Bionomicist + Gastrologist:</span> share cook/medic duties while the rest push sectors.</li>
+            <li><span class="font-semibold text-slate-200">Archotechnic Consultant</span> should stay near base to unlock tier 2 benches quickly.</li>
+            <li><span class="font-semibold text-slate-200">Defense Analyst</span> needs consistent XP feeders (range practice, turret placements) to offset Slower Learner.</li>
+          </ul>
+        </article>
+      </div>
+      <p class="text-xs text-slate-500">
+        Log trait experiments in the planner so the team knows which builds are proven on your server version.
+      </p>
+    </section>
+
+    <section class="space-y-4 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <h2 class="text-2xl font-semibold text-cyan-200">Checklist before promoting this draft</h2>
+      <ul class="list-disc list-inside space-y-2 text-sm text-slate-300">
+        <li>Confirm starting point totals after each major patch (0.9 and beyond often adjust trait budgets).</li>
+        <li>Update forced traits or XP modifiers if the creator UI changes language.</li>
+        <li>Add links to any trait math sheets or co-op build trackers the team maintains.</li>
+        <li>Archive the planner notes (<code class="text-slate-200">classes-and-specializations.html.txt</code>) once the HTML is live.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
