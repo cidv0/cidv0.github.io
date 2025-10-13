@@ -65,9 +65,13 @@
             let cols = 0;
             let rows = 0;
             let cellSize = 8;
+            let dpr = window.devicePixelRatio || 1;
+            let viewWidth = window.innerWidth;
+            let viewHeight = window.innerHeight;
             let grid = [];
             let buffer = [];
             let animationFrame = null;
+            let tick = 0;
 
             const alivePalette = [
                 '#00d0ff',
@@ -81,21 +85,21 @@
             }
 
             function resize() {
-                const dpr = window.devicePixelRatio || 1;
-                const width = window.innerWidth;
-                const height = window.innerHeight;
+                dpr = window.devicePixelRatio || 1;
+                viewWidth = window.innerWidth;
+                viewHeight = window.innerHeight;
 
-                canvas.width = width * dpr;
-                canvas.height = height * dpr;
-                canvas.style.width = `${width}px`;
-                canvas.style.height = `${height}px`;
+                canvas.width = viewWidth * dpr;
+                canvas.height = viewHeight * dpr;
+                canvas.style.width = `${viewWidth}px`;
+                canvas.style.height = `${viewHeight}px`;
 
                 ctx.setTransform(1, 0, 0, 1, 0, 0);
                 ctx.scale(dpr, dpr);
 
-                cellSize = Math.max(6, Math.min(12, Math.floor(width / 110)));
-                cols = Math.floor(width / cellSize);
-                rows = Math.floor(height / cellSize);
+                cellSize = Math.max(6, Math.min(12, Math.floor(viewWidth / 110)));
+                cols = Math.floor(viewWidth / cellSize);
+                rows = Math.floor(viewHeight / cellSize);
 
                 randomizeGrid();
             }
@@ -127,10 +131,17 @@
 
             function draw() {
                 ctx.fillStyle = 'rgba(5, 6, 7, 0.3)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillRect(0, 0, viewWidth, viewHeight);
 
-                const color = alivePalette[Math.floor(Math.random() * alivePalette.length)];
-                ctx.fillStyle = color;
+                const gradient = ctx.createLinearGradient(0, 0, viewWidth, viewHeight);
+                const paletteLength = alivePalette.length - 1;
+                for (let i = 0; i < alivePalette.length; i += 1) {
+                    gradient.addColorStop(
+                        paletteLength === 0 ? 0 : i / paletteLength,
+                        alivePalette[(i + tick) % alivePalette.length]
+                    );
+                }
+                ctx.fillStyle = gradient;
 
                 for (let y = 0; y < rows; y += 1) {
                     for (let x = 0; x < cols; x += 1) {
@@ -164,6 +175,7 @@
                     step();
                     draw();
                     mutate();
+                    tick = (tick + 1) % alivePalette.length;
                     lastTime = time;
                 }
                 animationFrame = requestAnimationFrame(frame);
