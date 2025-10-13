@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Abiotic Factor — Day 1 & Night 1 Quick Tips</title>
+<style>
+  :root{
+    --bg:#0b0f14; /* deep lab blue */
+    --panel:#0f1520;
+    --card:#121a26;
+    --ink:#e6eef8;
+    --muted:#b7c7da;
+    --accent:#47d7ff; /* cyan */
+    --accent-2:#ffa83a; /* amber */
+    --good:#6ee7a8; /* green */
+    --warn:#ff6b6b; /* red */
+  }
+  html,body{height:100%;background:radial-gradient(1200px 700px at 10% -10%, #112035 0%, #0b0f14 60%, #081018 100%);}
+  body{margin:0;font:16px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; color:var(--ink);}
+
+  /* Page container sized for crisp screenshots and printing */
+  .page{max-width:1100px;margin:24px auto;padding:28px;border-radius:24px;background:
+    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.00));
+    box-shadow:0 18px 60px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.06);
+  }
+  @media print{ body{background:#fff;} .page{box-shadow:none; background:#fff; color:#111;} .card{background:#fff; border:1px solid #e5e7eb;} .tag{border-color:#111} .aside{background:#fff} .header .meta{color:#222} }
+
+  .header{display:flex; gap:18px; align-items:center; margin-bottom:20px;}
+  .logo{width:62px;height:62px;display:grid;place-items:center;background:conic-gradient(from 180deg, var(--accent), #7df7ff 25%, #4cc9f0 50%, #00bcd4 75%, var(--accent));border-radius:18px; box-shadow:0 4px 18px rgba(71,215,255,.45);}
+  .logo svg{filter:drop-shadow(0 2px 6px rgba(0,0,0,.25));}
+  .title{flex:1}
+  h1{font-size:28px; line-height:1.15; margin:0 0 4px 0; letter-spacing:.3px}
+  .meta{font-size:13px;color:var(--muted)}
+
+  .grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:14px;}
+  .card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015)); border:1px solid rgba(255,255,255,.06); border-radius:18px; padding:16px;}
+  .card h2{font-size:16px; text-transform:uppercase; letter-spacing:.06em; margin:0 0 10px 0; color:var(--accent)}
+  .card h3{font-size:14px; margin:10px 0 6px 0; color:var(--muted)}
+  .card p, .card li{font-size:14px}
+  .card ul{margin:8px 0 0 18px}
+  .row-6{grid-column:span 6}
+  .row-4{grid-column:span 4}
+  .row-3{grid-column:span 3}
+  .row-8{grid-column:span 8}
+  .row-12{grid-column:span 12}
+  @media (max-width:980px){.row-6,.row-4,.row-3,.row-8{grid-column:span 12}}
+
+  .tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:4px 8px;border-radius:999px;border:1px dashed rgba(255,255,255,.2); color:var(--muted);}
+  .icons{display:flex;gap:8px;flex-wrap:wrap}
+
+  .aside{background:linear-gradient(180deg, rgba(255,168,58,.08), rgba(255,168,58,.03)); border:1px solid rgba(255,168,58,.25)}
+  .ok{color:var(--good)}
+  .warn{color:var(--warn)}
+  .muted{color:var(--muted)}
+
+  .kicker{font-size:12px; text-transform:uppercase; letter-spacing:.12em; color:var(--muted)}
+  .callout{display:flex;align-items:center;gap:10px; font-size:13px; padding:10px 12px;border-radius:12px; background:rgba(71,215,255,.08); border:1px solid rgba(71,215,255,.35)}
+
+  .twocol{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
+  @media (max-width:980px){.twocol{grid-template-columns: 1fr}}
+
+  .pill{display:inline-block;background:rgba(255,255,255,.05); padding:4px 10px;border-radius:999px; border:1px solid rgba(255,255,255,.08); font-size:12px; color:var(--muted)}
+
+  .footer{margin-top:14px; font-size:12px; color:var(--muted); display:flex; justify-content:space-between; align-items:center}
+  .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
+</style>
+</head>
+<body>
+  <main class="page" role="document" aria-label="Abiotic Factor Day 1 & Night 1 Quick Tips">
+    <header class="header">
+      <div class="logo" aria-hidden="true">
+        <!-- Minimal lab icon -->
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M7 3v3l-5 8a3 3 0 0 0 2.55 4.5h14.9A3 3 0 0 0 22 14L17 6V3" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M9 3h6" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="12" cy="15" r="3" fill="white"/>
+        </svg>
+      </div>
+      <div class="title">
+        <h1>Abiotic Factor — Day 1 & Night 1 <span class="muted">Quick Survival</span></h1>
+        <div class="meta">One‑page, screenshot‑ready infographic • Focus: Character setup, first base, night run, must‑have gear</div>
+      </div>
+      <div class="icons">
+        <span class="tag"><span>🌅</span>Day 6:00</span>
+        <span class="tag"><span>🌙</span>Night 21:00</span>
+        <span class="tag"><span>⚡</span>Power Off at Night</span>
+      </div>
+    </header>
+
+    <section class="grid" aria-label="Overview grid">
+      <article class="card row-6" aria-label="Character setup">
+        <h2>Character Setup</h2>
+        <ul>
+          <li><strong>Fanny Pack</strong> trait → <strong>+2 hotbar</strong> (unique, only source). Costs <span class="mono">10</span> points.</li>
+          <li><strong>Summer Intern</strong> job gives <span class="mono">12</span> points → easily afford Fanny Pack.</li>
+          <li>Not mandatory; choose your style — just avoid hard traits on your first run.</li>
+        </ul>
+      </article>
+
+      <article class="card row-6" aria-label="Starting area">
+        <h2>Starting Area (No Time Pressure)</h2>
+        <ul>
+          <li>Time <em>doesn’t start</em> until you leave. Loot calmly.</li>
+          <li>Bathrooms: relieve + wash; sinks are drinkable water.</li>
+          <li>Wear the <strong>Chef’s Hat</strong> (free slot). Grab <strong>Medkit</strong> + <strong>Flashlight</strong>.</li>
+          <li><strong>Email Terminals</strong> can reveal recipes — read them.</li>
+          <li>Grab everything; drop extras on floor (safe short‑term).</li>
+        </ul>
+      </article>
+
+      <article class="card row-4" aria-label="Early cooking">
+        <h2>Food & Cooking</h2>
+        <ul>
+          <li>First <strong>knife</strong> + <strong>stove</strong> in cafeteria kitchen.</li>
+          <li>Butcher enemies → raw parts → fry in a <strong>pan</strong>.</li>
+          <li>No pan? Craft a <strong>makeshift pan</strong> at the bench.</li>
+        </ul>
+      </article>
+
+      <article class="card row-4" aria-label="Crafting bench">
+        <h2>First Bench = First Safety</h2>
+        <p>Crafting Bench (keep <strong>duct tape</strong> + <strong>metal pipes</strong>)
+          — also reduces nearby enemy spawns. Make it ASAP.</p>
+        <div class="callout" role="note"><span>📌</span>Bench location we like: <strong>Office Sector</strong> → kitchenette → locker → gym → upstairs room.</div>
+      </article>
+
+      <article class="card row-4" aria-label="Backpacks">
+        <h2>Backpacks</h2>
+        <ul>
+          <li><strong>Backpack</strong> by NPC desk (next room) → +1 inventory row.</li>
+          <li><strong>Security Pack</strong> (better) → office balcony ladder → down to the body → <strong>+3 slots</strong>.</li>
+        </ul>
+      </article>
+
+      <article class="card row-8" aria-label="Base essentials">
+        <h2>Base Essentials to Grab/Build</h2>
+        <div class="twocol">
+          <ul>
+            <li><strong>Storage Crates</strong> (smash wood crates for planks).</li>
+            <li><strong>Standing Lamps</strong> = infinite light, no power socket.</li>
+            <li><strong>Water Coolers</strong> for easy thirst refill.</li>
+            <li><strong>Makeshift Bed</strong> → pack couches (50% success) unlocks recipe.</li>
+          </ul>
+          <ul>
+            <li><strong>Medkit Wall Box</strong> (unscrew) → storage & required for bench upgrades.</li>
+            <li><strong>Smash PCs</strong> in cubicles → core materials (screws, etc.).</li>
+            <li><strong>Soil Bag</strong> nearby for future planting.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card row-6" aria-label="Power & utilities">
+        <h2>Power & Utilities</h2>
+        <ul>
+          <li><strong>Battery</strong> → socket → battery → device for <em>overnight</em> power.</li>
+          <li><strong>Plug Strip</strong> → extend to multiple devices.</li>
+          <li><strong>Portable Stove</strong> → cook anywhere.</li>
+          <li><strong>Repair & Salvage Station</strong> → fix gear; needs an <strong>Anvil</strong> (see <em>Night Run</em>).</li>
+        </ul>
+      </article>
+
+      <article class="card row-6 aside" aria-label="Night run for anvil">
+        <h2>Night Run: Early Anvil</h2>
+        <div class="kicker">Starts 21:00 — power off, colder, security robot patrols</div>
+        <ul>
+          <li><span class="warn">Avoid</span> fighting the robot — not worth it early.</li>
+          <li>Route: <strong>Back to Cafeteria</strong> → right vent → forward vent → fan is off at night.</li>
+          <li>Dismantle metal scrap → pass/clear peckery → through blue doors → <strong>grab Anvil</strong>, Tomato Seeds, 9mm ammo.</li>
+          <li>Dash back to base. Night is short (<span class="mono">~⅓</span> of day length).</li>
+        </ul>
+      </article>
+
+      <article class="card row-6" aria-label="Bench upgrades">
+        <h2>Bench Upgrades (Soon™)</h2>
+        <ul>
+          <li><strong>Auto‑Heal</strong> — heals when you stand near bench.</li>
+          <li><strong>Item Transporter</strong> — pulls mats from nearby crates.</li>
+          <li><strong>Bench Warmer</strong> — passive heat while nearby.</li>
+        </ul>
+      </article>
+
+      <article class="card row-6" aria-label="Night encounters">
+        <h2>Night Encounters</h2>
+        <ul>
+          <li><strong>Coworker</strong> (creepy crawler): friendly trader. Feed food → get staplers & pens.</li>
+          <li><strong>Security Sector</strong>: <span class="warn">skip</span> for now.</li>
+        </ul>
+      </article>
+
+      <article class="card row-12" aria-label="Pro tips">
+        <h2>Pro Tips</h2>
+        <div class="twocol">
+          <ul>
+            <li>Keep <strong>duct tape</strong> & <strong>metal pipes</strong> on you for emergency bench placement.</li>
+            <li>Label crates with categories to speed crafting later.</li>
+            <li>Carry a <strong>flashlight</strong> (fresh batteries) before dusk.</li>
+          </ul>
+          <ul>
+            <li>Loot <strong>box of screws</strong> when you see them — high value.</li>
+            <li>Don’t fear death: you can recover your <em>death bag</em>.</li>
+            <li>Explore! The facility hides shortcuts, seeds, and side‑grades.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card row-12" aria-label="Timing summary">
+        <h2>Timing Cheat Sheet</h2>
+        <div class="icons" aria-label="timing">
+          <span class="pill">Morning begins <strong>06:00</strong></span>
+          <span class="pill">Night begins <strong>21:00</strong> (power off)</span>
+          <span class="pill">Night length ≈ <strong>⅓</strong> of daytime</span>
+          <span class="pill">Time 
+            <span class="muted">doesn’t start</span> until you leave the intro area</span>
+        </div>
+      </article>
+    </section>
+
+    <footer class="footer" aria-label="footer">
+      <div>Made for quick screenshotting & printing • No external assets</div>
+      <div class="muted">Guide based on Kogan’s Day 1/ Night 1 walkthrough</div>
+    </footer>
+  </main>
+</body>
+</html>
