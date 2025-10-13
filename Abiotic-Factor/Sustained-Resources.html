@@ -3,195 +3,130 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Abiotic Factor — Water & Sustained Resources</title>
-<style>
-  :root{
-    --bg:#0b0f14;
-    --panel:#0f1520;
-    --card:#121a26;
-    --ink:#e6eef8;
-    --muted:#b7c7da;
-    --accent:#47d7ff; /* cyan */
-    --accent-2:#ffa83a; /* amber */
-    --good:#6ee7a8; /* green */
-    --warn:#ff6b6b; /* red */
-  }
-  html,body{height:100%;background:radial-gradient(1200px 700px at 10% -10%, #112035 0%, #0b0f14 60%, #081018 100%);}
-  body{margin:0;font:16px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; color:var(--ink);}
-
-  .page{max-width:1100px;margin:24px auto;padding:28px;border-radius:24px;background:
-    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.00));
-    box-shadow:0 18px 60px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.06);
-  }
-  @media print{ body{background:#fff;} .page{box-shadow:none; background:#fff; color:#111} .card{background:#fff; border:1px solid #e5e7eb;} .aside{background:#fff} .header .meta{color:#222} .pill,.tag{border-color:#111} }
-
-  .header{display:flex; gap:18px; align-items:center; margin-bottom:20px;}
-  .logo{width:62px;height:62px;display:grid;place-items:center;background:conic-gradient(from 180deg, var(--accent), #7df7ff 25%, #4cc9f0 50%, #00bcd4 75%, var(--accent));border-radius:18px; box-shadow:0 4px 18px rgba(71,215,255,.45);}
-  .logo svg{filter:drop-shadow(0 2px 6px rgba(0,0,0,.25));}
-  .title{flex:1}
-  h1{font-size:28px; line-height:1.15; margin:0 0 4px 0; letter-spacing:.3px}
-  .meta{font-size:13px;color:var(--muted)}
-
-  .grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:14px;}
-  .card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015)); border:1px solid rgba(255,255,255,.06); border-radius:18px; padding:16px;}
-  .card h2{font-size:16px; text-transform:uppercase; letter-spacing:.06em; margin:0 0 10px 0; color:var(--accent)}
-  .card h3{font-size:14px; margin:10px 0 6px 0; color:var(--muted)}
-  .card p, .card li{font-size:14px}
-  .card ul{margin:8px 0 0 18px}
-  .row-6{grid-column:span 6}
-  .row-4{grid-column:span 4}
-  .row-3{grid-column:span 3}
-  .row-8{grid-column:span 8}
-  .row-12{grid-column:span 12}
-  @media (max-width:980px){.row-6,.row-4,.row-3,.row-8{grid-column:span 12}}
-
-  .tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:4px 8px;border-radius:999px;border:1px dashed rgba(255,255,255,.2); color:var(--muted);}
-  .icons{display:flex;gap:8px;flex-wrap:wrap}
-
-  .aside{background:linear-gradient(180deg, rgba(255,168,58,.08), rgba(255,168,58,.03)); border:1px solid rgba(255,168,58,.25)}
-  .ok{color:var(--good)}
-  .warn{color:var(--warn)}
-  .muted{color:var(--muted)}
-
-  .kicker{font-size:12px; text-transform:uppercase; letter-spacing:.12em; color:var(--muted)}
-  .callout{display:flex;align-items:center;gap:10px; font-size:13px; padding:10px 12px;border-radius:12px; background:rgba(71,215,255,.08); border:1px solid rgba(71,215,255,.35)}
-  .callout.warn{background:rgba(255,107,107,.08); border-color:rgba(255,107,107,.35)}
-  .callout.ok{background:rgba(110,231,168,.08); border-color:rgba(110,231,168,.35)}
-
-  .twocol{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
-  @media (max-width:980px){.twocol{grid-template-columns: 1fr}}
-
-  .pill{display:inline-block;background:rgba(255,255,255,.05); padding:4px 10px;border-radius:999px; border:1px solid rgba(255,255,255,.08); font-size:12px; color:var(--muted)}
-  .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
-
-  .footer{margin-top:14px; font-size:12px; color:var(--muted); display:flex; justify-content:space-between; align-items:center}
-</style>
+<title>Abiotic Factor - Water & Sustained Resources</title>
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <main class="page" role="document" aria-label="Abiotic Factor — Water & Sustained Resources">
-    <header class="header">
-      <div class="logo" aria-hidden="true">
-        <!-- droplet-in-gear -->
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M8 3l1.2 1.7a7 7 0 0 1 5.6 0L16 3l2 2-.7 1.3a7 7 0 0 1 1.8 4.2L21 11v2l-1.9.5a7 7 0 0 1-1.8 4.2L18 19l-2 2-1.2-.7a7 7 0 0 1-5.6 0L8 21l-2-2 .7-1.3a7 7 0 0 1-1.8-4.2L3 13v-2l1.9-.5a7 7 0 0 1 1.8-4.2L6 5l2-2z" stroke="white" stroke-width="1.3" opacity=".9"/>
-          <path d="M12 8c2.5 2.7 3.5 4.2 3.5 5.5a3.5 3.5 0 1 1-7 0C8.5 12.2 9.5 10.7 12 8z" fill="white"/>
-        </svg>
-      </div>
-      <div class="title">
-        <h1>Abiotic Factor — <span class="muted">Water & Sustained Resources</span></h1>
-        <div class="meta">One-page, screenshot-ready infographic • Focus: renewable water, storage & purification, medicine & long-term resource flow</div>
-      </div>
-      <div class="icons">
-        <span class="tag">💧 Water</span>
-        <span class="tag">🧪 Purify</span>
-        <span class="tag">🛢️ Storage</span>
-        <span class="tag">🩹 Medicine</span>
-        <span class="tag">⚙️ Scaling</span>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased">
+  <main class="max-w-6xl mx-auto px-6 py-12 space-y-12">
+    <header class="space-y-6">
+      <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+        <div class="flex items-center gap-4">
+          <div class="flex h-16 w-16 items-center justify-center rounded-2xl border border-sky-400 border-opacity-40 bg-sky-500 bg-opacity-20 shadow-lg">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M8 3l1.2 1.7a7 7 0 0 1 5.6 0L16 3l2 2-.7 1.3a7 7 0 0 1 1.8 4.2L21 11v2l-1.9.5a7 7 0 0 1-1.8 4.2L18 19l-2 2-1.2-.7a7 7 0 0 1-5.6 0L8 21l-2-2 .7-1.3a7 7 0 0 1-1.8-4.2L3 13v-2l1.9-.5a7 7 0 0 1 1.8-4.2L6 5l2-2z" stroke="white" stroke-width="1.3" opacity=".9"/>
+              <path d="M12 8c2.5 2.7 3.5 4.2 3.5 5.5a3.5 3.5 0 1 1-7 0C8.5 12.2 9.5 10.7 12 8z" fill="white"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-widest text-slate-400">Abiotic Factor Guide</p>
+            <h1 class="text-3xl font-semibold text-slate-50">Abiotic Factor - <span class="text-slate-400 font-normal">Water &amp; Sustained Resources</span></h1>
+            <p class="mt-2 text-sm text-slate-400">One-page, screenshot-ready infographic - Focus: renewable water, storage and purification, medicine, and long-term resource flow.</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2 text-xs uppercase tracking-wide text-slate-300">
+          <span class="inline-flex items-center rounded-full border border-slate-700 px-3 py-1">Water</span>
+          <span class="inline-flex items-center rounded-full border border-slate-700 px-3 py-1">Purify</span>
+          <span class="inline-flex items-center rounded-full border border-slate-700 px-3 py-1">Storage</span>
+          <span class="inline-flex items-center rounded-full border border-slate-700 px-3 py-1">Medicine</span>
+          <span class="inline-flex items-center rounded-full border border-slate-700 px-3 py-1">Scaling</span>
+        </div>
       </div>
     </header>
 
-    <section class="grid" aria-label="Overview grid">
-      <!-- Water Sources -->
-      <article class="card row-6" aria-label="Water sources">
-        <h2>Water Sources</h2>
-        <ul>
-          <li><strong>Sinks & Water Coolers</strong> — clean water on tap early. Unscrew & relocate coolers to your base.</li>
-          <li><strong>Tainted Sources</strong> — fountains, leaks, pools, etc. Abundant but <span class="warn">unsafe</span> until purified.</li>
-          <li><strong>Carry Containers</strong> — pots, bottles, and barrels let you haul & stockpile wherever you settle.</li>
+    <section class="grid gap-4 md:grid-cols-2">
+      <article class="rounded-2xl border border-slate-800 bg-slate-900 bg-opacity-60 p-6 space-y-3">
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-sky-300">Water Sources</h2>
+        <ul class="list-disc list-inside space-y-2 text-sm text-slate-300">
+          <li><strong>Sinks and Water Coolers</strong> give clean water early. Unscrew and relocate coolers to your base.</li>
+          <li><strong>Tainted Sources</strong> (fountains, leaks, pools) are plentiful but unsafe until purified.</li>
+          <li><strong>Carry Containers</strong> like pots, bottles, and barrels to haul and stockpile wherever you settle.</li>
         </ul>
-        <div class="callout" role="note">Tip: Stage a <em>water corner</em> at base: cooler (dispense), barrel (bulk), and a labeled crate for empty bottles.</div>
+        <div class="rounded-xl border border-sky-400 border-opacity-40 bg-sky-500 bg-opacity-10 px-4 py-3 text-sm text-sky-100">Stage a "water corner" at base: cooler for dispensing, barrel for bulk, and a labeled crate for empty bottles.</div>
       </article>
 
-      <!-- Purification -->
-      <article class="card row-6" aria-label="Purification methods">
-        <h2>Purification Methods</h2>
-        <ul>
-          <li><strong>Boil It</strong> — Cooking Pot + any stove converts tainted → clean. Parallelize with multiple pots.</li>
-          <li><strong>Filter It</strong> — Late-game <em>Water Filter</em> on a barrel converts tainted → clean efficiently.</li>
-          <li><strong>Safety</strong> — Drinking unpurified water can cause sickness. Keep basic meds nearby when experimenting.</li>
+      <article class="rounded-2xl border border-slate-800 bg-slate-900 bg-opacity-60 p-6 space-y-3">
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-sky-300">Purification Methods</h2>
+        <ul class="list-disc list-inside space-y-2 text-sm text-slate-300">
+          <li><strong>Boil It</strong> - cooking pot plus any stove converts tainted -> clean. Run multiple pots in parallel.</li>
+          <li><strong>Filter It</strong> - late-game <em>Water Filter</em> on a barrel converts tainted -> clean efficiently.</li>
+          <li><strong>Stay Safe</strong> - drinking unpurified water causes sickness. Keep basic meds handy when testing.</li>
         </ul>
-        <div class="callout ok" role="note">Upgrade path: <strong>Portable Stove</strong> → multiple pots → <strong>Water Filter</strong> on a stationary barrel.</div>
+        <div class="rounded-xl border border-emerald-400 border-opacity-40 bg-emerald-500 bg-opacity-10 px-4 py-3 text-sm text-emerald-100">Upgrade path: portable stove -> multiple pots -> water filter attached to a stationary barrel.</div>
       </article>
 
-      <!-- Storage & Scaling -->
-      <article class="card row-4" aria-label="Storage & scaling">
-        <h2>Storage & Scaling</h2>
-        <ul>
-          <li><strong>Water Coolers</strong> — convenient dispensing; good for base kitchens.</li>
-          <li><strong>Barrels</strong> — high-capacity reservoirs; pair with filters.</li>
-          <li><strong>Label Containers</strong> — “Clean (Drink)”, “Tainted (Process)”, “Empty Bottles”.</li>
+      <article class="rounded-2xl border border-slate-800 bg-slate-900 bg-opacity-60 p-6 space-y-3">
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-sky-300">Storage and Scaling</h2>
+        <ul class="list-disc list-inside space-y-2 text-sm text-slate-300">
+          <li><strong>Water Coolers</strong> are great for quick dispensing near crafting benches.</li>
+          <li><strong>Barrels</strong> act as high-capacity reservoirs; pair them with filters.</li>
+          <li><strong>Label Containers</strong> for "Clean (Drink)", "Tainted (Process)", and "Empty Bottles".</li>
         </ul>
-        <div class="callout" role="note">Put barrels under steady drips/leaks to collect tainted water passively.</div>
+        <div class="rounded-xl border border-sky-400 border-opacity-40 bg-sky-500 bg-opacity-10 px-4 py-3 text-sm text-sky-100">Position barrels under steady drips or leaks to collect tainted water passively.</div>
       </article>
 
-      <!-- Renewable Setup -->
-      <article class="card row-8 aside" aria-label="Renewable setup">
-        <h2>“Infinite” Water Setup</h2>
-        <div class="kicker">Base near a tainted source → capture → purify → store</div>
-        <ol>
-          <li><strong>Claim a Source:</strong> Pick a reliable fountain/pool/leak near your base route.</li>
-          <li><strong>Capture:</strong> Fill pots/bottles or place a barrel to collect tainted water.</li>
-          <li><strong>Purify:</strong> Boil early; swap to a <em>Water Filter</em> on the barrel when unlocked.</li>
-          <li><strong>Distribute:</strong> Decant into coolers/bottles labeled “Clean”. Keep a spare cooler upstairs/secondary hub.</li>
+      <article class="rounded-2xl border border-amber-400 border-opacity-40 bg-amber-500 bg-opacity-10 p-6 space-y-3 md:col-span-2">
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-amber-200">"Infinite" Water Loop</h2>
+        <p class="text-sm text-amber-100">Base near a tainted source -> capture -> purify -> store.</p>
+        <ol class="list-decimal list-inside space-y-2 text-sm text-amber-100">
+          <li><strong>Claim a Source:</strong> pick a reliable fountain, pool, or leak near your base route.</li>
+          <li><strong>Capture:</strong> fill pots or bottles, or park a barrel to collect tainted water.</li>
+          <li><strong>Purify:</strong> boil early on; swap to a water filter on the barrel once unlocked.</li>
+          <li><strong>Distribute:</strong> decant into coolers and bottles labeled "Clean". Keep a spare cooler at secondary hubs.</li>
         </ol>
-        <div class="callout warn" role="note">Avoid long trips burdened with liquids at night. Stage mini-stations along safe corridors.</div>
+        <div class="rounded-xl border border-amber-400 border-opacity-60 bg-amber-500 bg-opacity-10 px-4 py-3 text-sm text-amber-100">Avoid long trips with heavy liquids at night. Stage mini-stations along safe corridors.</div>
       </article>
 
-      <!-- Medicine -->
-      <article class="card row-6" aria-label="Medicine & healing">
-        <h2>Medicine & Healing</h2>
-        <ul>
-          <li><strong>Scavenge First Aid</strong> — wall boxes, clinics, med rooms. Unscrew wall kits for crafting & storage.</li>
-          <li><strong>Tier Your Usage</strong> — use basic bandages/food for chip damage; save medkits for emergencies.</li>
-          <li><strong>Stock Reagents</strong> — antiseptics, cloth, chemicals; they unlock stronger items as benches advance.</li>
+      <article class="rounded-2xl border border-slate-800 bg-slate-900 bg-opacity-60 p-6 space-y-3">
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-sky-300">Medicine &amp; Healing</h2>
+        <ul class="list-disc list-inside space-y-2 text-sm text-slate-300">
+          <li><strong>Scavenge First Aid</strong> in wall boxes, clinics, and med rooms. Unscrew wall kits for storage and crafting.</li>
+          <li><strong>Tier Your Usage</strong> - use basic bandages or food for chip damage; save medkits for emergencies.</li>
+          <li><strong>Stock Reagents</strong> like antiseptics, cloth, and chemicals to unlock stronger items as benches advance.</li>
         </ul>
-        <div class="callout" role="note">Keep a <em>“triage crate”</em> by your bed/bench with bandages, antiseptics, and a spare flashlight.</div>
+        <div class="rounded-xl border border-sky-400 border-opacity-40 bg-sky-500 bg-opacity-10 px-4 py-3 text-sm text-sky-100">Keep a "triage crate" by your bed or bench with bandages, antiseptics, and a spare flashlight.</div>
       </article>
 
-      <!-- Long-term resource flow -->
-      <article class="card row-6" aria-label="Sustained resources">
-        <h2>Long-Term Resource Flow</h2>
-        <ul>
-          <li><strong>Farm When Stable</strong> — once water’s solved, plant seeds near light/heat. Don’t over-plant early.</li>
-          <li><strong>Electronics & Metal</strong> — smash PCs/cubicles for screws, circuits; hoard pipes & duct tape.</li>
-          <li><strong>Respawn Loops</strong> — revisit side zones/portals periodically for refreshed mats.</li>
+      <article class="rounded-2xl border border-slate-800 bg-slate-900 bg-opacity-60 p-6 space-y-3">
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-sky-300">Long-Term Resource Flow</h2>
+        <ul class="list-disc list-inside space-y-2 text-sm text-slate-300">
+          <li><strong>Farm Once Stable</strong> - after solving water, plant seeds near light and heat sources.</li>
+          <li><strong>Electronics &amp; Metal</strong> - smash PCs and cubicles for screws and circuits; hoard pipes and duct tape.</li>
+          <li><strong>Respawn Loops</strong> - revisit side zones or portals regularly for refreshed materials.</li>
         </ul>
-        <div class="callout" role="note">Place benches near loot-dense offices; upgrades like <em>Item Transporter</em> speed crafting loops.</div>
+        <div class="rounded-xl border border-sky-400 border-opacity-40 bg-sky-500 bg-opacity-10 px-4 py-3 text-sm text-sky-100">Place benches near loot-dense offices; upgrades like Item Transporter speed crafting loops.</div>
       </article>
 
-      <!-- Quick checklist -->
-      <article class="card row-12" aria-label="Quick checklist">
-        <h2>Quick Checklist</h2>
-        <div class="twocol">
-          <ul>
-            <li>🛢️ Barrel under a steady leak or by a fountain.</li>
-            <li>🍲 Two Cooking Pots + any stove for early purifying.</li>
-            <li>💧 Cooler relocated to base for clean water dispensing.</li>
-            <li>🏷️ Labeled crates for Clean / Tainted / Empty Bottles.</li>
+      <article class="rounded-2xl border border-slate-800 bg-slate-900 bg-opacity-60 p-6 space-y-4 md:col-span-2">
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-sky-300">Quick Checklist</h2>
+        <div class="grid gap-4 md:grid-cols-2">
+          <ul class="list-disc list-inside space-y-2 text-sm text-slate-300">
+            <li>Park a barrel under a steady leak or near a fountain.</li>
+            <li>Run two cooking pots and any stove for early purification.</li>
+            <li>Relocate a cooler to your base for clean refills.</li>
+            <li>Label crates for Clean, Tainted, and Empty bottles.</li>
           </ul>
-          <ul>
-            <li>🩹 Med wall box unscrewed → storage + crafting part.</li>
-            <li>🔧 Stock screws, tape, pipes; keep spare tool durability.</li>
-            <li>🗺️ Safe corridor staging: light + small water cache.</li>
-            <li>⚙️ Target Water Filter as mid/late upgrade.</li>
+          <ul class="list-disc list-inside space-y-2 text-sm text-slate-300">
+            <li>Unscrew a med wall box for storage plus a crafting component.</li>
+            <li>Stock screws, tape, and pipes; keep spare tool durability.</li>
+            <li>Stage safe corridor caches with lighting and a small water supply.</li>
+            <li>Target a water filter as your mid or late-game upgrade.</li>
           </ul>
         </div>
       </article>
 
-      <!-- Timing tips -->
-      <article class="card row-12" aria-label="Timing tips">
-        <h2>Timing Tips</h2>
-        <div class="icons">
-          <span class="pill">Do heavy hauling in <strong>daylight</strong></span>
-          <span class="pill"><strong>Night</strong>: avoid long water trips; process at base</span>
-          <span class="pill">Restock meds before big excursions</span>
+      <article class="rounded-2xl border border-slate-800 bg-slate-900 bg-opacity-60 p-6 space-y-3 md:col-span-2">
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-sky-300">Timing Tips</h2>
+        <div class="flex flex-wrap gap-3 text-sm text-slate-300">
+          <span class="inline-flex items-center rounded-full border border-slate-700 px-3 py-1">Do heavy hauling in daylight.</span>
+          <span class="inline-flex items-center rounded-full border border-slate-700 px-3 py-1">Night: avoid long water trips, process at base.</span>
+          <span class="inline-flex items-center rounded-full border border-slate-700 px-3 py-1">Restock meds before big excursions.</span>
         </div>
       </article>
     </section>
 
-    <footer class="footer" aria-label="footer">
-      <div>Made for quick screenshotting & printing • No external assets</div>
-      <div class="muted">Water → Capture • Purify • Store • Distribute • Scale</div>
+    <footer class="flex flex-col gap-2 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+      <div>Made for quick screenshotting and printing - no external assets.</div>
+      <div>Water -> Capture - Purify - Store - Distribute - Scale.</div>
     </footer>
   </main>
 </body>
