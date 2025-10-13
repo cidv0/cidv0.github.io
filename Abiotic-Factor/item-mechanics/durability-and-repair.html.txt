@@ -1,0 +1,16 @@
+Guide Title: Durability & Repair
+Current Status: Not started.
+Research Targets:
+- Chart durability loss rates for weapons, tools, and gear under different usage scenarios.
+- List repair options (duct tape, spare parts, benches) and associated costs/time.
+- Note any breakage penalties (item destruction, reduced max durability).
+Gameplay Questions to Answer:
+- Do higher crafting tiers increase base durability?
+- Are there skills or traits that reduce wear or improve repair efficiency?
+- How does co-op repair work--can one player repair another's gear?
+Data & Sources to Collect:
+- In-game testing, community spreadsheets on durability numbers, developer comments.
+Output Notes:
+- Add a maintenance schedule chart and emergency repair kit checklist.
+- Reference weapons/tools and armor guides for context.
+

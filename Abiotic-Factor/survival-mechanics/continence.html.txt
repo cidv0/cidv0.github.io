@@ -1,0 +1,17 @@
+Guide Title: Continence & Bathroom Needs
+Current Status: Missing.
+Research Targets:
+- Document the continence meter timing, mini-game mechanics, and failure penalties.
+- Identify all toilet options: facility bathrooms, portable toilets, craftable substitutes.
+- Clarify the utility of byproducts (Bag of Feces uses in crafting or farming).
+Gameplay Questions to Answer:
+- Can continence be reset via consumables or resting?
+- Do teammates trigger shared bathroom events or leave messes that cause debuffs?
+- Are there sanitation upgrades for bases?
+Data & Sources to Collect:
+- In-game prompts, UI indications, and crafting menus.
+- Community discussions on creative continence solutions.
+- Patch notes in case mechanics were toned down or expanded.
+Output Notes:
+- Include a humorous but informative tone, with a mini flowchart for emergency bathroom planning.
+

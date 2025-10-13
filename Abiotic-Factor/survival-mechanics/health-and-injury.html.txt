@@ -1,0 +1,18 @@
+Guide Title: Health & Injury
+Current Status: Needs research.
+Research Targets:
+- Break down damage sources (melee, ranged, environmental, status) and scaling with difficulty.
+- List healing options: consumables, medical devices, resting, base facilities, skill perks.
+- Detail injury states (bleeding, fractures, infections) and treatment requirements.
+Gameplay Questions to Answer:
+- How much health is lost on death and what is the penalty for failing to treat injuries?
+- Can injuries stack, and do they gate actions (e.g., slow movement, reduced carry weight)?
+- Are there co-op revive mechanics tied to medical skills?
+Data & Sources to Collect:
+- In-game medical crafting recipes and effect descriptions.
+- Community guides on combat healing rotations.
+- Developer posts about injury tuning.
+Output Notes:
+- Provide a triage priority list and a quick reference table for med supplies.
+- Reference synergy with Combat and Item Mechanics (medicine crafting).
+

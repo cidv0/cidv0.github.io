@@ -1,0 +1,18 @@
+Guide Title: Classes & Specializations
+Current Status: Needs research dump and eventual HTML layout.
+Research Targets:
+- Catalog every starting job/specialization with attribute modifiers, starting equipment, innate perks, and drawbacks.
+- Record trait point costs and synergies (e.g., Fanny Pack cost, traits that offset negatives).
+- Identify unlock conditions for hidden or advanced jobs, if any.
+Gameplay Questions to Answer:
+- Which roles pair best for solo vs. co-op teams?
+- Are there specialization-exclusive crafting recipes or dialogue options?
+- How do negative traits stack--are multiple penalties allowed, and do they compound?
+Data & Sources to Collect:
+- In-game character creator screenshots for each job screen.
+- Patch notes or balance posts describing recent buffs/nerfs to jobs.
+- Community tier lists for context (cite cautiously and mark subjective opinions).
+Output Notes:
+- Build a comparison table by attribute and a quick recommendation matrix (solo / duo / full squad).
+- Include examples of role synergy, linking out to the class synergy page once it exists.
+

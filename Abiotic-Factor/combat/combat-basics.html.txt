@@ -1,0 +1,15 @@
+Guide Title: Combat Basics
+Current Status: Not started.
+Research Targets:
+- Detail controls for light/heavy attacks, blocking, parrying, dodging, and stamina costs.
+- Quantify damage mitigation from blocking and how armor contributes.
+- Explain target locking (if any), hitboxes, and friendly fire rules.
+Gameplay Questions to Answer:
+- Are there animation cancels or combo chains worth mastering?
+- How does terrain affect combat (elevation, chokepoints, hazards)?
+- Do enemies have stagger thresholds or weak points?
+Data & Sources to Collect:
+- In-game training rooms, dev tutorials, community combat guides.
+Output Notes:
+- Provide a "Day 1 combat drills" section and troubleshooting tips for common mistakes.
+

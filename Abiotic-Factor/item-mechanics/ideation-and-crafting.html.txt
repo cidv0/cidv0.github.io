@@ -1,0 +1,17 @@
+Guide Title: Ideation & Crafting System
+Current Status: Missing.
+Research Targets:
+- Explain the ideation mini-game: clue colors, slot types, failure penalties, and unlock flow.
+- Compile examples of first-idea items and their required components.
+- Determine whether ideas are player-specific or shared across clients.
+Gameplay Questions to Answer:
+- Can ideas be lost or overwritten? Are there research terminals that grant them?
+- What happens when you guess ingredients wrong multiple times?
+- Are there passive bonuses that increase ideation success chance?
+Data & Sources to Collect:
+- In-game crafting UI, developer blogs, community tutorials.
+- Patch notes on ideation tweaks.
+Output Notes:
+- Include annotated screenshots (once captured) and a quick reference for color coding.
+- Link to stations guide for where each recipe is crafted.
+

@@ -1,0 +1,15 @@
+Guide Title: Revival & Death in Co-op
+Current Status: Missing.
+Research Targets:
+- Document downed state behavior, revival windows, and required items/skills.
+- Explain death penalties (item drops, XP loss) and how teammates can recover gear.
+- Note respawn locations hierarchy (bed, safe room, default spawn).
+Gameplay Questions to Answer:
+- Can multiple players revive simultaneously, and are there cooldowns?
+- What happens if all players wipe--does the world reset or persist?
+- Are there co-op exclusive revival perks or tech?
+Data & Sources to Collect:
+- In-game testing, community death run reports, developer clarifications.
+Output Notes:
+- Create recovery flowcharts and pre-death contingency plans (backup gear cache, spare beds).
+

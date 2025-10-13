@@ -1,0 +1,15 @@
+Guide Title: Fortifications & Defense
+Current Status: Missing.
+Research Targets:
+- Catalog defensive tools: barricades, turrets, traps, movable furniture, security shutters.
+- Identify enemy behaviors vs. obstacles (which creatures break doors, climb, or teleport).
+- Document alert triggers (noise, light, scent) and how to mitigate them.
+Gameplay Questions to Answer:
+- Do defenses require power or maintenance?
+- Can friendly NPCs or co-op players trigger traps?
+- How do nightly portal spawns prioritize targets?
+Data & Sources to Collect:
+- Combat logs, community fortification showcases, official mechanics posts.
+Output Notes:
+- Provide layered defense strategies (doorway, hallway, room core) and quick setup kits.
+

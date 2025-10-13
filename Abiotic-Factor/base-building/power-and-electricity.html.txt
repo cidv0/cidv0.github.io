@@ -1,0 +1,16 @@
+Guide Title: Power & Electricity
+Current Status: Not started.
+Research Targets:
+- Explain day/night power availability, grid shutdown timings, and breaker locations.
+- Document power extenders, generators (if any), battery backups, and light sources.
+- Note which devices require constant power vs. internal batteries.
+Gameplay Questions to Answer:
+- How far can extension chains reach without failure?
+- Are there hazards (sparks, overloading) from misusing power?
+- Can players reroute facility circuits or restore global power later?
+Data & Sources to Collect:
+- In-game experimentation, dev commentary on power systems, community guides.
+Output Notes:
+- Include wiring diagrams and emergency lighting plans.
+- Reference survival (night runs) and exploration (sector power puzzles).
+

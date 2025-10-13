@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abiotic Factor Wiki — Agent Workflow</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased">
+  <canvas id="backdrop" class="fixed inset-0 -z-10 h-full w-full" aria-hidden="true"></canvas>
+
+  <main class="relative mx-auto flex min-h-screen max-w-5xl flex-col gap-10 px-6 py-16">
+    <header class="space-y-6 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+        <div class="space-y-3">
+          <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Abiotic Factor Wiki</p>
+          <h1 class="text-4xl font-semibold text-slate-50 md:text-5xl">Agent Workflow Playbook</h1>
+          <p class="text-base text-slate-300">
+            This page defines the repeatable workflow for any agent contributing to the Abiotic Factor gameplay
+            wiki. Follow these steps to choose a task, research the topic, produce an HTML guide, and keep the
+            roadmap in sync.
+          </p>
+        </div>
+        <div class="flex flex-col gap-3 text-sm text-slate-300">
+          <a href="./index.html" class="inline-flex items-center gap-2 self-start rounded-full border border-cyan-500/40 bg-cyan-500/10 px-4 py-2 font-medium text-cyan-200 transition hover:bg-cyan-500/20">
+            <span aria-hidden="true">&larr;</span>
+            Back to Wiki Overview
+          </a>
+          <a href="../index.html" class="inline-flex items-center gap-2 self-start rounded-full border border-slate-700 px-4 py-2 font-medium text-slate-300 transition hover:text-slate-100">
+            Site Root
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <section class="space-y-6 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <h2 class="text-2xl font-semibold text-cyan-200">1. Understand the Project Guardrails</h2>
+      <ul class="space-y-3 text-sm text-slate-200 leading-relaxed">
+        <li><span class="font-semibold text-cyan-300">Spoiler-free mandate:</span> focus on mechanics, systems, and player agency. Avoid revealing scripted story beats, plot twists, or developer-set piece details.</li>
+        <li><span class="font-semibold text-cyan-300">Source of truth:</span> treat <code class="font-mono text-xs text-slate-100">wiki-data.js</code> as the master list of sections, titles, and descriptions. Update it if you add or remove guides.</li>
+        <li><span class="font-semibold text-cyan-300">Draft-first workflow:</span> every new guide starts life as a planning note in a matching <code class="font-mono text-xs text-slate-100">*.html.txt</code> file. Convert to HTML only after research is complete.</li>
+        <li><span class="font-semibold text-cyan-300">Asset hygiene:</span> keep filenames lowercase with hyphens, use ASCII text, and mirror directory structure when adding new content.</li>
+      </ul>
+    </section>
+
+    <section class="space-y-6 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <h2 class="text-2xl font-semibold text-cyan-200">2. Pick Your Next Task</h2>
+      <ol class="list-decimal list-inside space-y-3 text-sm text-slate-200 leading-relaxed">
+        <li>Open <a href="./index.html" class="text-cyan-300 hover:text-cyan-100">Abiotic-Factor/index.html</a>. Scan for red links (missing) or amber links (status unknown). Each corresponds to a yet-to-be-built page.</li>
+        <li>For any candidate topic, open the associated planner inside the folder (for example <code class="font-mono text-xs text-slate-100">survival-mechanics/fatigue-and-sleep.html.txt</code>) and confirm there is no completed <code class="font-mono text-xs text-slate-100">.html</code> counterpart.</li>
+        <li>Claim exactly one topic. If you are coordinating with other agents, note your pick in your task tracker to avoid collisions.</li>
+      </ol>
+    </section>
+
+    <section class="space-y-6 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <h2 class="text-2xl font-semibold text-cyan-200">3. Research &amp; Capture Findings</h2>
+      <div class="space-y-4 text-sm text-slate-200 leading-relaxed">
+        <p>Use the planner file as your research checklist. Update it with citations or bullet notes as you gather data. Recommended sources:</p>
+        <ul class="list-disc list-inside space-y-2 text-sm text-slate-200">
+          <li>In-game verification: screenshots, recorded stats, terminal logs.</li>
+          <li>Official materials: patch notes, developer blogs, Steam announcements.</li>
+          <li>Community testing: forum posts, spreadsheets, guide videos (cite cautiously and verify).</li>
+        </ul>
+        <p class="text-slate-300">Capture answers to every “Gameplay Question” in the planner. Mark unresolved items for follow-up.</p>
+      </div>
+    </section>
+
+    <section class="space-y-6 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <h2 class="text-2xl font-semibold text-cyan-200">4. Draft the HTML Guide</h2>
+      <ol class="list-decimal list-inside space-y-3 text-sm text-slate-200 leading-relaxed">
+        <li>Duplicate an existing section page for layout reference (for example, use the structure of <code class="font-mono text-xs text-slate-100">survival-mechanics/day-1-night-1.html</code> or create a new layout with Tailwind CSS).</li>
+        <li>Transform planner bullet points into narrative guide sections. Keep headings meaningful, use concise paragraphs and action-oriented callouts.</li>
+        <li>Cross-link relevant guides using relative paths (e.g., <code class="font-mono text-xs text-slate-100">../item-mechanics/crafting-stations.html</code>).</li>
+        <li>When the HTML file is complete, remove or archive the corresponding <code class="font-mono text-xs text-slate-100">*.html.txt</code> planner.</li>
+      </ol>
+    </section>
+
+    <section class="space-y-6 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <h2 class="text-2xl font-semibold text-cyan-200">5. Wire Up Links &amp; Validate</h2>
+      <ul class="space-y-3 text-sm text-slate-200 leading-relaxed">
+        <li>Ensure the new file name exactly matches the <code class="font-mono text-xs text-slate-100">href</code> defined in <code class="font-mono text-xs text-slate-100">wiki-data.js</code>. Update the data file if you introduced new subtopics or renamed an entry.</li>
+        <li>Reload <a href="./index.html" class="text-cyan-300 hover:text-cyan-100">the landing page</a> in a local web server. The link checker should repaint your new page green to confirm it is accessible.</li>
+        <li>Navigate through the section overview (for example <code class="font-mono text-xs text-slate-100">survival-mechanics/index.html</code>) and verify the link there resolves correctly.</li>
+      </ul>
+    </section>
+
+    <section class="space-y-6 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <h2 class="text-2xl font-semibold text-cyan-200">6. Final Checklist Before Handoff</h2>
+      <ul class="space-y-2 text-sm text-slate-200 leading-relaxed">
+        <li><span class="font-semibold text-cyan-300">✅ Planner cleared:</span> the <code class="font-mono text-xs text-slate-100">*.html.txt</code> is removed or marked complete.</li>
+        <li><span class="font-semibold text-cyan-300">✅ Links verified:</span> landing grid and section page show the link in green.</li>
+        <li><span class="font-semibold text-cyan-300">✅ Sources cited:</span> embedded callouts or footnotes credit key discoveries (if applicable).</li>
+        <li><span class="font-semibold text-cyan-300">✅ Spoilers avoided:</span> re-read for lore or narrative reveals and trim them out.</li>
+        <li><span class="font-semibold text-cyan-300">✅ Notes committed:</span> include a brief summary in your change log or PR describing the new guide.</li>
+      </ul>
+    </section>
+
+    <section class="space-y-4 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <h2 class="text-lg font-semibold text-cyan-200">Quick Links</h2>
+      <ul class="grid gap-3 text-sm text-cyan-300 md:grid-cols-2">
+        <li><a class="inline-flex items-center gap-2 transition hover:text-cyan-100" href="./wiki-data.js"><span>wiki-data.js</span><span aria-hidden="true">&nearr;</span></a></li>
+        <li><a class="inline-flex items-center gap-2 transition hover:text-cyan-100" href="./link-checker.js"><span>link-checker.js</span><span aria-hidden="true">&nearr;</span></a></li>
+        <li><a class="inline-flex items-center gap-2 transition hover:text-cyan-100" href="./survival-mechanics/index.html"><span>Survival Mechanics section</span><span aria-hidden="true">&nearr;</span></a></li>
+        <li><a class="inline-flex items-center gap-2 transition hover:text-cyan-100" href="./item-mechanics/index.html"><span>Item Mechanics section</span><span aria-hidden="true">&nearr;</span></a></li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    const canvas = document.getElementById('backdrop');
+    const ctx = canvas.getContext('2d');
+    const particles = [];
+    const COUNT = 160;
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      particles.length = 0;
+      for (let i = 0; i < COUNT; i += 1) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: 0.6 + Math.random() * 2.2,
+          v: 0.2 + Math.random() * 0.6,
+          a: 0.35 + Math.random() * 0.4,
+        });
+      }
+    }
+
+    function animate() {
+      ctx.fillStyle = 'rgba(2, 6, 23, 0.45)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p) => {
+        ctx.fillStyle = `rgba(94, 234, 212, ${p.a})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+        p.y -= p.v;
+        if (p.y < -4) {
+          p.y = canvas.height + Math.random() * 6;
+          p.x = Math.random() * canvas.width;
+        }
+      });
+      requestAnimationFrame(animate);
+    }
+
+    resize();
+    animate();
+    window.addEventListener('resize', resize);
+  </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+Guide Title: Multiplayer & Co-op Overview
+Current Status: Missing.
+Research Targets:
+- Summarize session hosting options, player limits, and progression ownership.
+- Outline communication tools (proximity voice, text chat) and permissions management.
+- Highlight co-op specific mechanics (shared benches, loot rules, enemy scaling).
+Gameplay Questions to Answer:
+- How are player inventories handled on disconnect or host migration?
+- Does the game support dedicated servers and what setup steps are required?
+- How does difficulty scaling respond to player count during events?
+Data & Sources to Collect:
+- Official multiplayer FAQ, community server guides, developer updates.
+Output Notes:
+- Include onboarding tips for new squad members and links to cooperative sub-guides.
+

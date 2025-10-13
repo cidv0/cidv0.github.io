@@ -1,0 +1,15 @@
+Guide Title: Co-op Gameplay Basics
+Current Status: Not started.
+Research Targets:
+- Detail how joining/leaving sessions works, spawn handling, and shared objectives.
+- Explain resource sharing etiquette and tools (pinging, item dropping, shared storage).
+- Document enemy scaling or loot scaling with additional players.
+Gameplay Questions to Answer:
+- Are there friendly fire toggles or damage modifiers?
+- How do mission or event triggers behave if players split across sectors?
+- Can teams fast travel or teleport to each other?
+Data & Sources to Collect:
+- In-game co-op tutorial, community coordination tips, developer commentary.
+Output Notes:
+- Provide a "first co-op night" checklist and communication best practices.
+

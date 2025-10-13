@@ -1,0 +1,17 @@
+Guide Title: Item Mechanics & Crafting Overview
+Current Status: Empty.
+Research Targets:
+- Summarize the ideation system, crafting bench progression, and resource loops.
+- Outline the difference between improvised, prototype, and advanced tech tiers.
+- Capture how recipe discovery works (ideas, terminals, experimentation).
+Gameplay Questions to Answer:
+- What triggers new ideas--loot pickups, level ups, sector progression?
+- How does multiplayer crafting coordination work (shared benches, queueing)?
+- Are there global research unlocks tied to story beats? (Describe without spoilers.)
+Data & Sources to Collect:
+- Crafting UI captures, official guides, community spreadsheets of recipes.
+- Patch notes on crafting balance or new stations.
+Output Notes:
+- Build a flow diagram from resource gathering to finished product.
+- Link to sub-guides for specifics (salvaging, stations, durability).
+

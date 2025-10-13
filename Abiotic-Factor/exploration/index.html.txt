@@ -1,0 +1,15 @@
+Guide Title: Exploration & Environment Overview
+Current Status: Missing.
+Research Targets:
+- Summarize the layout philosophy of the facility (sectors, keycard locks, shortcuts).
+- Outline how environmental systems (radiation, temperature, anomalies) gate progress.
+- Highlight Anteverse portal loop briefly, pointing to dedicated guide.
+Gameplay Questions to Answer:
+- What progression blockers require crafting vs. story advancement?
+- How does the map track explored areas, and can players place markers?
+- Are there timed events or rotations to monitor while exploring?
+Data & Sources to Collect:
+- Community-created maps, official concept art, patch notes about level changes.
+Output Notes:
+- Provide an exploration checklist and recommended prep loadout per sector.
+

@@ -1,0 +1,16 @@
+Guide Title: Weapons & Tools
+Current Status: Missing.
+Research Targets:
+- Inventory improvised, crafted, and scavenged weapons (melee, ranged, throwable) with stats.
+- Include utility tools (crowbar, flashlight, scanner) and their crafting/repair needs.
+- Capture durability values, damage types, and special effects (bleed, stun).
+Gameplay Questions to Answer:
+- What early-game weapons offer best DPS vs. resource cost?
+- How do weapon mods or upgrades work, if available?
+- Are there environmental tools (fire extinguishers, turrets) that count as weapons?
+Data & Sources to Collect:
+- In-game stat cards, community DPS spreadsheets, patch notes.
+Output Notes:
+- Present tiered recommendations (starter, mid, late) with resource checklists.
+- Reference combat tactics page for practical usage.
+

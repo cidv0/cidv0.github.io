@@ -1,0 +1,18 @@
+Guide Title: Skills & Experience
+Current Status: Missing.
+Research Targets:
+- List the full skill tree, including how skills level (use-based vs. XP spend) and the numeric benefits per rank.
+- Capture global level thresholds (if characters have level caps or milestone rewards).
+- Document how XP splits in multiplayer--host vs. clients, proximity bonuses, or shared pools.
+Gameplay Questions to Answer:
+- What activities power-level each skill efficiently?
+- Are there diminishing returns or soft caps to prevent over-specialization?
+- How does death or respec affect accumulated skill XP?
+Data & Sources to Collect:
+- In-game skill UI, tooltips, and experimentation results from community guides.
+- Official developer posts about the XP formula.
+- Patch history showing adjustments to leveling speed.
+Output Notes:
+- Provide a leveling flow chart (early, mid, late game goals) and sidebars for grind tips.
+- Cross-reference relevant survival, combat, and crafting guides for examples.
+

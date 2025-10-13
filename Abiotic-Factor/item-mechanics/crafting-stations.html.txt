@@ -1,0 +1,16 @@
+Guide Title: Crafting Stations
+Current Status: Not started.
+Research Targets:
+- List every crafting station, unlocking requirements, crafting recipe, and power needs.
+- Note station upgrades or modular add-ons (chemistry kit attachments, weapon benches, etc.).
+- Determine station placement rules and benefits (reduced enemy spawns, speed boosts).
+Gameplay Questions to Answer:
+- Do stations require continuous power at night, and what happens during outages?
+- Can stations be moved without deconstructing?
+- How does co-op usage work--queue, permissions, simultaneous crafting?
+Data & Sources to Collect:
+- In-game blueprints, community base layouts, official patch notes.
+Output Notes:
+- Create a station tech tree chart and recommended build order.
+- Cross-link to base power and survival guides.
+

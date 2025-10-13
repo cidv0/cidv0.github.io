@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abiotic Factor Gameplay Wiki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!--
+  [AGENT SYSTEM NOTE]
+  Behavior:
+    1. Treat wiki-data.js as the source of truth for planned pages. Keep links, titles, and blurbs in sync when adding or moving content.
+    2. Each guide lives in its matching subdirectory. Draft planning notes in *.html.txt first, then promote to full *.html when ready.
+    3. Preserve spoiler-free focus: cover mechanics, recipes, and systems without revealing scripted story beats.
+
+  Picking a task:
+    1. Scan this landing page for red (missing) links or open the corresponding *.html.txt files for sections that interest you.
+    2. Choose one missing guide. Confirm there is no *.html twin yet.
+    3. Use the notes inside the *.html.txt file as the research checklist. Update that file with any findings while you investigate.
+    4. Once you have enough detail, create the *.html page, convert the checklist into polished copy, and delete or archive the *.html.txt placeholder.
+    5. Refresh the landing page to ensure the link lights up green. Adjust wiki-data.js if you created new anchors or titles.
+  -->
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased">
+  <canvas id="backdrop" class="fixed inset-0 -z-10 h-full w-full" aria-hidden="true"></canvas>
+  <main class="relative mx-auto flex min-h-screen max-w-6xl flex-col gap-12 px-6 py-16">
+    <header class="space-y-6 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+        <div class="max-w-2xl space-y-3">
+          <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Abiotic Factor Wiki Guide</p>
+          <h1 class="text-4xl font-semibold text-slate-50 md:text-5xl">Spoiler-Free Gameplay Systems Overview</h1>
+          <p class="text-base text-slate-300">
+            Abiotic Factor drops 1&ndash;6 stranded scientists into the sprawling G.A.T.E. facility.
+            This wiki organizes the core systems &mdash; survival needs, crafting, base building, combat,
+            exploration, and co-op play &mdash; so you can chart your own path without story spoilers.
+            Use the cards below as a roadmap. Links highlight green when an article exists, red when it still
+            needs to be written, and amber if the status is unknown.
+          </p>
+        </div>
+        <div class="flex flex-col gap-3 text-sm text-slate-300">
+          <a class="inline-flex items-center gap-2 self-start rounded-full border border-cyan-500/40 bg-cyan-500/10 px-4 py-2 font-medium text-cyan-200 transition hover:bg-cyan-500/20"
+             href="../index.html">
+            <span aria-hidden="true">&larr;</span>
+            Return to Site Landing
+          </a>
+          <p class="text-xs uppercase tracking-wide text-slate-500">Status Legend</p>
+          <ul class="space-y-1 text-xs">
+            <li class="flex items-center gap-2"><span class="inline-flex h-2 w-2 rounded-full bg-emerald-300"></span> Article exists</li>
+            <li class="flex items-center gap-2"><span class="inline-flex h-2 w-2 rounded-full bg-rose-400"></span> Article missing</li>
+            <li class="flex items-center gap-2"><span class="inline-flex h-2 w-2 rounded-full bg-amber-300"></span> Status unknown (check locally via server)</li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <section id="section-grid" class="grid gap-6 md:grid-cols-2">
+      <!-- Content injected via script -->
+    </section>
+  </main>
+
+  <script type="module">
+    import { wikiStructure } from './wiki-data.js';
+    import { flagLinks } from './link-checker.js';
+
+    const canvas = document.getElementById('backdrop');
+    const ctx = canvas.getContext('2d');
+    const pixels = [];
+    const dens = 180;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      pixels.length = 0;
+      for (let i = 0; i < dens; i += 1) {
+        pixels.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: 1 + Math.random() * 2,
+          s: 0.2 + Math.random() * 0.6,
+        });
+      }
+    }
+
+    function tickStars() {
+      ctx.fillStyle = 'rgba(2, 6, 23, 0.35)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#38bdf8';
+      pixels.forEach((p) => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+        p.y -= p.s;
+        if (p.y < -4) {
+          p.y = canvas.height + Math.random() * 8;
+          p.x = Math.random() * canvas.width;
+        }
+      });
+      requestAnimationFrame(tickStars);
+    }
+
+    resizeCanvas();
+    tickStars();
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+    });
+
+    const grid = document.getElementById('section-grid');
+
+    function createSectionCard(section) {
+      const article = document.createElement('article');
+      article.className =
+        'flex flex-col gap-4 rounded-3xl border border-slate-800 bg-slate-900/70 p-6 shadow-xl transition hover:border-cyan-500/40 hover:shadow-cyan-500/10';
+
+      const header = document.createElement('header');
+      header.className = 'space-y-2';
+
+      const title = document.createElement('h2');
+      title.className = 'text-xl font-semibold text-cyan-200';
+      title.textContent = section.title;
+
+      const blurb = document.createElement('p');
+      blurb.className = 'text-sm text-slate-300';
+      blurb.textContent = section.blurb;
+
+      const overviewLink = document.createElement('a');
+      overviewLink.href = `${section.id}/index.html`;
+      overviewLink.dataset.pageCheck = 'true';
+      overviewLink.className =
+        'inline-flex items-center gap-2 text-sm font-medium text-slate-300 transition hover:text-slate-100';
+      overviewLink.innerHTML = `<span>Open section overview</span><span aria-hidden="true">&rarr;</span>`;
+
+      header.append(title, blurb, overviewLink);
+
+      const list = document.createElement('ul');
+      list.className = 'space-y-3';
+
+      section.pages.forEach((page) => {
+        if (page.href === `${section.id}/index.html`) {
+          return;
+        }
+        const item = document.createElement('li');
+        item.className = 'space-y-1';
+
+        const link = document.createElement('a');
+        link.href = page.href;
+        link.dataset.pageCheck = 'true';
+        link.className =
+          'inline-flex items-center gap-2 text-sm font-medium text-slate-300 transition hover:text-slate-100';
+        link.innerHTML = `<span>${page.title}</span><span aria-hidden="true">&nearr;</span>`;
+
+        const description = document.createElement('p');
+        description.className = 'text-xs text-slate-400';
+        description.textContent = page.description;
+
+        item.append(link, description);
+        list.append(item);
+      });
+
+      article.append(header, list);
+      return article;
+    }
+
+    wikiStructure.forEach((section) => {
+      grid.append(createSectionCard(section));
+    });
+
+    flagLinks(document);
+  </script>
+</body>
+</html>
+

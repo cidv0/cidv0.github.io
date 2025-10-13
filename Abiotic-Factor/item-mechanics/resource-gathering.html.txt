@@ -1,0 +1,17 @@
+Guide Title: Resource Gathering & Salvaging
+Current Status: Not started.
+Research Targets:
+- Catalog salvageable objects by facility zone and the materials they yield.
+- Quantify drop rates or average outputs for key scrap types (metal, fabric, tech components).
+- Identify early-game vs. late-game resource bottlenecks and solutions.
+Gameplay Questions to Answer:
+- Which tools speed up dismantling, and what durability costs apply?
+- How do stealth or noise impact salvaging runs (attracting enemies)?
+- Can teammates tag or reserve objects for salvage in co-op?
+Data & Sources to Collect:
+- Player-made maps, loot tables, and developer commentary.
+- In-game experimentation to confirm salvage outputs.
+Output Notes:
+- Provide sector-based farming routes and a checklist of must-grab items.
+- Add link-outs to crafting recipes that rely on rare components.
+

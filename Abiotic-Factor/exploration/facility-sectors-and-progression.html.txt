@@ -1,0 +1,15 @@
+Guide Title: Facility Sectors & Progression
+Current Status: Not started.
+Research Targets:
+- Map every major sector, access requirements (keycards, crafted tools), and notable resources.
+- Document storyline-neutral progression steps (build radio, craft hazmat) needed to advance.
+- Track optional side sectors worth visiting early for upgrades.
+Gameplay Questions to Answer:
+- Are sectors instanced or seamless? Any loading quirks to note?
+- Do sectors change after night events or portal incursions?
+- How does co-op handle sector unlocks for late-joining players?
+Data & Sources to Collect:
+- Speedrun notes, community progression guides, official patch notes.
+Output Notes:
+- Provide a progression roadmap (Act 1, Act 2, etc.) without narrative spoilers.
+

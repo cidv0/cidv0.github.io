@@ -1,0 +1,15 @@
+Guide Title: Class Synergy
+Current Status: Missing.
+Research Targets:
+- Map specialization combos that cover essential survival, crafting, and combat roles.
+- Identify overlapping buffs/debuffs and how teams can mitigate gaps.
+- Showcase duo, trio, and full-squad sample lineups.
+Gameplay Questions to Answer:
+- Do class perks stack multiplicatively when duplicated?
+- Are there co-op actions unlocked by having specific class combos?
+- How should teams redistribute traits after major updates?
+Data & Sources to Collect:
+- Community build theorycrafts, developer notes on class balance, in-game testing.
+Output Notes:
+- Create synergy tables and quick recommendations for various playstyles (builder-heavy, combat-heavy, science-heavy).
+

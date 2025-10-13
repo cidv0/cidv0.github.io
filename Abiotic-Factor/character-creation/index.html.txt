@@ -1,0 +1,18 @@
+Guide Title: Character Creation & Progression Overview
+Current Status: Not started (needs full HTML guide).
+Research Targets:
+- Outline the character creation flow: job selection, trait point spending, starting attributes, and default loadout.
+- Document the core attributes (Strength, Fitness, Intellect, Creativity, Empathy, Luck) and how they influence derived skills or unlock interactions.
+- Summarize progression beats: how experience is earned, how often level-ups occur, and what unlocks they provide (stat points, perks, ideas).
+Gameplay Questions to Answer:
+- Which creation choices are permanent vs. re-speccable later, and what costs are involved?
+- Do specializations modify spawn location, starting recipes, or faction reputation?
+- How does co-op hosting influence individual character progression?
+Data & Sources to Collect:
+- Official release notes and in-game tooltips for the most recent patch.
+- Community spreadsheets or wiki tables that list job modifiers (cross-check for accuracy).
+- Developer interviews or trailers that explain long-term progression systems.
+Output Notes:
+- Produce a two-section overview: "Creation Checklist" and "Long-Term Progression" with cross-links to sub-guides.
+- Add a callout that points to recommended first-run builds without prescribing spoilers.
+

@@ -1,0 +1,16 @@
+Guide Title: Base Building & Power Systems Overview
+Current Status: Missing.
+Research Targets:
+- Summarize the philosophy of repurposing facility rooms vs. constructing new structures.
+- Provide baseline requirements for a functional base (bench, storage, bed, power routing).
+- Explain nightly power shutdowns and their implications.
+Gameplay Questions to Answer:
+- What triggers enemy raids or increased patrols near player bases?
+- How far can power extenders run, and do they have loss factors?
+- Are there sector-specific perks or dangers for base placement?
+Data & Sources to Collect:
+- Community base showcase videos, official blogs, in-game terminal lore.
+Output Notes:
+- Include an early-game base starter kit and upgrade roadmap.
+- Link heavily to sub-guides on location, power, and defense.
+

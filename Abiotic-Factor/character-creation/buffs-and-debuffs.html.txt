@@ -1,0 +1,18 @@
+Guide Title: Buffs & Debuffs
+Current Status: Not started.
+Research Targets:
+- Compile all status effects (temporary, persistent, environmental) with icons, triggers, durations, and mechanical impact.
+- Note which buffs stem from traits, consumables, equipment, or environmental bonuses.
+- Map countermeasures: items, rest, medical devices, or facilities that clear negative statuses.
+Gameplay Questions to Answer:
+- Do multiple debuffs stack additively or multiplicatively?
+- Are there hidden thresholds (e.g., fatigue levels that trigger additional penalties)?
+- Which buffs are unique to co-op interactions (team auras, shared devices)?
+Data & Sources to Collect:
+- In-game status UI, laboratory logs, or terminal entries that explain anomalies.
+- Community findings on rare debuffs (radiation sickness, hallucinations, etc.).
+- Official balance notes documenting changes to status durations.
+Output Notes:
+- Organize by category (Physiological, Environmental, Combat, Crafting) and add quick-reference tables.
+- Include "Emergency Response" flow for curing overlapping conditions.
+

@@ -1,0 +1,15 @@
+Guide Title: Weapons & Tactics
+Current Status: Not started.
+Research Targets:
+- Pair weapon categories with tactics (nets + melee, ranged kiting, explosive setups).
+- Document combo strategies for teams (stagger + finisher, trap + grenade).
+- Highlight resource-efficient rotations for early vs. late game.
+Gameplay Questions to Answer:
+- How do environmental hazards (explosive barrels, electrified floors) fit into tactics?
+- Are there enemy-specific counters worth featuring as mini-guides?
+- Do consumables (stims, buffs) alter combat pacing?
+Data & Sources to Collect:
+- High-level play videos, community guides, internal testing.
+Output Notes:
+- Build scenario-based playbooks (hallway defense, open-space engagement, boss fight prep).
+

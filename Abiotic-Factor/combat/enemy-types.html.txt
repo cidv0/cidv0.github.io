@@ -1,0 +1,15 @@
+Guide Title: Enemy Types
+Current Status: Missing.
+Research Targets:
+- Create archetype breakdowns (small critters, mid-sized beasts, robots, hostile humans) with behaviors and weaknesses.
+- Note loot drops, status effects inflicted, and spawn conditions.
+- Track how enemies scale by sector or day count.
+Gameplay Questions to Answer:
+- Which enemies ignore barricades or doors?
+- Are there pacification methods (nets, traps, gadgets) for each type?
+- Do some enemies only appear during events or in Anteverse biomes?
+Data & Sources to Collect:
+- In-game bestiary entries, community spreadsheets, developer streams.
+Output Notes:
+- Include quick identification cards with silhouette cues and counter-strategies.
+

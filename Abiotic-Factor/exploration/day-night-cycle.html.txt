@@ -1,0 +1,15 @@
+Guide Title: Day-Night Cycle
+Current Status: Not started.
+Research Targets:
+- Nail down exact timings for day/night, power shutdown, and portal spawns.
+- Describe how enemy spawns shift after dark and which activities are safer by day.
+- Note any scheduled events (supply drops, patrol changes).
+Gameplay Questions to Answer:
+- Does sleeping skip time or simply accelerate fatigue recovery?
+- How does the cycle progress on dedicated servers when no players are online?
+- Are there weather-like variations (storms, fog) tied to time of day?
+Data & Sources to Collect:
+- In-game clock observations, community timing charts, developer confirmation.
+Output Notes:
+- Provide planning timelines (day prep, night defenses) and automation tips.
+

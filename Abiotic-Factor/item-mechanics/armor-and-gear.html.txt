@@ -1,0 +1,16 @@
+Guide Title: Armor & Gear
+Current Status: Not started.
+Research Targets:
+- List protective sets (lab coats, hazmat suits, riot gear) with defense stats and resistances.
+- Note unique set bonuses (carry weight, radiation shielding, temperature resistance).
+- Track how armor interacts with encumbrance and mobility.
+Gameplay Questions to Answer:
+- Can armor pieces be mixed, and do bonuses stack?
+- How do you repair or upgrade gear (crafting materials, benches)?
+- Are there environmental conditions that require specific gear (space suit analogs)?
+Data & Sources to Collect:
+- In-game gear descriptions, community testing on resistances, official patch changes.
+Output Notes:
+- Build a slot-by-slot comparison table and quick recommendations per biome/sector.
+- Link to environmental hazards and inventory guides.
+

@@ -1,0 +1,15 @@
+Guide Title: Combat & Enemies Overview
+Current Status: Missing.
+Research Targets:
+- Provide snapshot of combat flow: stamina management, weapon tiers, net mechanics, enemy AI.
+- Summarize threat escalation over time/day-night cycle.
+- Link combat prep to survival and crafting systems.
+Gameplay Questions to Answer:
+- What core skills should players level to stay combat-ready?
+- How does the game telegraph elite encounters or boss-like threats?
+- Are there non-lethal options or stealth takedowns?
+Data & Sources to Collect:
+- Combat tutorials, gameplay footage, community spreadsheets on DPS.
+Output Notes:
+- Include a pre-combat checklist and quick navigation to tactics sub-pages.
+

@@ -1,0 +1,15 @@
+Guide Title: Defense & Evasion
+Current Status: Missing.
+Research Targets:
+- Explain stealth mechanics, detection cones, noise levels, and light visibility.
+- Document evasion tools (smoke bombs, traps, decoys) and retreat tactics.
+- Clarify death penalties, respawn logistics, and corpse recovery.
+Gameplay Questions to Answer:
+- Can players feign death or use disguises?
+- How do co-op revive mechanics function under fire?
+- Are there cooldowns on escape tools?
+Data & Sources to Collect:
+- In-game tooltips, community stealth runs, developer comments.
+Output Notes:
+- Provide a "When to bail" checklist and safe-room preparation tips.
+

@@ -1,0 +1,17 @@
+Guide Title: Fatigue & Sleep
+Current Status: Empty.
+Research Targets:
+- Record how fatigue accumulates (time awake, sprinting, crafting) and quantify penalties per stage.
+- Detail sleeping options: couches, crafted beds, portable shelters, and their respawn behavior.
+- Investigate whether beds provide bonuses (XP boosts, protection) or multi-player sleeping rules.
+Gameplay Questions to Answer:
+- Does time skip during sleep or do enemies keep moving?
+- Can players sleep in shifts in multiplayer, and how does that influence power cycles?
+- Are there consumables that reduce fatigue or extend wakefulness?
+Data & Sources to Collect:
+- In-game HUD cues, sleep prompts, and base building recipes.
+- Community testing on sleep efficiency and safe zones.
+- Developer Q&A about night events and sleep safety.
+Output Notes:
+- Offer a "Safe Sleep Checklist" and map recommended base locations for resting early game.
+

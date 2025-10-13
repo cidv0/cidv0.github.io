@@ -1,0 +1,18 @@
+Guide Title: Survival Mechanics Overview
+Current Status: Not started.
+Research Targets:
+- Provide a synopsis of each survival meter (hunger, thirst, fatigue, continence, health) and describe failure states.
+- Identify the cadence at which needs drain in real-time and how difficulty modifiers adjust rates.
+- Gather best practices for balancing daily routines (loot runs vs. rest vs. crafting).
+Gameplay Questions to Answer:
+- What penalties kick in at each threshold (UI color changes, speed debuffs, HP decay)?
+- How does co-op sharing of resources influence survival pacing?
+- Are there base upgrades or research that slow depletion?
+Data & Sources to Collect:
+- In-game handbook/tooltips, verified with testing for timers.
+- Community spreadsheets timing need depletion per action.
+- Developer posts about survival balance knobs.
+Output Notes:
+- Present a daily planner timeline and link to individual need guides.
+- Keep spoilers out; focus on mechanics and planning heuristics.
+

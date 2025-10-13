@@ -1,0 +1,18 @@
+Guide Title: Hunger & Thirst
+Current Status: Research + first draft required.
+Research Targets:
+- List available food and drink categories (raw, cooked, vending machine, crafted) with hunger/thirst values and side effects.
+- Document spoilage rules, storage solutions, and synergy with cooking stations.
+- Map out water sources (sinks, coolers, natural pools) noting purity levels and refill mechanics.
+Gameplay Questions to Answer:
+- What happens at critical starvation/dehydration thresholds?
+- How do dietary buffs (caffeine, sugar rush) interact with other stats?
+- Can players share containers or set up automated refills?
+Data & Sources to Collect:
+- In-game item descriptions and stat blocks.
+- Community experiments on cooking recipes and combo meals.
+- Patch notes adjusting food values or vending machine costs.
+Output Notes:
+- Build a "First Week Meal Plan" table plus advanced tips for infinite water loops.
+- Highlight synergy with Sustained Resources guide and base power outages.
+

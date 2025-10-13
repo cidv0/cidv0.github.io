@@ -1,0 +1,15 @@
+Guide Title: Anteverse Portals
+Current Status: Missing.
+Research Targets:
+- Explain portal spawn rules, entrance requirements, and reset schedule.
+- Detail the known Anteverse biomes, their hazards, and unique resources.
+- Clarify what happens when a realm collapses (player safety, loot retention).
+Gameplay Questions to Answer:
+- Can players establish temporary bases or markers inside anteverses?
+- How do portals interact with base defenses when they appear nearby?
+- Are there cooperative mechanics (party must enter together, scaling difficulty)?
+Data & Sources to Collect:
+- In-game portal descriptions, community expedition logs, official lore posts.
+Output Notes:
+- Offer prep checklists per biome and timer callouts for safe extraction.
+

@@ -1,0 +1,15 @@
+Guide Title: Choosing a Base Location
+Current Status: Not started.
+Research Targets:
+- Compile candidate rooms/sectors with pros/cons (defensibility, outlets, resource proximity).
+- Note hazards per location (radiation leaks, frequent enemy spawns).
+- Include travel times to key facilities (cafeteria, labs, portals).
+Gameplay Questions to Answer:
+- How do respawn points work if players die far from base?
+- Can bases be relocated easily once established?
+- Do story events endanger certain sectors later?
+Data & Sources to Collect:
+- Map overlays, speedrun routes, community discussions on favorite bases.
+Output Notes:
+- Present a comparison table and decision checklist for new players.
+

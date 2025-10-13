@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abiotic Factor - Survival Mechanics</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased" data-section="survival-mechanics">
+  <canvas id="backdrop" class="fixed inset-0 -z-10 h-full w-full" aria-hidden="true"></canvas>
+  <main class="relative mx-auto flex min-h-screen max-w-5xl flex-col gap-10 px-6 py-14">
+    <nav class="flex items-center justify-between text-sm text-slate-400">
+      <a href="../index.html" class="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 font-medium text-cyan-200 transition hover:bg-cyan-500/20">
+        <span aria-hidden="true">&larr;</span>
+        Back to Wiki Overview
+      </a>
+      <span id="section-label" class="hidden rounded-full border border-slate-700 px-3 py-1 text-xs uppercase tracking-wider text-slate-300 md:inline-flex"></span>
+    </nav>
+
+    <header class="space-y-4 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <div class="space-y-3">
+        <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Abiotic Factor Section Guide</p>
+        <h1 id="page-title" class="text-3xl font-semibold text-slate-50 md:text-4xl">Survival Mechanics</h1>
+        <p id="page-blurb" class="text-base text-slate-300">Placeholder summary for Survival Mechanics. This will update automatically once the shared data file loads.</p>
+      </div>
+    </header>
+
+    <section class="space-y-5 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <div class="flex items-center gap-3">
+        <h2 class="text-lg font-semibold text-cyan-200">Subtopics</h2>
+        <span class="text-xs uppercase tracking-widest text-slate-500">Link status will update after load</span>
+      </div>
+      <ul id="page-list" class="space-y-4 text-sm text-slate-300">
+        <li class="text-sm text-slate-500">Loading structure&hellip;</li>
+      </ul>
+    </section>
+
+    <section class="space-y-4 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <h2 class="text-lg font-semibold text-cyan-200">Maintainer Notes</h2>
+      <p class="text-sm text-slate-300">
+        Create new articles inside <code class="font-mono text-xs text-slate-200">survival-mechanics</code> and keep file names
+        lowercase with dashes. Once a file exists, reload to see the link switch to green. Missing pages appear
+        red; amber indicates the checker could not confirm the status (such as when loaded via <code class="font-mono text-xs text-slate-200">file://</code>).</p>
+    </section>
+  </main>
+
+  <script type="module">
+    import { findSection } from '../wiki-data.js';
+    import { flagLinks } from '../link-checker.js';
+
+    const canvas = document.getElementById('backdrop');
+    const ctx = canvas.getContext('2d');
+    const particles = [];
+    const PARTICLE_COUNT = 140;
+
+    function seedParticles() {
+      particles.length = 0;
+      for (let i = 0; i < PARTICLE_COUNT; i += 1) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: 0.5 + Math.random() * 1.8,
+          v: 0.2 + Math.random() * 0.6,
+          a: 0.4 + Math.random() * 0.6,
+        });
+      }
+    }
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      seedParticles();
+    }
+
+    function animate() {
+      ctx.fillStyle = 'rgba(2, 6, 23, 0.55)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p) => {
+        ctx.fillStyle = `rgba(56, 189, 248, ${p.a})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+        p.y -= p.v;
+        if (p.y < -4) {
+          p.y = canvas.height + Math.random() * 6;
+          p.x = Math.random() * canvas.width;
+        }
+      });
+      requestAnimationFrame(animate);
+    }
+
+    resizeCanvas();
+    animate();
+    window.addEventListener('resize', resizeCanvas);
+
+    const sectionId = document.body.dataset.section;
+    const section = findSection(sectionId);
+    const titleEl = document.getElementById('page-title');
+    const blurbEl = document.getElementById('page-blurb');
+    const listEl = document.getElementById('page-list');
+    const labelEl = document.getElementById('section-label');
+
+    listEl.innerHTML = '';
+
+    if (!section) {
+      titleEl.textContent = 'Section not found';
+      blurbEl.textContent = 'This section is not present in wiki-data.js yet. Add an entry to see it here.';
+      labelEl.textContent = 'Missing Section';
+      document.title = 'Abiotic Factor - Missing Section';
+    } else {
+      document.title = `Abiotic Factor - ${section.title}`;
+      titleEl.textContent = section.title;
+      blurbEl.textContent = section.blurb;
+      labelEl.textContent = section.title;
+
+      const fragment = document.createDocumentFragment();
+
+      section.pages.forEach((page) => {
+        if (page.href === `${section.id}/index.html`) {
+          return;
+        }
+
+        let href = page.href;
+        if (href.startsWith(`${section.id}/`)) {
+          href = href.slice(section.id.length + 1);
+          if (!href.startsWith('./')) {
+            href = `./${href}`;
+          }
+        } else if (!href.startsWith('../') && !href.startsWith('./')) {
+          href = `../${href}`;
+        }
+
+        const item = document.createElement('li');
+        item.className = 'space-y-1';
+
+        const link = document.createElement('a');
+        link.href = href;
+        link.dataset.pageCheck = 'true';
+        link.className = 'inline-flex items-center gap-2 text-sm font-medium text-slate-300 transition hover:text-slate-100';
+        link.innerHTML = `<span>${page.title}</span><span aria-hidden="true">&nearr;</span>`;
+
+        const description = document.createElement('p');
+        description.className = 'text-xs text-slate-400';
+        description.textContent = page.description;
+
+        item.append(link, description);
+        fragment.append(item);
+      });
+
+      if (!fragment.childNodes.length) {
+        const empty = document.createElement('li');
+        empty.className = 'text-sm text-slate-400';
+        empty.textContent = 'Subtopics will appear here once they are configured in wiki-data.js.';
+        fragment.append(empty);
+      }
+
+      listEl.append(fragment);
+    }
+
+    flagLinks(document);
+  </script>
+</body>
+</html>
+

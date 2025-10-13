@@ -1,0 +1,15 @@
+Guide Title: Shared Building & Loot
+Current Status: Not started.
+Research Targets:
+- Explain how building permissions work, who owns placed items, and how to dismantle shared structures.
+- Clarify loot distribution (instanced, first-come, shared containers) and money management.
+- Document best practices for organizing communal resources.
+Gameplay Questions to Answer:
+- Can players lock containers or assign ownership per cabinet?
+- How are crafting queues prioritized when multiple players interact with a station?
+- Do vending machines or traders restock faster with more players?
+Data & Sources to Collect:
+- In-game experiments, server admin documentation, community etiquette guides.
+Output Notes:
+- Provide policies/templates teams can adopt and highlight conflict-avoidance tips.
+

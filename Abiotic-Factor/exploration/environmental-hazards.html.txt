@@ -1,0 +1,15 @@
+Guide Title: Environmental Hazards
+Current Status: Missing.
+Research Targets:
+- Catalogue hazards: radiation, toxins, temperature extremes, anomalies, fog, electrical discharges.
+- Identify warning signs (UI alerts, sound cues) and safe thresholds.
+- List mitigation tools (gear, consumables, base upgrades).
+Gameplay Questions to Answer:
+- Do hazards stack, and how quickly do they inflict damage or debuffs?
+- Are some hazards tied to events (facility alarms, portal storms)?
+- How do hazards behave in Anteverse biomes vs. main facility?
+Data & Sources to Collect:
+- In-game readings (Geiger counter, thermometers), community data.
+Output Notes:
+- Create a response matrix: hazard, immediate action, long-term fix.
+
