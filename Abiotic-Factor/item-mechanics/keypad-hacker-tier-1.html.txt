@@ -1,0 +1,10 @@
+Guide Title: Keypad Hacker (Tier 1)
+Current Status: Complete (HTML published).
+Research Highlights:
+- Blueprint unlock: Alice Mayfield NPC interaction or Security Bot CPU research triggers the idea.
+- Crafting: Controller, LCD Screen, and Infrared Emitter subcomponents combine into the final hacker.
+- Farming: Security Bots in Tram Plaza/Manufacturing, electronics salvage in office cubicles.
+- Usage: Equip hacker, interact with blue keypads only; higher tiers needed for orange/red locks.
+Follow-up Notes:
+- Add Tier 2+ coverage once recipes are verified.
+- Crosslink this page from item index, Office Sector walkthrough, and base location guides.

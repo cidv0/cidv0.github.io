@@ -118,6 +118,12 @@ export const wikiStructure = [
           'Improvised melee weapons, ranged upgrades, and key utility tools.',
       },
       {
+        title: 'Keypad Hacker (Tier 1)',
+        href: 'item-mechanics/keypad-hacker-tier-1.html',
+        description:
+          'Unlock the Tier 1 keypad hacker, gather parts, and open blue security doors.',
+      },
+      {
         title: 'Armor & Gear',
         href: 'item-mechanics/armor-and-gear.html',
         description:
