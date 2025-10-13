@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abiotic Factor - Inventory & Storage</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased">
+  <main class="max-w-5xl mx-auto px-6 py-14 space-y-12">
+    <nav class="flex flex-wrap items-center justify-between gap-3 text-sm text-slate-400">
+      <a href="./index.html" class="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 font-medium text-cyan-200 transition hover:bg-cyan-500/20">
+        <span aria-hidden="true">&larr;</span>
+        Item Mechanics Hub
+      </a>
+      <a href="../index.html" class="inline-flex items-center gap-2 rounded-full border border-slate-700 px-4 py-2 font-medium text-slate-300 transition hover:text-slate-100">
+        <span aria-hidden="true">&larr;</span>
+        Back to Wiki Overview
+      </a>
+    </nav>
+
+    <header class="space-y-6 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+        <div class="space-y-3">
+          <p class="text-xs uppercase tracking-[0.35em] text-slate-400">Logistics Reference</p>
+          <h1 class="text-4xl font-semibold text-slate-50 md:text-5xl">Inventory &amp; Storage</h1>
+          <p class="text-base text-slate-300">
+            Managing weight, slots, and stash locations is the difference between a smooth supply chain and a frantic
+            dump of loot on the floor. This guide covers encumbrance thresholds, backpack upgrades, and how to build
+            reliable storage wings for solo and co-op runs without leaking spoilers.
+          </p>
+        </div>
+        <aside class="flex flex-col gap-4 text-sm text-slate-300">
+          <div class="rounded-2xl border border-emerald-500/40 bg-emerald-500/10 px-5 py-4 text-emerald-100">
+            <p class="text-xs uppercase tracking-widest text-emerald-200">Field reminder</p>
+            <p class="mt-2 text-sm text-emerald-50">
+              Pocket inventory starts at 12 slots; every backpack or belt you equip extends it. Stage one empty locker
+              near each bench so crafted items never block your carry weight.<sup>1</sup>
+            </p>
+          </div>
+          <div class="rounded-2xl border border-slate-800/80 bg-slate-900/60 px-5 py-4">
+            <h2 class="text-xs uppercase tracking-widest text-slate-500">Suggested crosslinks</h2>
+            <ul class="mt-2 space-y-1 text-xs text-slate-400">
+              <li>&bull; Item Mechanics &rarr; Crafting Stations (bench placement tips)</li>
+              <li>&bull; Survival &rarr; Day 1 / Night 1 Quick Start (early loot route)</li>
+              <li>&bull; Exploration &rarr; Facility Sectors (stash locations by zone)</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <section class="space-y-4 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Quick answer</h2>
+        <p class="text-sm text-slate-300">
+          Keep weight under the orange bar, upgrade to a backpack before leaving the Office Sector, and pre-label
+          storage so co-op teammates know exactly where to dump loot.
+        </p>
+      </header>
+      <div class="grid gap-4 md:grid-cols-3">
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Weight thresholds</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li>Stay below Heavy Load (yellow) to avoid the 10% speed hit and stamina drain.<sup>2</sup></li>
+            <li>Encumbered (orange) slows you by 30%; stash items before it sticks mid-fight.<sup>3</sup></li>
+            <li>Overencumbered (red) bricks stamina regen entirely &mdash; you will crawl home.<sup>4</sup></li>
+          </ul>
+        </article>
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">First upgrades</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li>Grab the Basic Backpack in the Data Farm manager&rsquo;s office; the duffel on the catwalk behind it
+              adds even more slots.<sup>5</sup></li>
+            <li>Pair a backpack with a fanny pack or utility belt to turn pockets into crafting component slots.</li>
+            <li>Stash a Pushcart or Laundry Cart near resource-rich hallways to shuttle scrap back safely.</li>
+          </ul>
+        </article>
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Base logistics</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li>Use color-coded signage (paintings, wall monitors) to reserve lockers per material family.</li>
+            <li>Split storage into <span class="font-medium text-slate-100">Inbound</span>, <span class="font-medium text-slate-100">Crafting Output</span>, and <span class="font-medium text-slate-100">Mission Prep</span>.</li>
+            <li>Review shelves weekly; recycle overflow into the Scrap Compactor or vending terminals.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="space-y-5 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Understanding carry weight &amp; strength</h2>
+        <p class="text-sm text-slate-300">
+          The inventory screen shows a segmented bar: green pockets, yellow heavy load, orange encumbered, and red
+          overencumbered. Each Strength level extends the safe zone slightly, so hauling heavy gear while buffed with
+          protein shakes or the Strength stim remains the fastest leveling method.
+        </p>
+      </header>
+      <div class="grid gap-5 md:grid-cols-2">
+        <article class="space-y-3 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Encumbrance cheat sheet</h3>
+          <dl class="space-y-2 text-sm text-slate-300">
+            <div class="flex items-start justify-between gap-4">
+              <dt class="font-medium text-slate-100">Heavy Load</dt>
+              <dd class="text-right text-slate-300">-10% move speed, -25% stamina regen.<sup>2</sup></dd>
+            </div>
+            <div class="flex items-start justify-between gap-4">
+              <dt class="font-medium text-slate-100">Encumbered</dt>
+              <dd class="text-right text-slate-300">-30% move speed, -50% stamina regen.<sup>3</sup></dd>
+            </div>
+            <div class="flex items-start justify-between gap-4">
+              <dt class="font-medium text-slate-100">Overencumbered</dt>
+              <dd class="text-right text-slate-300">-75% move speed, stamina regen halted.<sup>4</sup></dd>
+            </div>
+          </dl>
+          <p class="text-xs text-slate-500">
+            You still build Strength XP while slogging through any penalty tier; use that to your advantage when a run
+            ends near home base.
+          </p>
+        </article>
+        <article class="space-y-3 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Tips to stay mobile</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li>Favor stackable resources (wire spools, fabric rolls) over bulky single items until you have carts.</li>
+            <li>Drop filled specimen jars or bricks into nearby lockers before combat; they can be recovered later.</li>
+            <li>Share the load: in co-op, assign one player as the mule with highest Strength and the best backpack.</li>
+            <li>Keep a repair bench near storage so damaged armor doesn&rsquo;t secretly weigh you down.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="space-y-5 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Backpacks, belts, and portable storage</h2>
+        <p class="text-sm text-slate-300">
+          Lootable containers appear all across the Office and Data Farm sectors. Prioritize anything that increases
+          slot count, then branch into crafted or wheeled options once you set up a base.
+        </p>
+      </header>
+      <div class="space-y-5">
+        <div class="grid gap-4 md:grid-cols-2">
+          <article class="space-y-3 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+            <h3 class="text-lg font-semibold text-cyan-100">Personal gear progression</h3>
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li><span class="font-medium text-slate-100">Basic Backpack</span>: Found in the Data Farm manager&rsquo;s office, +8 slots and light weight.<sup>5</sup></li>
+              <li><span class="font-medium text-slate-100">Duffel Bag / Tactical Pack</span>: Common in security rooms; heavier but resists damage better.</li>
+              <li><span class="font-medium text-slate-100">Utility Belt / Fanny Pack</span>: Occupies belt slot, holding small tools and freeing pockets for ammo.</li>
+              <li><span class="font-medium text-slate-100">Specimen Cart Harness</span>: Crafted mid-game, adds dedicated slots for jars and research samples.</li>
+            </ul>
+          </article>
+          <article class="space-y-3 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+            <h3 class="text-lg font-semibold text-cyan-100">Portable containers</h3>
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li><span class="font-medium text-slate-100">Laundry Cart / Pushcart</span>: Wheel it along hallways; park it by elevators before clearing floors.</li>
+              <li><span class="font-medium text-slate-100">Cooler Chest</span>: Keeps food fresh, ideal near kitchens or hydroponics harvest points.</li>
+              <li><span class="font-medium text-slate-100">Spare Backpacks</span>: Drop a filled pack on the ground as a pseudo-cache before boss rooms.</li>
+              <li><span class="font-medium text-slate-100">Loot Spill Bags</span>: Created when a teammate dies; mark them with glowsticks until recovered.</li>
+            </ul>
+          </article>
+        </div>
+        <div class="rounded-2xl border border-cyan-500/40 bg-cyan-500/10 p-6">
+          <h3 class="text-base font-semibold text-cyan-200">Upgrade milestones</h3>
+          <ol class="list-decimal list-inside space-y-2 text-sm text-slate-300">
+            <li>Secure the Basic Backpack and a belt item before nightfall on Day 1.</li>
+            <li>Craft a Tool Bag once ideation unlocks fabric recipes; dedicate it to repair kits and wires.</li>
+            <li>Build or steal two carts for group play &mdash; one for raw salvage, one for crafted deliveries.</li>
+            <li>Transition to armored backpacks once you unlock riot gear to keep your carry solution from breaking.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-5 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Designing base storage wings</h2>
+        <p class="text-sm text-slate-300">
+          Treat storage like a factory floor: materials in, processing in the middle, mission kits out. The facility
+          rewards methodical layouts, especially when mutants and bots crash your carefully scheduled nights.
+        </p>
+      </header>
+      <div class="grid gap-5 md:grid-cols-2">
+        <article class="space-y-3 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Room blueprint</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li><span class="font-medium text-slate-100">Inbound lane</span>: Place lockers beside the entrance; stack heavy scrap low to avoid physics spills.</li>
+            <li><span class="font-medium text-slate-100">Crafting triangle</span>: Bench, storage, power outlet within a few steps for fast refills.</li>
+            <li><span class="font-medium text-slate-100">Mission rack</span>: Weapon board, med cabinet, and ammo crate staged near the exit door.</li>
+            <li>Leave a free tile for carts so co-op teams can park them without blocking pathing.</li>
+          </ul>
+        </article>
+        <article class="space-y-3 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Labeling &amp; permissions</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li>Use wall monitors or whiteboards to document what belongs in each locker.</li>
+            <li>Assign storage ownership on private servers to prevent accidental dismantling.</li>
+            <li>Adopt a &ldquo;two-stack&rdquo; rule: if a bin overflows twice, promote that resource to its own locker.</li>
+            <li>Keep emergency kits (duct tape, spare armor, food) on a separate shelf with glowstick lighting.</li>
+          </ul>
+        </article>
+      </div>
+      <div class="rounded-2xl border border-amber-500/40 bg-amber-500/10 p-6 text-sm text-amber-100">
+        <h3 class="text-base font-semibold text-amber-200">Co-op workflow</h3>
+        <p class="mt-2">
+          Schedule nightly &ldquo;drop-and-sort&rdquo; sessions. One player reads materials aloud, the rest slot them
+          away. End every run by topping off ammo crates and topping up mission packs so emergency response is instant.
+        </p>
+      </div>
+    </section>
+
+    <section class="space-y-5 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Looping your supply chain</h2>
+        <p class="text-sm text-slate-300">
+          Map every salvage trip from pickup to deployment. Having a clear pipeline keeps ideation queues alive and
+          prevents wasteful backtracking when nightfall hits.
+        </p>
+      </header>
+      <div class="grid gap-4 md:grid-cols-4 text-sm text-slate-300">
+        <div class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-4 text-center">
+          <p class="text-xs uppercase tracking-widest text-slate-500">1. Gather</p>
+          <p>Raid offices, laboratory storage, and maintenance closets with a cart staged at the elevator.</p>
+        </div>
+        <div class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-4 text-center">
+          <p class="text-xs uppercase tracking-widest text-slate-500">2. Stage</p>
+          <p>Dump haul into inbound lockers, sort immediately to avoid future clutter, and log rare drops.</p>
+        </div>
+        <div class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-4 text-center">
+          <p class="text-xs uppercase tracking-widest text-slate-500">3. Craft</p>
+          <p>Route materials to benches in batches, then place finished goods into mission-prep crates.</p>
+        </div>
+        <div class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-4 text-center">
+          <p class="text-xs uppercase tracking-widest text-slate-500">4. Deploy</p>
+          <p>Load backpacks with mission kits, mark spare carts on the map, and rotate crews for the next run.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-4 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <h2 class="text-2xl font-semibold text-cyan-200">Sources &amp; verification</h2>
+      <ul class="space-y-2 text-sm text-slate-300">
+        <li><sup>1</sup> <a class="text-cyan-300 hover:text-cyan-100" href="https://abioticfactor.wiki.gg/wiki/Inventory" target="_blank" rel="noopener">Official Abiotic Factor Wiki: Inventory</a></li>
+        <li><sup>2</sup> <a class="text-cyan-300 hover:text-cyan-100" href="https://abioticfactor.wiki.gg/wiki/Heavy_Load" target="_blank" rel="noopener">Official Abiotic Factor Wiki: Heavy Load</a></li>
+        <li><sup>3</sup> <a class="text-cyan-300 hover:text-cyan-100" href="https://abioticfactor.wiki.gg/wiki/Encumbered" target="_blank" rel="noopener">Official Abiotic Factor Wiki: Encumbered</a></li>
+        <li><sup>4</sup> <a class="text-cyan-300 hover:text-cyan-100" href="https://abioticfactor.wiki.gg/wiki/Overencumbered" target="_blank" rel="noopener">Official Abiotic Factor Wiki: Overencumbered</a></li>
+        <li><sup>5</sup> <a class="text-cyan-300 hover:text-cyan-100" href="https://techraptor.net/gaming/guides/how-to-get-backpack-in-abiotic-factor" target="_blank" rel="noopener">TechRaptor: How to Get a Backpack in Abiotic Factor</a></li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

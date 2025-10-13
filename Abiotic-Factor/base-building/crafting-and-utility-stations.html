@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abiotic Factor - Crafting &amp; Utility Stations</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased">
+  <main class="max-w-5xl mx-auto px-6 py-14 space-y-12">
+    <nav class="flex flex-wrap items-center justify-between gap-3 text-sm text-slate-400">
+      <a href="./index.html" class="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 font-medium text-cyan-200 transition hover:bg-cyan-500/20">
+        <span aria-hidden="true">&larr;</span>
+        Base Building Hub
+      </a>
+      <a href="../index.html" class="inline-flex items-center gap-2 rounded-full border border-slate-700 px-4 py-2 font-medium text-slate-300 transition hover:text-slate-100">
+        <span aria-hidden="true">&larr;</span>
+        Back to Wiki Overview
+      </a>
+    </nav>
+
+    <header class="space-y-6 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+        <div class="space-y-3">
+          <p class="text-xs uppercase tracking-[0.35em] text-slate-400">Fabrication Command Center</p>
+          <h1 class="text-4xl font-semibold text-slate-50 md:text-5xl">Crafting &amp; Utility Stations</h1>
+          <p class="text-base text-slate-300">
+            The workbench cluster is the heart of every safehouse. This guide shows how to progress through Abiotic Factor’s
+            fabrication tiers, manage power-hungry benches, and arrange stations so the crew can prototype, cook, and heal
+            without tripping breakers or blocking co-op workflows.
+          </p>
+        </div>
+        <aside class="flex flex-col gap-4 text-sm text-slate-300">
+          <div class="rounded-2xl border border-cyan-500/40 bg-cyan-500/10 px-5 py-4 text-cyan-100">
+            <p class="text-xs uppercase tracking-widest text-cyan-200">Field takeaway</p>
+            <p class="mt-2 text-sm text-cyan-50">
+              Treat Station Level 1 ideas as a sprint: unlocking the Fabricator, Chemistry bench, and Kitchen suite within the
+              first two nights keeps the team supplied and unlocks dozens of downstream recipes.<sup>1</sup>
+            </p>
+          </div>
+          <div class="rounded-2xl border border-slate-800/80 bg-slate-900/60 px-5 py-4">
+            <h2 class="text-xs uppercase tracking-widest text-slate-500">Suggested crosslinks</h2>
+            <ul class="mt-2 space-y-1 text-xs text-slate-400">
+              <li>&bull; Item Mechanics &rarr; Crafting Stations (recipe unlock details)</li>
+              <li>&bull; Base Building &rarr; Power &amp; Electricity (grid expansion)</li>
+              <li>&bull; Survival &rarr; Hunger &amp; Thirst (kitchen yields)</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <section class="space-y-4 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Quick answer</h2>
+        <p class="text-sm text-slate-300">
+          Cluster the Field Workbench, Fabricator, and Chemistry Station around a central storage wall so raw materials only
+          travel a few steps. Feed high-draw benches from a dedicated breaker, park fridges and medical gear on an uninterruptible
+          line, and label permissions so specialists can enter their zones without gumming up the crafting queue.
+        </p>
+      </header>
+      <div class="grid gap-4 md:grid-cols-3">
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Day 0–1 setup</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li>Deploy the Field Workbench and stash a Tool Chest beside it for the passive crafting-speed buff.</li>
+            <li>Salvage microwaves, kettles, and hot plates from offices; even temporary cooktops stretch food supplies.<sup>2</sup></li>
+            <li>Route a power strip behind the starter benches. Two low-draw appliances per outlet keeps the breaker calm.</li>
+          </ul>
+        </article>
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Early progression</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li>Complete the introductory idea chains to unlock the Fabricator and Chemistry Station; place them on opposite walls with shared storage between.</li>
+            <li>Install signage or floor tape so co-op partners know which bench handles metals, chemicals, or textiles.</li>
+            <li>Mount a Smart Battery near the kitchen appliances to ride out nightly brownouts.</li>
+          </ul>
+        </article>
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Mid-game lab</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li>Add the Electronics Bench, Medical Station, and Research Terminal in an annex with dedicated wiring.</li>
+            <li>Pair racks of labeled crates behind each bench so ingredients cycle in a single direction during production runs.</li>
+            <li>Stage a mobile cart with batteries and spare tools for field repairs between portal expeditions.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="space-y-5 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Station progression checklist</h2>
+        <p class="text-sm text-slate-300">
+          Move through the fabrication tiers in planned batches so unlocks arrive exactly when the base needs them. Use the table
+          below as a reminder of what each station unlocks and how to stage it.
+        </p>
+      </header>
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-sm text-left text-slate-300 border border-slate-800/80 rounded-2xl overflow-hidden">
+          <thead class="bg-slate-900/80 text-slate-200 uppercase text-xs tracking-wider">
+            <tr>
+              <th class="px-4 py-3">Station</th>
+              <th class="px-4 py-3">Unlock cues</th>
+              <th class="px-4 py-3">Power &amp; footprint</th>
+              <th class="px-4 py-3">Best placement tips</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/70">
+            <tr>
+              <td class="px-4 py-3 font-medium text-slate-100">Field Workbench</td>
+              <td class="px-4 py-3">Starter kit; assemble within the first shelter.</td>
+              <td class="px-4 py-3">No power draw; small floor tile.</td>
+              <td class="px-4 py-3">Anchor the crafting triangle; keep hand tools in adjacent locker.</td>
+            </tr>
+            <tr class="bg-slate-900/60">
+              <td class="px-4 py-3 font-medium text-slate-100">Fabricator</td>
+              <td class="px-4 py-3">Complete initial Research Division ideas to unlock.</td>
+              <td class="px-4 py-3">Moderate draw; two wall outlets recommended.</td>
+              <td class="px-4 py-3">Face the storage wall so metal ingots move directly into the queue.</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-slate-100">Chemistry Station</td>
+              <td class="px-4 py-3">Idea leads from solvent discovery; requires glassware.</td>
+              <td class="px-4 py-3">High draw; isolate on a strip or breaker.</td>
+              <td class="px-4 py-3">Keep near water barrels and fume hood ventilation (window or hallway).</td>
+            </tr>
+            <tr class="bg-slate-900/60">
+              <td class="px-4 py-3 font-medium text-slate-100">Kitchen Suite</td>
+              <td class="px-4 py-3">Salvage microwaves, then craft Cooktop &amp; Refrigerator.</td>
+              <td class="px-4 py-3">Steady draw; fridge prefers UPS backup.</td>
+              <td class="px-4 py-3">Arrange in galley layout with pantry racks within arm’s reach.</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-slate-100">Medical Station</td>
+              <td class="px-4 py-3">Unlocked after first aid research chain.</td>
+              <td class="px-4 py-3">Medium draw during operation only.</td>
+              <td class="px-4 py-3">Place in quiet room next to chemistry for shared reagents.</td>
+            </tr>
+            <tr class="bg-slate-900/60">
+              <td class="px-4 py-3 font-medium text-slate-100">Electronics Bench</td>
+              <td class="px-4 py-3">Electronics idea branch &mdash; requires copper wire, circuits.</td>
+              <td class="px-4 py-3">Burst draw; safe on shared strip with idle devices.</td>
+              <td class="px-4 py-3">Mount pegboard above it to hang components and schematics.</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-slate-100">Research Terminal</td>
+              <td class="px-4 py-3">Story progression &amp; captured data drives.</td>
+              <td class="px-4 py-3">Minimal draw; laptop-sized footprint.</td>
+              <td class="px-4 py-3">Seat next to idea board so clues and evidence share the same workspace.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-slate-400">
+        Expect future content drops to introduce new tiered benches. Leave a few empty wall slots or modular floor space so upgrades
+        slide into the existing electrical plan without rewiring the whole lab.
+      </p>
+    </section>
+
+    <section class="space-y-6 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Power planning &amp; wiring discipline</h2>
+        <p class="text-sm text-slate-300">
+          Benches cannot produce anything while breakers are tripped. Build redundancy into the grid before ramping up production.
+        </p>
+      </header>
+      <div class="grid gap-5 md:grid-cols-2 text-sm text-slate-300">
+        <article class="space-y-3 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+          <h3 class="text-lg font-semibold text-cyan-100">Practical wiring rules</h3>
+          <ul class="space-y-2">
+            <li>Respect outlet limits. Two low-draw devices or one major bench per wall socket keeps the line under the hidden amperage cap.<sup>3</sup></li>
+            <li>Install Power Strips only when every connected device idles most of the day (terminals, lamps). Mix in one chemistry or fabrication bench and the strip will pop.</li>
+            <li>Run extension cords along ceiling hooks or cable trays so walkways stay clear for co-op traffic.</li>
+            <li>Add a Switch Box near the base entrance to kill crafting bays during raids without shutting down fridges.</li>
+          </ul>
+        </article>
+        <article class="space-y-3 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+          <h3 class="text-lg font-semibold text-cyan-100">Backup &amp; automation</h3>
+          <ul class="space-y-2">
+            <li>Pair high-priority devices (refrigerators, incubators) with a UPS or Smart Battery to ride out grid flickers.</li>
+            <li>Stage a Diesel Generator or Biofuel Turbine in a ventilated room with muffled walls; wire it into the grid via transfer switch to cover Anteverse excursions.</li>
+            <li>Label circuits using colored tape: blue for utilities, red for heavy fabrication, green for medical. Quick visual checks prevent misplugs.</li>
+            <li>Assign a team electrician who inspects cords nightly and tops off fuel before expedition days.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="space-y-5 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Workflow zoning &amp; layouts</h2>
+        <p class="text-sm text-slate-300">
+          Smart floor plans shave minutes off every production run. Use these templates as a starting point and adjust for room
+          geometry or team size.
+        </p>
+      </header>
+      <div class="grid gap-4 md:grid-cols-2 text-sm text-slate-300">
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+          <h3 class="text-lg font-semibold text-cyan-100">Compact lab (3&times;4 room)</h3>
+          <ul class="space-y-2">
+            <li>Workbench, Fabricator, and Chemistry Station hug three walls; storage crates stack between each bench.</li>
+            <li>A ceiling light and wall fan keep visibility high and fumes moving out the door.</li>
+            <li>Place the door-side floor clear so couriers can drop off loot without stepping into active crafting zones.</li>
+          </ul>
+        </article>
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+          <h3 class="text-lg font-semibold text-cyan-100">Modular R&amp;D wing</h3>
+          <ul class="space-y-2">
+            <li>Divide the hall into pods: fabrication bay, wet lab, kitchen, med bay. Each pod gets its own breaker and signage.</li>
+            <li>Install sliding partitions or bookcases between pods to dampen noise and keep chemicals away from food prep.</li>
+            <li>Center a logistics aisle lined with rolling carts so teammates can queue orders without hovering over benches.</li>
+          </ul>
+        </article>
+      </div>
+      <p class="text-xs text-slate-400">
+        Redraw layouts whenever new benches arrive. Capture the next draft on a whiteboard or tablet so every teammate knows where
+        to drop components after portal runs.
+      </p>
+    </section>
+
+    <section class="space-y-6 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Co-op permissions &amp; roles</h2>
+        <p class="text-sm text-slate-300">
+          Station lockouts prevent ingredient theft but can slow production if left misconfigured. Revisit permissions after every
+          major unlock.
+        </p>
+      </header>
+      <div class="grid gap-5 md:grid-cols-2 text-sm text-slate-300">
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+          <h3 class="text-lg font-semibold text-cyan-100">Permission etiquette</h3>
+          <ul class="space-y-2">
+            <li>Keep fabrication benches unlocked but post signage listing “Do not craft” items to avoid consuming rare parts.</li>
+            <li>Restrict Medical and Electronics benches to specialists to avoid half-finished orders clogging the queue.</li>
+            <li>Use colored floor mats to mark “waiting zones” so teammates can pass ingredients without crowding.</li>
+          </ul>
+        </article>
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+          <h3 class="text-lg font-semibold text-cyan-100">Communication tools</h3>
+          <ul class="space-y-2">
+            <li>Mount whiteboards listing current projects, remaining ingredients, and assigned crafter.</li>
+            <li>Place storage with matching labels (&ldquo;Metals&rdquo;, &ldquo;Organics&rdquo;, &ldquo;Medical&rdquo;) behind the correct bench.</li>
+            <li>Set up a dropbox for completed items; couriers can collect gear without interrupting the operator.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="space-y-6 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Portable &amp; field-ready options</h2>
+        <p class="text-sm text-slate-300">
+          Expedition kits keep the team productive when deep in the facility or across an Anteverse portal.
+        </p>
+      </header>
+      <div class="grid gap-5 md:grid-cols-2 text-sm text-slate-300">
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+          <h3 class="text-lg font-semibold text-cyan-100">Travel essentials</h3>
+          <ul class="space-y-2">
+            <li>Carry a packaged Field Workbench and a stack of idea cards so emergency repairs never wait for fast travel.</li>
+            <li>Pack a Compact Camp Stove and water kettle for on-site food. Refuel with wood, gas canisters, or biofuel.</li>
+            <li>Keep a charged Battery Pack and extension cord in the kit to power the Keypad Hacker or Survey Gear on demand.</li>
+          </ul>
+        </article>
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+          <h3 class="text-lg font-semibold text-cyan-100">Returning to base</h3>
+          <ul class="space-y-2">
+            <li>Top off used batteries at the charging wall and log their status so the next squad knows what is ready.</li>
+            <li>Restock portable kits with spare wire, connectors, and fasteners pulled from the Electronics bench output.</li>
+            <li>Update the logistics board with any recipes unlocked on the expedition so the base crew can queue them immediately.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="space-y-4 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <h2 class="text-2xl font-semibold text-cyan-200">Sources &amp; verification</h2>
+      <ul class="space-y-2 text-sm text-slate-300">
+        <li><sup>1</sup> <a class="text-cyan-300 hover:text-cyan-100" href="https://abioticfactor.wiki.gg/wiki/Crafting" target="_blank" rel="noopener">Official Abiotic Factor Wiki: Crafting Overview</a></li>
+        <li><sup>2</sup> <a class="text-cyan-300 hover:text-cyan-100" href="https://abioticfactor.wiki.gg/wiki/Food" target="_blank" rel="noopener">Official Abiotic Factor Wiki: Food &amp; Cooking</a></li>
+        <li><sup>3</sup> <a class="text-cyan-300 hover:text-cyan-100" href="https://abioticfactor.wiki.gg/wiki/Power" target="_blank" rel="noopener">Official Abiotic Factor Wiki: Power Systems</a></li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

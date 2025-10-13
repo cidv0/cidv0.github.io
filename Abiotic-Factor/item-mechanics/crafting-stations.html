@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abiotic Factor - Crafting Stations</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased">
+  <main class="max-w-5xl mx-auto px-6 py-14 space-y-12">
+    <nav class="flex flex-wrap items-center justify-between gap-3 text-sm text-slate-400">
+      <a href="./index.html" class="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 font-medium text-cyan-200 transition hover:bg-cyan-500/20">
+        <span aria-hidden="true">&larr;</span>
+        Item Mechanics Hub
+      </a>
+      <a href="../index.html" class="inline-flex items-center gap-2 rounded-full border border-slate-700 px-4 py-2 font-medium text-slate-300 transition hover:text-slate-100">
+        <span aria-hidden="true">&larr;</span>
+        Back to Wiki Overview
+      </a>
+    </nav>
+
+    <header class="space-y-6 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+        <div class="space-y-3">
+          <p class="text-xs uppercase tracking-[0.35em] text-slate-400">Base Infrastructure</p>
+          <h1 class="text-4xl font-semibold text-slate-50 md:text-5xl">Crafting Stations</h1>
+          <p class="text-base text-slate-300">
+            Crafting stations turn raw scrap and ideas into usable gear, food, and upgrades while projecting safety perks
+            around your base. This guide tracks every workstation you can build, the resources they consume, how to keep
+            them powered through nightly blackouts, and the recommended build order for solo and co-op crews.
+          </p>
+        </div>
+        <aside class="flex flex-col gap-4 text-sm text-slate-300">
+          <div class="rounded-2xl border border-emerald-500/40 bg-emerald-500/10 px-5 py-4 text-emerald-100">
+            <p class="text-xs uppercase tracking-widest text-emerald-200">Field reminder</p>
+            <p class="mt-2 text-sm text-emerald-50">
+              Every powered bench doubles as a spawn suppressor. Wire your main bench into a dedicated battery circuit
+              before nightfall to prevent portal storms from spawning inside your lab.<sup>1</sup>
+            </p>
+          </div>
+          <div class="rounded-2xl border border-slate-800/80 bg-slate-900/60 px-5 py-4">
+            <h2 class="text-xs uppercase tracking-widest text-slate-500">Linked topics</h2>
+            <ul class="mt-2 space-y-1 text-xs text-slate-400">
+              <li>&bull; Item Mechanics &rarr; Ideation &amp; Crafting System</li>
+              <li>&bull; Survival &rarr; Day 1 / Night 1 Quick Start (bench rush route)</li>
+              <li>&bull; Base Building &rarr; Crafting &amp; Utility Stations</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <section class="space-y-4 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Quick answer</h2>
+        <p class="text-sm text-slate-300">
+          Rush the Crafting Bench first, keep it powered with at least a makeshift battery, and expand into salvage,
+          cooking, and enhancement once you can spare coils and refined parts.
+        </p>
+      </header>
+      <div class="grid gap-4 md:grid-cols-3">
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Bench priority</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li>Crafting Bench blueprint unlocks during the prologue; build it before night one ends.<sup>1</sup></li>
+            <li>Repair &amp; Salvage Station is the next milestone so you can recycle broken gear into scrap.<sup>2</sup></li>
+            <li>Enhancement Bench enters the loop once you have steady Exor drops and weapon cores.<sup>3</sup></li>
+          </ul>
+        </article>
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Power discipline</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li>Makeshift batteries (50 charge) cover one bench for 250 seconds; chain two to span a full night.<sup>8</sup></li>
+            <li>Industrial batteries (100 charge) power two devices but still dip for 20&nbsp;seconds at dawn.<sup>8</sup></li>
+            <li>Install a Charging Station near the hub so energy tools and tasers stay mission-ready.<sup>7</sup></li>
+          </ul>
+        </article>
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Co-op workflow</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li>Only one player can queue crafts per bench; others can access finished output immediately.</li>
+            <li>Item Transporter upgrades pull from shared lockers within 16&nbsp;m, reducing inventory juggling.<sup>1</sup></li>
+            <li>Label station circuits so teammates know which breaker or battery to swap at sunset.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="space-y-5 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Station tech ladder</h2>
+        <p class="text-sm text-slate-300">
+          Follow this progression to cover crafting, maintenance, food, and automation without starving your power grid.
+        </p>
+      </header>
+      <div class="space-y-4 text-sm text-slate-300">
+        <div class="grid gap-4 md:grid-cols-5">
+          <div class="rounded-2xl border border-emerald-500/40 bg-emerald-500/10 p-4">
+            <p class="text-xs uppercase tracking-widest text-emerald-200">Stage 1</p>
+            <h3 class="mt-2 text-lg font-semibold text-emerald-100">Crafting Bench</h3>
+            <p>Sets your safe zone, unlocks core recipes, and anchors teleporters.</p>
+          </div>
+          <div class="rounded-2xl border border-sky-500/40 bg-sky-500/10 p-4">
+            <p class="text-xs uppercase tracking-widest text-sky-200">Stage 2</p>
+            <h3 class="mt-2 text-lg font-semibold text-sky-100">Repair &amp; Salvage</h3>
+            <p>Converts junk back into scrap and keeps weapons combat ready.</p>
+          </div>
+          <div class="rounded-2xl border border-orange-500/40 bg-orange-500/10 p-4">
+            <p class="text-xs uppercase tracking-widest text-orange-200">Stage 3</p>
+            <h3 class="mt-2 text-lg font-semibold text-orange-100">Chef&rsquo;s Counter</h3>
+            <p>Streamlines meal prep and fish butchering for long expeditions.</p>
+          </div>
+          <div class="rounded-2xl border border-fuchsia-500/40 bg-fuchsia-500/10 p-4">
+            <p class="text-xs uppercase tracking-widest text-fuchsia-200">Stage 4</p>
+            <h3 class="mt-2 text-lg font-semibold text-fuchsia-100">Enhancement Bench</h3>
+            <p>Removes biometric locks and unlocks weapon upgrade paths.</p>
+          </div>
+          <div class="rounded-2xl border border-amber-500/40 bg-amber-500/10 p-4">
+            <p class="text-xs uppercase tracking-widest text-amber-200">Stage 5</p>
+            <h3 class="mt-2 text-lg font-semibold text-amber-100">Auto-Salvager</h3>
+            <p>Automates breakdown of loot piles to feed your material loop.</p>
+          </div>
+        </div>
+        <p class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 text-xs text-slate-400">
+          Idea unlocks appear in the Office Sector research terminals (Construction and Culinary categories) and through
+          Carson&rsquo;s traveling trades. Claim the blueprint, craft once at the Crafting Bench, then package and redeploy
+          where you need it.
+        </p>
+      </div>
+    </section>
+
+    <section class="space-y-6">
+      <article class="space-y-4 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+        <header class="space-y-2">
+          <div class="flex items-center justify-between gap-4">
+            <h2 class="text-2xl font-semibold text-cyan-200">Crafting Bench</h2>
+            <span class="rounded-full border border-emerald-500/40 px-3 py-1 text-xs uppercase tracking-widest text-emerald-200">Core hub</span>
+          </div>
+          <p class="text-sm text-slate-300">
+            Default workstation for nearly every idea. Establishes your safe zone, anchors teleporters, and unlocks tiered
+            upgrades that supercharge base logistics.<sup>1</sup>
+          </p>
+        </header>
+        <div class="grid gap-6 md:grid-cols-2 text-sm text-slate-300">
+          <div class="space-y-3">
+            <h3 class="text-lg font-semibold text-cyan-100">Unlock &amp; recipe</h3>
+            <ul class="space-y-2">
+              <li><span class="font-medium text-slate-100">Unlock:</span> Tutorial reward; rebuild after the prologue evac.</li>
+              <li><span class="font-medium text-slate-100">Crafting Bench &times;1</span>
+                <ul class="ml-4 list-disc space-y-1 pl-3 text-xs">
+                  <li>Duct Tape &times;4</li>
+                  <li>Power Supply Unit &times;1</li>
+                  <li>Metal or Hydro Pipe &times;2</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="space-y-3">
+            <h3 class="text-lg font-semibold text-cyan-100">Power &amp; upkeep</h3>
+            <ul class="space-y-2">
+              <li>Requires continuous power for recipe access and spawn suppression. Tie it to batteries before lights-out.</li>
+              <li>Portal Suppression upgrade destroys nearby Power Leeches during Rolling Blackouts if the bench stays live.</li>
+              <li>Package with any construction tool to relocate; redeployment desyncs teleporters until you rescan them.<sup>1,8</sup></li>
+            </ul>
+          </div>
+        </div>
+        <div class="space-y-3 text-sm text-slate-300">
+          <h3 class="text-lg font-semibold text-cyan-100">Upgrades worth rushing</h3>
+          <ul class="space-y-2">
+            <li><span class="font-medium text-slate-100">Item Transporter (Crafting&nbsp;2)</span>&mdash;auto pulls from lockers within 16&nbsp;m.<sup>1</sup></li>
+            <li><span class="font-medium text-slate-100">Bench Warmer (Crafting&nbsp;2)</span>&mdash;stops Chilly debuff; toggle via exposed coils.<sup>1</sup></li>
+            <li><span class="font-medium text-slate-100">Portal Suppression (Crafting&nbsp;5)</span>&mdash;nullifies portal storms near your main base.<sup>1</sup></li>
+            <li><span class="font-medium text-slate-100">Spontaneous Matter Synthesizer (Crafting&nbsp;15)</span>&mdash;generates random scrap while idle.<sup>1</sup></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="space-y-4 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+        <header class="space-y-2">
+          <div class="flex items-center justify-between gap-4">
+            <h2 class="text-2xl font-semibold text-cyan-200">Repair &amp; Salvage Station</h2>
+            <span class="rounded-full border border-orange-500/40 px-3 py-1 text-xs uppercase tracking-widest text-orange-200">Maintenance</span>
+          </div>
+          <p class="text-sm text-slate-300">
+            Repairs armor, weapons, and tools while letting you scrap dupes back into core materials without losing value.<sup>2</sup>
+          </p>
+        </header>
+        <div class="grid gap-6 md:grid-cols-2 text-sm text-slate-300">
+          <div class="space-y-3">
+            <h3 class="text-lg font-semibold text-cyan-100">Unlock &amp; recipe</h3>
+            <ul class="space-y-2">
+              <li><span class="font-medium text-slate-100">Unlock:</span> Construction idea drops in Office Sector tool rooms.</li>
+              <li><span class="font-medium text-slate-100">Repair &amp; Salvage Station &times;1</span>
+                <ul class="ml-4 list-disc space-y-1 pl-3 text-xs">
+                  <li>Duct Tape &times;6</li>
+                  <li>Coil &times;2</li>
+                  <li>Anvil &times;1</li>
+                  <li>Metal or Hydro Pipe &times;2</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="space-y-3">
+            <h3 class="text-lg font-semibold text-cyan-100">Power &amp; usage</h3>
+            <ul class="space-y-2">
+              <li>Shares the Crafting Bench safe-zone radius when powered, giving you overlapping spawn suppression.<sup>2</sup></li>
+              <li>Recommended to wire into the same battery circuit as your bench so Item Transporter pulls repair mats automatically.</li>
+              <li>Salvaging here grants crafting XP, unlike the Auto-Salvager.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 text-xs text-slate-400">
+          Co-op tip: Stage bulk repair materials (duct tape, metal scrap, weapon cores) in the same locker the Item Transporter can see. Players can queue repairs back to back without shuffling inventory.
+        </p>
+      </article>
+
+      <article class="space-y-4 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+        <header class="space-y-2">
+          <div class="flex items-center justify-between gap-4">
+            <h2 class="text-2xl font-semibold text-cyan-200">Chef&rsquo;s Counter</h2>
+            <span class="rounded-full border border-red-500/40 px-3 py-1 text-xs uppercase tracking-widest text-red-200">Nutrition</span>
+          </div>
+          <p class="text-sm text-slate-300">
+            Dual-sided cooking station for high-tier food recipes and fish butchering. Essential once hunger multipliers ramp up in multiplayer.<sup>4</sup>
+          </p>
+        </header>
+        <div class="grid gap-6 md:grid-cols-2 text-sm text-slate-300">
+          <div class="space-y-3">
+            <h3 class="text-lg font-semibold text-cyan-100">Unlock &amp; recipe</h3>
+            <ul class="space-y-2">
+              <li><span class="font-medium text-slate-100">Unlock:</span> Culinary idea nodes in the Office Sector cafeteria.</li>
+              <li><span class="font-medium text-slate-100">Chef&rsquo;s Counter &times;1</span>
+                <ul class="ml-4 list-disc space-y-1 pl-3 text-xs">
+                  <li>Wood Plank &times;8</li>
+                  <li>Power Supply Unit &times;2</li>
+                  <li>Metal or Hydro Pipe &times;4</li>
+                  <li>Metal Scrap &times;4</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="space-y-3">
+            <h3 class="text-lg font-semibold text-cyan-100">Power &amp; upgrades</h3>
+            <ul class="space-y-2">
+              <li>Must stay powered to access cooking and fish prep tabs. Place near your pantry to leverage Item Transporter.<sup>4</sup></li>
+              <li><span class="font-medium text-slate-100">Item Transporter</span>&mdash;identical to the bench upgrade, requires Crafting&nbsp;2 and pulls from nearby fridges.<sup>4</sup></li>
+              <li><span class="font-medium text-slate-100">Cheffigy</span>&mdash;summons Dr. Carson for rare ingredient trades after repeat encounters.<sup>4</sup></li>
+            </ul>
+          </div>
+        </div>
+        <p class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 text-xs text-slate-400">
+          Recommend pairing with Refrigerators and a Hand Sink to keep food buffs rolling. Label ingredient lockers so co-op cooks can prep bundles quickly.
+        </p>
+      </article>
+
+      <article class="space-y-4 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+        <header class="space-y-2">
+          <div class="flex items-center justify-between gap-4">
+            <h2 class="text-2xl font-semibold text-cyan-200">Enhancement Bench</h2>
+            <span class="rounded-full border border-fuchsia-500/40 px-3 py-1 text-xs uppercase tracking-widest text-fuchsia-200">Gear upgrades</span>
+          </div>
+          <p class="text-sm text-slate-300">
+            Modifies melee, ranged, and armor pieces, stripping biometric locks and applying mod tiers once you push deeper into Cascade Labs.<sup>3</sup>
+          </p>
+        </header>
+        <div class="grid gap-6 md:grid-cols-2 text-sm text-slate-300">
+          <div class="space-y-3">
+            <h3 class="text-lg font-semibold text-cyan-100">Unlock &amp; recipe</h3>
+            <ul class="space-y-2">
+              <li><span class="font-medium text-slate-100">Unlock:</span> Engineering idea caches in Cascade Laboratories.</li>
+              <li><span class="font-medium text-slate-100">Enhancement Bench &times;1</span>
+                <ul class="ml-4 list-disc space-y-1 pl-3 text-xs">
+                  <li>Crafting Bench &times;1</li>
+                  <li>Rebar &times;4</li>
+                  <li>LCD Screen &times;1</li>
+                  <li>Controller &times;1</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="space-y-3">
+            <h3 class="text-lg font-semibold text-cyan-100">Power &amp; best practices</h3>
+            <ul class="space-y-2">
+              <li>Requires the same continuous power as other benches; Item Transporter lets you grab mod parts from lockers.<sup>3</sup></li>
+              <li>Biometric lock removal frees captured firearms for the whole squad—plan to upgrade as soon as you loot corporate weapons.</li>
+              <li>Keep repair mats nearby; upgrades often demand pristine durability.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="space-y-4 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+        <header class="space-y-2">
+          <div class="flex items-center justify-between gap-4">
+            <h2 class="text-2xl font-semibold text-cyan-200">Auto-Salvager &amp; support gear</h2>
+            <span class="rounded-full border border-amber-500/40 px-3 py-1 text-xs uppercase tracking-widest text-amber-200">Automation</span>
+          </div>
+          <p class="text-sm text-slate-300">
+            Hands-off salvage converts raid junk while Charging Stations keep energy weapons topped off between sorties.<sup>5,7</sup>
+          </p>
+        </header>
+        <div class="grid gap-6 md:grid-cols-2 text-sm text-slate-300">
+          <div class="space-y-3">
+            <h3 class="text-lg font-semibold text-cyan-100">Auto-Salvager</h3>
+            <ul class="space-y-2">
+              <li><span class="font-medium text-slate-100">Unlock:</span> Advanced Engineering idea nodes (late Office Sector / early Cascade).</li>
+              <li><span class="font-medium text-slate-100">Recipe</span>
+                <ul class="ml-4 list-disc space-y-1 pl-3 text-xs">
+                  <li>Air Compressor &times;1</li>
+                  <li>Chain &times;4</li>
+                  <li>Magnetic Alloy &times;4</li>
+                  <li>Energy Brick &times;2</li>
+                </ul>
+              </li>
+              <li>Requires power; does not generate crafting XP, so rotate between manual salvage for leveling.<sup>5</sup></li>
+            </ul>
+          </div>
+          <div class="space-y-3">
+            <h3 class="text-lg font-semibold text-cyan-100">Charging Station</h3>
+            <ul class="space-y-2">
+              <li><span class="font-medium text-slate-100">Unlock:</span> Found as loot or crafted once you find a Car Battery Charger.</li>
+              <li><span class="font-medium text-slate-100">Recipe</span>
+                <ul class="ml-4 list-disc space-y-1 pl-3 text-xs">
+                  <li>Car Battery Charger &times;1</li>
+                  <li>Coil &times;4</li>
+                  <li>Metal Pipe &times;4</li>
+                </ul>
+              </li>
+              <li>Plug into wall outlets during the day; at night feed it from your bench circuit to top off tasers, flashlights, and hacking tools.<sup>7</sup></li>
+            </ul>
+          </div>
+        </div>
+        <p class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 text-xs text-slate-400">
+          Drop Auto-Salvagers on rolling carts or beside loot sorting tables so teammates can dump haul bags, flip the breaker,
+          and walk away while the machine churns.
+        </p>
+      </article>
+    </section>
+
+    <section class="space-y-5 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Power continuity &amp; outages</h2>
+        <p class="text-sm text-slate-300">
+          Nights last 270&nbsp;seconds. Plan battery coverage so benches stay online and Item Transporter upgrades keep pulling stock.
+        </p>
+      </header>
+      <div class="grid gap-4 md:grid-cols-3 text-sm text-slate-300">
+        <div class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+          <h3 class="text-lg font-semibold text-cyan-100">Battery math</h3>
+          <ul class="space-y-2">
+            <li>Makeshift (50 charge) &rarr; 250&nbsp;s for one device.</li>
+            <li>Industrial (100 charge) &rarr; 250&nbsp;s for two devices (expect 20&nbsp;s outage).</li>
+            <li>Chain batteries only when you must; upstream cells drain faster per device.*<sup>8</sup></li>
+          </ul>
+        </div>
+        <div class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+          <h3 class="text-lg font-semibold text-cyan-100">Outage effects</h3>
+          <ul class="space-y-2">
+            <li>Bench safe zones collapse immediately, allowing portal storms or assaults to spawn inside.<sup>1,8</sup></li>
+            <li>Locked recipes gray out until power returns; queued crafts pause, not cancel.</li>
+            <li>Teleport sync points remain valid even if the bench is offline.</li>
+          </ul>
+        </div>
+        <div class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+          <h3 class="text-lg font-semibold text-cyan-100">Automation tips</h3>
+          <ul class="space-y-2">
+            <li>Mount breakers and labels above each outlet so co-op squads know which battery bank to swap.</li>
+            <li>Schedule a nightfall checklist: replace drained cells, empty Auto-Salvager bins, top off Charging Station.</li>
+            <li>Consider day/night speed tweak (1.1) if you want perfect battery coverage without micro-managing.<sup>8</sup></li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-xs text-slate-400">*Upstream batteries count downstream batteries as devices; place critical benches closest to the power source.</p>
+    </section>
+
+    <section class="space-y-5 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Co-op etiquette &amp; relocation</h2>
+        <p class="text-sm text-slate-300">
+          Smooth bench rotations keep your lab efficient even with six scientists crafting at once.
+        </p>
+      </header>
+      <div class="grid gap-4 md:grid-cols-2 text-sm text-slate-300">
+        <div class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+          <h3 class="text-lg font-semibold text-cyan-100">Queue management</h3>
+          <ul class="space-y-2">
+            <li>Stations are exclusive-use; voice who is crafting and drop materials into shared lockers.</li>
+            <li>Use benches&rsquo; output queue as a staging shelf; anyone can loot finished crafts even if they did not start them.</li>
+            <li>Auto-Salvager avoids UI contention&mdash;dump loot in bulk while another player uses the manual station.</li>
+          </ul>
+        </div>
+        <div class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+          <h3 class="text-lg font-semibold text-cyan-100">Moving stations</h3>
+          <ul class="space-y-2">
+            <li>Equip any construction tool (Screwdriver or better), target the bench, and choose <span class="font-medium text-slate-100">Package</span> to recover it intact.<sup>6</sup></li>
+            <li>Packing player-placed items never fails; world props may break if your Construction skill is low.<sup>6</sup></li>
+            <li>Reinstall on a ghost hologram, rotate for cable runs, and reconnect to your battery strip.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-4 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <h2 class="text-2xl font-semibold text-cyan-200">Sources &amp; verification</h2>
+      <ul class="space-y-2 text-sm text-slate-300">
+        <li><sup>1</sup> <a class="text-cyan-300 hover:text-cyan-100" href="https://abioticfactor.wiki.gg/wiki/Crafting_Bench" target="_blank" rel="noopener">Official Abiotic Factor Wiki: Crafting Bench</a></li>
+        <li><sup>2</sup> <a class="text-cyan-300 hover:text-cyan-100" href="https://abioticfactor.wiki.gg/wiki/Repair_and_Salvage_Station" target="_blank" rel="noopener">Official Abiotic Factor Wiki: Repair &amp; Salvage Station</a></li>
+        <li><sup>3</sup> <a class="text-cyan-300 hover:text-cyan-100" href="https://abioticfactor.wiki.gg/wiki/Enhancement_Bench" target="_blank" rel="noopener">Official Abiotic Factor Wiki: Enhancement Bench</a></li>
+        <li><sup>4</sup> <a class="text-cyan-300 hover:text-cyan-100" href="https://abioticfactor.wiki.gg/wiki/Chef%27s_Counter" target="_blank" rel="noopener">Official Abiotic Factor Wiki: Chef&rsquo;s Counter</a></li>
+        <li><sup>5</sup> <a class="text-cyan-300 hover:text-cyan-100" href="https://abioticfactor.wiki.gg/wiki/Auto-Salvager" target="_blank" rel="noopener">Official Abiotic Factor Wiki: Auto-Salvager</a></li>
+        <li><sup>6</sup> <a class="text-cyan-300 hover:text-cyan-100" href="https://abioticfactor.wiki.gg/wiki/Deployable_Objects" target="_blank" rel="noopener">Official Abiotic Factor Wiki: Deployable Objects</a></li>
+        <li><sup>7</sup> <a class="text-cyan-300 hover:text-cyan-100" href="https://abioticfactor.wiki.gg/wiki/Charging_Station" target="_blank" rel="noopener">Official Abiotic Factor Wiki: Charging Station</a></li>
+        <li><sup>8</sup> <a class="text-cyan-300 hover:text-cyan-100" href="https://abioticfactor.wiki.gg/wiki/Crafting" target="_blank" rel="noopener">Official Abiotic Factor Wiki: Crafting (Power &amp; batteries)</a></li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
