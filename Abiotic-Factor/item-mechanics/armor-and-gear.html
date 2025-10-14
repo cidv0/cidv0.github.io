@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abiotic Factor - Armor &amp; Gear</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased">
+  <main class="max-w-5xl mx-auto px-6 py-14 space-y-12">
+    <nav class="flex flex-wrap items-center justify-between gap-3 text-sm text-slate-400">
+      <a href="./index.html" class="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 font-medium text-cyan-200 transition hover:bg-cyan-500/20">
+        <span aria-hidden="true">&larr;</span>
+        Item Mechanics Hub
+      </a>
+      <a href="../index.html" class="inline-flex items-center gap-2 rounded-full border border-slate-700 px-4 py-2 font-medium text-slate-300 transition hover:text-slate-100">
+        <span aria-hidden="true">&larr;</span>
+        Back to Wiki Overview
+      </a>
+    </nav>
+
+    <header class="space-y-6 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+        <div class="space-y-3">
+          <p class="text-xs uppercase tracking-[0.35em] text-slate-400">Combat Prep &amp; Resistances</p>
+          <h1 class="text-4xl font-semibold text-slate-50 md:text-5xl">Armor &amp; Gear</h1>
+          <p class="text-base text-slate-300">
+            Protective sets keep researchers alive long enough to finish the job. This field guide highlights the armor families,
+            environmental suits, and support gadgets worth packing, plus how to maintain them without burning through scarce repair
+            kits.<sup>1</sup>
+          </p>
+        </div>
+        <aside class="flex flex-col gap-4 text-sm text-slate-300">
+          <div class="rounded-2xl border border-emerald-500/40 bg-emerald-500/10 px-5 py-4 text-emerald-100">
+            <p class="text-xs uppercase tracking-widest text-emerald-200">Field reminder</p>
+            <p class="mt-2 text-sm text-emerald-50">
+              Keep one full repair kit and spare arm guards on a wall hook. Light pieces break first, and staging replacements saves
+              a bench trip mid-raid.<sup>1,2</sup>
+            </p>
+          </div>
+          <div class="rounded-2xl border border-slate-800/80 bg-slate-900/60 px-5 py-4">
+            <h2 class="text-xs uppercase tracking-widest text-slate-500">Suggested crosslinks</h2>
+            <ul class="mt-2 space-y-1 text-xs text-slate-400">
+              <li>&bull; Item Mechanics &rarr; <a class="text-cyan-300 hover:text-cyan-100" href="./inventory-and-storage.html">Inventory &amp; Storage</a></li>
+              <li>&bull; Item Mechanics &rarr; <a class="text-cyan-300 hover:text-cyan-100" href="./crafting-stations.html">Crafting &amp; Utility Stations</a></li>
+              <li>&bull; Base Building &rarr; <a class="text-cyan-300 hover:text-cyan-100" href="../base-building/furniture-and-shelter.html">Furniture &amp; Shelter Setup</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <section class="space-y-4 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Quick answer</h2>
+        <p class="text-sm text-slate-300">
+          Mix ballistic sets with hazard suits so the squad can swap roles on demand, track encumbrance to keep stamina healthy, and
+          repair gear at the Workbench before durability falls below half to avoid stat penalties.<sup>1,3</sup>
+        </p>
+      </header>
+      <div class="grid gap-4 md:grid-cols-3">
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Security &amp; ballistic sets</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li>Security, Jugaar, and F.O.R.G.E. pieces layer armor rating without sending encumbrance into the red.<sup>1</sup></li>
+            <li>Pair heavy chestplates with lighter greaves so stamina drain stays manageable during firefights.</li>
+            <li>Keep riot or hardlight shields packed near doors for breach defense and choke point pushes.</li>
+          </ul>
+        </article>
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Environmental suits</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li>Hazardous Materials, Fire Proximity, and Rat suits fully replace chest and leg slots for specific hazard runs.<sup>1</sup></li>
+            <li>Excursion and Diving suits trade armor for exploration perks like oxygen and hazard immunity—deploy only when needed.</li>
+            <li>Stage a clean locker for each suit so contamination does not spread back into the safe house.</li>
+          </ul>
+        </article>
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Specialist accessories</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li>Head slot upgrades like GATE NVGs or Maestro Casque define visibility and crit perks for the squad spotter.<sup>1</sup></li>
+            <li>Backpacks such as Security Pack, Research Pack, or Jetpack set how far you can run loot without slowing.</li>
+            <li>Trinkets (Geiger Counter Keychain, Dangling Gravity Cube) add utility without weight—rotate them between players.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="space-y-5 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Slot priorities &amp; swapping logic</h2>
+        <p class="text-sm text-slate-300">
+          Track each equipment slot so you know which pieces must stay pristine and which can be swapped for hazard coverage.
+        </p>
+      </header>
+      <div class="grid gap-4 md:grid-cols-3 text-sm text-slate-300">
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+          <h3 class="text-lg font-semibold text-cyan-100">Head &amp; vision</h3>
+          <ul class="space-y-2">
+            <li>Keep a Hard Hat or Security Helmet near engineering tasks to negate falling debris.</li>
+            <li>NVG variants grant night sight but increase repair costs—pack spares rather than risking a break mid-mission.</li>
+          </ul>
+        </article>
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+          <h3 class="text-lg font-semibold text-cyan-100">Arms &amp; utility</h3>
+          <ul class="space-y-2">
+            <li>Containment Gloves and F.O.R.G.E. Pauldrons push resistances while keeping encumbrance low.</li>
+            <li>Repair sleeves first—broken arm guards block passives like recoil control or crafting speed buffs.</li>
+          </ul>
+        </article>
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+          <h3 class="text-lg font-semibold text-cyan-100">Chest cores</h3>
+          <ul class="space-y-2">
+            <li>Security and Jugaar chestplates are reliable defaults; swap to Ionized Coreplate for electrical storms.</li>
+            <li>Full suits override chest stats—stash your ballistic plate so it is ready when the suit comes off.</li>
+          </ul>
+        </article>
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+          <h3 class="text-lg font-semibold text-cyan-100">Leg mobility</h3>
+          <ul class="space-y-2">
+            <li>Mountaineer or Cascade legplates boost stamina regen in long corridors; heavy sabatons slow sprint starts.</li>
+            <li>Monitor encumbrance each time you swap boots—overweight penalties hit dodge rolls hard.</li>
+          </ul>
+        </article>
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+          <h3 class="text-lg font-semibold text-cyan-100">Backpack slot</h3>
+          <ul class="space-y-2">
+            <li>Security Pack balances capacity and weight for daily ops; Research Pack keeps samples cold for delivery.</li>
+            <li>Jetpack and Voidpack consume power—store charged batteries near the deploy point.</li>
+          </ul>
+        </article>
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+          <h3 class="text-lg font-semibold text-cyan-100">Trinkets &amp; gadgets</h3>
+          <ul class="space-y-2">
+            <li>Assign Geiger Counter Keychain to the scout; rotate Hardlight Shield Generator for boss phases.</li>
+            <li>Store trinkets in labeled crates to highlight their passive effects for newer teammates.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="space-y-5 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Mixing sets without losing bonuses</h2>
+        <p class="text-sm text-slate-300">
+          Full armor sets grant passive perks, but smart swapping keeps those perks active while covering hazards.
+        </p>
+      </header>
+      <div class="grid gap-4 md:grid-cols-3 text-sm text-slate-300">
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Anchor one core set</h3>
+          <p>
+            Maintain a primary ballistic kit per player (Security, Jugaar, F.O.R.G.E.) and only swap individual slots when a hazard
+            demands it. The remaining pieces preserve set bonuses like recoil control or crafting speed.<sup>1</sup>
+          </p>
+        </article>
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Treat suits as mission items</h3>
+          <p>
+            Full body suits should be staged like consumables. Equip them for radiation, biohazard, or fire runs, then immediately
+            switch back to the anchored set so you regain passive combat perks.</p>
+        </article>
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <h3 class="text-lg font-semibold text-cyan-100">Coordinate accessory swaps</h3>
+          <p>
+            Share high-impact trinkets and backpacks based on the mission roster. Hand the Dangling Gravity Cube to the hauler,
+            give NVGs to the scout, and pass the Riot Shield to the leading breacher.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="space-y-5 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Maintenance &amp; upgrade loop</h2>
+        <p class="text-sm text-slate-300">
+          Repairs and upgrades draw from multiple benches—stage materials and track durability before it reaches critical.
+        </p>
+      </header>
+      <div class="grid gap-4 md:grid-cols-4 text-sm text-slate-300">
+        <div class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+          <p class="text-xs uppercase tracking-widest text-slate-500">1. Inspect &amp; triage</p>
+          <ul class="space-y-2">
+            <li>Check durability after every raid; under 50% risks stat loss or breakage.</li>
+            <li>Sort broken pieces by slot so repair mats can be queued efficiently.</li>
+          </ul>
+        </div>
+        <div class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+          <p class="text-xs uppercase tracking-widest text-slate-500">2. Prep materials</p>
+          <ul class="space-y-2">
+            <li>Workbenches handle early repairs; advanced armor may need Chemistry or Electronics benches for reagents.<sup>3</sup></li>
+            <li>Keep adhesives, plating, and spare wiring in labeled crates next to the benches.</li>
+          </ul>
+        </div>
+        <div class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+          <p class="text-xs uppercase tracking-widest text-slate-500">3. Upgrade path</p>
+          <ul class="space-y-2">
+            <li>Unlock higher-tier armor through faction drops or Fabricator schematics as the campaign progresses.<sup>1</sup></li>
+            <li>Use the Packaging Station to duplicate signage and storage that explain each set bonus.</li>
+          </ul>
+        </div>
+        <div class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+          <p class="text-xs uppercase tracking-widest text-slate-500">4. Rotation &amp; storage</p>
+          <ul class="space-y-2">
+            <li>Assign lockers per player plus one shared hazard locker for suits and trinkets.</li>
+            <li>Log set ownership on a whiteboard so items do not vanish into personal inventories.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-5 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold text-cyan-200">Sample loadouts to copy</h2>
+        <p class="text-sm text-slate-300">
+          Use these templates as a starting point, then adjust for your faction unlocks and hazard forecast.
+        </p>
+      </header>
+      <div class="grid gap-4 md:grid-cols-3 text-sm text-slate-300">
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+          <h3 class="text-lg font-semibold text-cyan-100">Containment sweep</h3>
+          <ul class="space-y-2">
+            <li>Hazardous Materials Suit, Containment Gloves, Research Pack.</li>
+            <li>Geiger Counter Keychain plus Riot Shield for unexpected breaches.</li>
+            <li>Assign a second player to carry spare filters and repair kit.</li>
+          </ul>
+        </article>
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+          <h3 class="text-lg font-semibold text-cyan-100">Security breach team</h3>
+          <ul class="space-y-2">
+            <li>F.O.R.G.E. core set with Jugaar Armwraps for balance.</li>
+            <li>Hardlight Shield, Military Pack, Dangling Gravity Cube.</li>
+            <li>NVGs for point, Maestro Casque for overwatch sniper.</li>
+          </ul>
+        </article>
+        <article class="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+          <h3 class="text-lg font-semibold text-cyan-100">Surface expedition</h3>
+          <ul class="space-y-2">
+            <li>Excursion Suit with Mountaineer boots for stamina and hazard cover.</li>
+            <li>Jetpack or Voidpack with Battery Wall charging station ready at base.</li>
+            <li>Carry a spare Security chestplate to swap back once hazards clear.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="space-y-4 rounded-3xl border border-slate-800 bg-slate-900/70 p-8 backdrop-blur">
+      <h2 class="text-2xl font-semibold text-cyan-200">Sources &amp; verification</h2>
+      <ul class="space-y-2 text-sm text-slate-300">
+        <li><sup>1</sup> <a class="text-cyan-300 hover:text-cyan-100" href="https://abioticfactor.wiki.gg/wiki/Armor_and_Gear" target="_blank" rel="noopener">Official Abiotic Factor Wiki: Armor &amp; Gear</a></li>
+        <li><sup>2</sup> <a class="text-cyan-300 hover:text-cyan-100" href="https://abioticfactor.wiki.gg/wiki/Equipment" target="_blank" rel="noopener">Official Abiotic Factor Wiki: Equipment Overview</a></li>
+        <li><sup>3</sup> <a class="text-cyan-300 hover:text-cyan-100" href="https://abioticfactor.wiki.gg/wiki/Crafting" target="_blank" rel="noopener">Official Abiotic Factor Wiki: Crafting Overview</a></li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

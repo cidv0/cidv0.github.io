@@ -136,6 +136,12 @@ export const wikiStructure = [
           'Weight systems, hotbar tricks, and organizing shared storage.',
       },
       {
+        title: 'Furniture & Benches',
+        href: 'item-mechanics/furniture-and-benches.html',
+        description:
+          'Beds, packaged office finds, and how to stage benches for steady progression.',
+      },
+      {
         title: 'Durability & Repair',
         href: 'item-mechanics/durability-and-repair.html',
         description:
