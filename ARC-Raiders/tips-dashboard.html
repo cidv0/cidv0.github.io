@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ARC Raiders | Field Ops Tips Console</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased">
+  <canvas id="backdrop" class="fixed inset-0 -z-10 h-full w-full" aria-hidden="true"></canvas>
+  <main class="relative mx-auto flex min-h-screen max-w-6xl flex-col gap-10 px-6 py-16 lg:gap-14 lg:px-10">
+    <header class="rounded-3xl border border-slate-800/60 bg-slate-900/70 p-8 backdrop-blur">
+      <div class="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+        <div class="max-w-3xl space-y-4">
+          <p class="text-xs uppercase tracking-[0.25em] text-cyan-300/70">ARC Raiders Operations Brief</p>
+          <h1 class="text-4xl font-semibold text-slate-50 md:text-5xl">Extraction Survival Tipline</h1>
+          <p class="text-base text-slate-300">
+            The console ranks every actionable lesson we've gathered from veteran Raiders. Start on the left with the
+            highest-impact directives—things that keep your gear, stash, and squad intact. Click any entry to surface a
+            deeper breakdown on the right. Stay light, stay loud only when you have to, and never go topside without a
+            plan.
+          </p>
+        </div>
+        <aside class="flex flex-col gap-3 text-sm text-slate-300">
+          <a class="inline-flex items-center gap-2 self-start rounded-full border border-cyan-500/40 bg-cyan-500/10 px-4 py-2 font-medium text-cyan-200 transition hover:border-cyan-400/70 hover:bg-cyan-500/20"
+             href="../index.html">
+            <span aria-hidden="true">&larr;</span>
+            Return to Site Landing
+          </a>
+          <p class="text-xs uppercase tracking-wide text-slate-500">How to use this module</p>
+          <ul class="space-y-1 text-xs text-slate-400">
+            <li>Critical directives lock in progression—start there and work down the list.</li>
+            <li>Click or use arrow keys to cycle tips; the detail pane updates instantly.</li>
+            <li>Pin the page on a second monitor for live raid reference.</li>
+          </ul>
+        </aside>
+      </div>
+    </header>
+
+    <section class="flex flex-col gap-6 lg:flex-row">
+      <nav aria-label="Tip priority list"
+           class="lg:sticky lg:top-10 lg:h-[calc(100vh-10rem)] lg:w-80 lg:flex-shrink-0">
+        <div class="flex h-full flex-col overflow-hidden rounded-3xl border border-slate-800/60 bg-slate-900/70">
+          <div class="flex items-center justify-between border-b border-slate-800/60 px-5 py-4">
+            <h2 class="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-200/80">Tip Deck</h2>
+            <span class="rounded-full bg-cyan-500/15 px-3 py-1 text-xs font-medium text-cyan-200">Ranked</span>
+          </div>
+          <div id="tip-list" class="flex-1 overflow-y-auto px-3 py-4 space-y-6"></div>
+        </div>
+      </nav>
+
+      <article class="flex-1 rounded-3xl border border-slate-800/60 bg-slate-900/70 p-8 shadow-xl shadow-cyan-500/5">
+        <header class="space-y-2">
+          <p id="tip-breadcrumb" class="text-xs uppercase tracking-[0.25em] text-cyan-300/70"></p>
+          <h2 id="tip-title" class="text-3xl font-semibold text-slate-50"></h2>
+        </header>
+        <section class="mt-6 space-y-4 text-base leading-relaxed text-slate-200" id="tip-body"></section>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const canvas = document.getElementById('backdrop');
+    const ctx = canvas.getContext('2d');
+    const motes = [];
+    const density = 150;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      motes.length = 0;
+      for (let i = 0; i < density; i += 1) {
+        motes.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: 1 + Math.random() * 2.5,
+          speed: 0.25 + Math.random() * 0.5,
+          hue: 190 + Math.random() * 40,
+        });
+      }
+    }
+
+    function tick() {
+      ctx.fillStyle = 'rgba(7, 11, 23, 0.4)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      motes.forEach((p) => {
+        ctx.beginPath();
+        ctx.fillStyle = `hsla(${p.hue}, 80%, 60%, 0.6)`;
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+        p.y -= p.speed;
+        if (p.y < -4) {
+          p.y = canvas.height + Math.random() * 12;
+          p.x = Math.random() * canvas.width;
+        }
+      });
+      requestAnimationFrame(tick);
+    }
+
+    resizeCanvas();
+    tick();
+    window.addEventListener('resize', resizeCanvas);
+
+    const categories = [
+      { key: 'critical', label: 'Critical – Protect Your Progress' },
+      { key: 'high', label: 'High Priority – Survival & Combat Fundamentals' },
+      { key: 'useful', label: 'Useful – Efficiency & QoL' },
+      { key: 'situational', label: 'Situational – Creative or Preference-Based' },
+    ];
+
+    const tips = [
+      {
+        id: 'tip-01',
+        category: 'critical',
+        title: 'Safeguard Your Stash Slots',
+        body: 'Upgrade stash capacity early and keep dump/offload habits tight so you never stall between raids or leave high-value loot behind.',
+      },
+      {
+        id: 'tip-02',
+        category: 'critical',
+        title: 'Plan Loadouts & Safe Pockets',
+        body: 'Understand how augments, weight limits, and safe pockets interact, then tailor each deployment so nothing critical gets left topside.',
+      },
+      {
+        id: 'tip-03',
+        category: 'critical',
+        title: 'Invest Early in Stamina Perks',
+        body: 'Spend the first skill points on stamina regeneration and capacity—more sprint, slides, and vaults mean more successful extracts.',
+      },
+      {
+        id: 'tip-04',
+        category: 'critical',
+        title: 'Fast-Track Key Workstations',
+        body: 'Bring Scrappy, the gunsmith bench, medical lab, and refiner online fast to unlock reliable weapons, consumables, and upgraded crafting paths.',
+      },
+      {
+        id: 'tip-05',
+        category: 'critical',
+        title: 'Stockpile Materials & Recipes',
+        body: 'Farm metal parts, seeds, and rare drops, track recipes you still need, and salvage back in Spironza to keep late-game upgrades rolling.',
+      },
+      {
+        id: 'tip-06',
+        category: 'critical',
+        title: 'Maintain Healing & Shield Kits',
+        body: 'Carry tiered bandages, shield chargers, adrenaline, and power cells so your squad always has a way to reset after a firefight.',
+      },
+      {
+        id: 'tip-07',
+        category: 'critical',
+        title: 'Scout Objectives Before Launch',
+        body: 'Preview the map, modifiers, and route every run—choose objectives and weapons that match the threats before you ever hit the drop zone.',
+      },
+      {
+        id: 'tip-08',
+        category: 'critical',
+        title: 'Bank Keys & Extract Smart',
+        body: 'Clear locked rooms whenever possible, stash hatch keys safely, and remember that you can trigger the elevator or console even while downed.',
+      },
+      {
+        id: 'tip-09',
+        category: 'critical',
+        title: 'Carry Traversal & Rescue Tools',
+        body: 'Pack ziplines, snap hooks, defibrillators, and smoke so you always have an exit vector and a fast revive when things go sideways.',
+      },
+      {
+        id: 'tip-10',
+        category: 'critical',
+        title: 'Loot Everything for Shared XP',
+        body: 'Open every container and capitalize on shared objective credit to keep the whole team climbing the skill tree.',
+      },
+      {
+        id: 'tip-11',
+        category: 'critical',
+        title: 'Manage Noise & Alerts',
+        body: 'Cut sound where you can—melee detectors, silence birds, and listen for shield break cues to stay invisible until you choose the fight.',
+      },
+      {
+        id: 'tip-12',
+        category: 'critical',
+        title: 'Control Exposure to Arcs',
+        body: 'Use cover, stay off open streets, and only engage arc patrols when you own the angle or need their parts.',
+      },
+      {
+        id: 'tip-13',
+        category: 'high',
+        title: 'Move Efficiently to Save Stamina',
+        body: 'Stow weapons when sprinting, slide for regen, practice ledge grabs, and time your landings to eliminate fall damage.',
+      },
+      {
+        id: 'tip-14',
+        category: 'high',
+        title: 'Leverage Third-Person Peeking',
+        body: 'Swap shoulders, lean off cover, and know the difference between concealment and cover so you gather intel without exposing yourself.',
+      },
+      {
+        id: 'tip-15',
+        category: 'high',
+        title: 'Discipline Your Fight Fundamentals',
+        body: 'Ping everything, clear angles methodically, keep spacing, and finish fights quickly before a third party collapses on you.',
+      },
+      {
+        id: 'tip-16',
+        category: 'high',
+        title: 'Hot Swap Spare Shields',
+        body: 'Carry backup shields and drag-swap them mid-fight for instant recharges when the match is focused on PvP.',
+      },
+      {
+        id: 'tip-17',
+        category: 'high',
+        title: 'Tune Builds at the Range',
+        body: 'Use the practice range to test attachments and recoil patterns so you commit muscle memory before stepping into live fire.',
+      },
+      {
+        id: 'tip-18',
+        category: 'high',
+        title: 'Melee Drones Quietly',
+        body: 'Bait drones low, vault on top, and use the correct melee swing so you dismantle them without burning ammo or broadcasting your position.',
+      },
+      {
+        id: 'tip-19',
+        category: 'high',
+        title: 'Pause Breaches Under Pressure',
+        body: 'Stop breaching the moment you hear trouble, hold your progress, and resume only when the angle is locked down.',
+      },
+      {
+        id: 'tip-20',
+        category: 'high',
+        title: 'Reset Before Re-Engaging',
+        body: 'Never push with a sliver of health—top up both shield and HP before peeking again.',
+      },
+      {
+        id: 'tip-21',
+        category: 'useful',
+        title: 'Streamline Inventory & Turn-ins',
+        body: 'Multi-select on controller, merge stacks, offload backpacks, and use the quest tracker to keep downtime close to zero.',
+      },
+      {
+        id: 'tip-22',
+        category: 'useful',
+        title: 'Optimize Visual Settings',
+        body: 'Raise your FOV, dial in crosshair overrides, and tweak graphics for the clarity-versus-performance mix that fits your rig.',
+      },
+      {
+        id: 'tip-23',
+        category: 'useful',
+        title: 'Set Squad Fill Preferences',
+        body: 'Toggle squad fill to guarantee solo or duo matchmaking when you need tighter coordination.',
+      },
+      {
+        id: 'tip-24',
+        category: 'situational',
+        title: 'Use Vertical Tricks',
+        body: 'Combine barricade mantles and arc climbing to reach sniper nests or skip chokepoints when terrain isn’t cooperating.',
+      },
+      {
+        id: 'tip-25',
+        category: 'situational',
+        title: 'Bait with Remote Flares',
+        body: 'Trigger remote raider flares to lure opportunists into your kill box when you want to force PvP.',
+      },
+      {
+        id: 'tip-26',
+        category: 'situational',
+        title: 'Tune Emote Comms',
+        body: 'Adjust emote volume or activate the Raider Voice Beta when you’re running silent comms but still want to signal intentions.',
+      },
+    ];
+
+    const categoryLookup = Object.fromEntries(categories.map((cat) => [cat.key, cat.label]));
+    const tipList = document.getElementById('tip-list');
+    const tipBreadcrumb = document.getElementById('tip-breadcrumb');
+    const tipTitle = document.getElementById('tip-title');
+    const tipBody = document.getElementById('tip-body');
+
+    function createTipButton(tip) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.dataset.tipId = tip.id;
+      button.className =
+        'w-full rounded-2xl border border-transparent px-4 py-3 text-left text-sm text-slate-200 transition hover:border-cyan-400/40 hover:bg-cyan-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60';
+      button.innerHTML = `
+        <p class="text-xs uppercase tracking-[0.2em] text-cyan-200/70">${tip.id.replace('tip-', 'Tip ')}</p>
+        <p class="mt-1 text-base font-semibold text-slate-50">${tip.title}</p>
+      `;
+      return button;
+    }
+
+    function renderNavigation() {
+      categories.forEach((category) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'space-y-3';
+
+        const heading = document.createElement('p');
+        heading.className = 'px-2 text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-slate-500';
+        heading.textContent = category.label;
+
+        const list = document.createElement('div');
+        list.className = 'space-y-2';
+
+        tips
+          .filter((tip) => tip.category === category.key)
+          .forEach((tip) => {
+            list.append(createTipButton(tip));
+          });
+
+        wrapper.append(heading, list);
+        tipList.append(wrapper);
+      });
+    }
+
+    function setActiveTip(tipId) {
+      const tip = tips.find((item) => item.id === tipId);
+      if (!tip) return;
+
+      tipBreadcrumb.textContent = `${categoryLookup[tip.category]} • ${tip.id.replace('tip-', 'Tip ')}`;
+      tipTitle.textContent = tip.title;
+      tipBody.innerHTML = `<p>${tip.body}</p>`;
+
+      document
+        .querySelectorAll('#tip-list button[data-tip-id]')
+        .forEach((btn) => {
+          if (btn.dataset.tipId === tipId) {
+            btn.classList.add('border-cyan-400/60', 'bg-cyan-500/15');
+            btn.setAttribute('aria-current', 'true');
+          } else {
+            btn.classList.remove('border-cyan-400/60', 'bg-cyan-500/15');
+            btn.removeAttribute('aria-current');
+          }
+        });
+    }
+
+    function handleNavigationClick(event) {
+      const button = event.target.closest('button[data-tip-id]');
+      if (!button) return;
+      setActiveTip(button.dataset.tipId);
+    }
+
+    function handleKeyboardNavigation(event) {
+      const active = document.querySelector('#tip-list button[aria-current="true"]');
+      if (!active) return;
+
+      const buttons = Array.from(document.querySelectorAll('#tip-list button[data-tip-id]'));
+      const currentIndex = buttons.indexOf(active);
+      if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        const next = buttons[currentIndex + 1] || buttons[0];
+        next.focus();
+        setActiveTip(next.dataset.tipId);
+      } else if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        const prev = buttons[currentIndex - 1] || buttons[buttons.length - 1];
+        prev.focus();
+        setActiveTip(prev.dataset.tipId);
+      }
+    }
+
+    renderNavigation();
+    tipList.addEventListener('click', handleNavigationClick);
+    tipList.addEventListener('keydown', handleKeyboardNavigation);
+    const firstTip = tips[0]?.id;
+    if (firstTip) {
+      setActiveTip(firstTip);
+      const firstButton = document.querySelector(`#tip-list button[data-tip-id="${firstTip}"]`);
+      firstButton?.focus({ preventScroll: true });
+    }
+  </script>
+</body>
+</html>
