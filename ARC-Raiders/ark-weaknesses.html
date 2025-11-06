@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ARC Raiders | Ark Weakness Field Notes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased">
+  <canvas id="backdrop" class="fixed inset-0 -z-10 h-full w-full" aria-hidden="true"></canvas>
+  <main class="relative mx-auto flex min-h-screen max-w-5xl flex-col gap-10 px-6 py-16 lg:gap-14 lg:px-10">
+    <header class="rounded-3xl border border-slate-800/60 bg-slate-900/70 p-8 backdrop-blur">
+      <div class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+        <div class="max-w-3xl space-y-4">
+          <p class="text-xs uppercase tracking-[0.25em] text-cyan-300/70">ARC Raiders Recon Archive</p>
+          <h1 class="text-4xl font-semibold text-slate-50 md:text-5xl">Ark Weakness Dossier</h1>
+          <p class="text-base text-slate-300">
+            Veteran field runs turned up reliable counters for every serious Ark threat. These notes skip the easy targets&mdash;Snitches, Pops, Fireballs, and Ticks go down to disciplined fire. Instead, you'll find the tactics that melt Leapers, ground Rocketeers, and keep Bombardiers from carving the squad apart.
+          </p>
+        </div>
+        <aside class="flex flex-col gap-3 text-sm text-slate-300">
+          <a class="inline-flex items-center gap-2 self-start rounded-full border border-cyan-500/40 bg-cyan-500/10 px-4 py-2 font-medium text-cyan-200 transition hover:border-cyan-400/70 hover:bg-cyan-500/20"
+             href="tips-dashboard.html">
+            <span aria-hidden="true">&larr;</span>
+            Return to Tip Console
+          </a>
+          <div class="rounded-2xl border border-slate-800/60 bg-slate-900/70 px-4 py-3">
+            <p class="text-xs uppercase tracking-wide text-slate-400">Recon Primer</p>
+            <p class="mt-2 text-xs text-slate-400">
+              Most counters hinge on status effects, forced friendly fire, or mobility denial. Pack the right grenade or gadget before drop and stay flexible once the Ark reacts.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <section class="flex flex-col gap-6 lg:flex-row">
+      <nav aria-label="Target list" class="lg:sticky lg:top-10 lg:w-80 lg:flex-shrink-0">
+        <div class="flex h-full flex-col overflow-hidden rounded-3xl border border-slate-800/60 bg-slate-900/70">
+          <div class="flex items-center justify-between border-b border-slate-800/60 px-5 py-4">
+            <h2 class="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-200/80">Targets</h2>
+            <span class="rounded-full bg-cyan-500/15 px-3 py-1 text-xs font-medium text-cyan-200">Indexed</span>
+          </div>
+          <div id="target-list" class="flex-1 overflow-y-auto px-3 py-4 space-y-4"></div>
+        </div>
+      </nav>
+      <div id="target-details" class="flex-1 space-y-8">
+      <article data-target="leaper" class="rounded-3xl border border-amber-500/30 bg-amber-500/10 p-8 shadow-lg shadow-amber-500/10">
+        <header class="flex items-baseline justify-between gap-4">
+          <h2 class="text-2xl font-semibold text-amber-100">Leaper &mdash; Burnout Protocol</h2>
+          <span class="text-xs uppercase tracking-[0.3em] text-amber-300/80">Fire Supremacy</span>
+        </header>
+        <div class="mt-4 space-y-4 text-base text-amber-50/90">
+          <p>
+            Leapers fold the instant you drown them in flame. Fireball burners, Blaze Rods, or any persistent incendiary patch will stun their AI and drain their core before they can pounce.
+          </p>
+          <p>
+            Watch the crouch wind-up&mdash;Dexerto recon notes that's the tell for both the launch and the incoming shockwave pulse. Slide out or dodge roll as it lands so the blast only clips shields, then punish exposed joints and the eye before it recovers.
+          </p>
+          <p>
+            If fire isn't on the loadout, fight on your terms. The PDF field dossier recommends dragging Leapers into tight alleys or structures where ceilings block their leap arc, then leaning from hard cover to saw through a single knee at a time.
+          </p>
+          <ul class="list-disc space-y-2 pl-5">
+            <li>Drop a fire pool beneath the leap path&mdash;they hesitate, panic, and collapse without clear commands.</li>
+            <li>Keep a second incendiary ready; chain casts prove the first takedown isn't luck.</li>
+            <li>Heavy ordnance or concentrated rifle fire interrupts their leap animation and snaps armor off the front knees.</li>
+            <li>Chain a Showstopper stun into focused leg fire to immobilise the frame when flames or gadgets are on cooldown.</li>
+          </ul>
+          <p class="text-sm text-amber-200/70">
+            Bonus: prolonged burning makes Leapers lock up and topple over. Stay behind walls while you burn the core down&mdash;if it can't land directly on your squad, the spider is far less dangerous.
+          </p>
+          <p class="text-xs text-amber-200/60">
+            Intel cross-check: <a class="underline decoration-dotted decoration-amber-300/60 hover:text-amber-100" href="https://www.dexerto.com/wikis/arc-raiders/how-to-beat-leaper/" target="_blank" rel="noopener">Dexerto Leaper guide</a>, <a class="underline decoration-dotted decoration-amber-300/60 hover:text-amber-100" href="https://kboosting.com/arc-raiders/guides/enemy-weaknesses-guide" target="_blank" rel="noopener">KBoosting enemy dossier</a>, <a class="underline decoration-dotted decoration-amber-300/60 hover:text-amber-100" href="ARC%20Weakness%20Dossier_%20Defeating%20Every%20Major%20ARC%20Threat.pdf" target="_blank" rel="noopener">Field dossier PDF</a>.
+          </p>
+        </div>
+      </article>
+
+      <article data-target="rocketeer" class="hidden rounded-3xl border border-cyan-500/30 bg-cyan-500/10 p-8 shadow-lg shadow-cyan-500/10">
+        <header class="flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between">
+          <h2 class="text-2xl font-semibold text-cyan-100">Rocketeer &mdash; Skyhook Shutdown</h2>
+          <span class="text-xs uppercase tracking-[0.3em] text-cyan-200/70">Ten-Second Window</span>
+        </header>
+        <div class="mt-4 space-y-4 text-base text-cyan-50/90">
+          <p>
+            Lob a Hornet Driver or Showstopper grenade directly into the Rocketeer to short its thrusters. The detonation forces a hard stall for roughly ten seconds&mdash;plenty of time to climb the frame and shred the engines.
+          </p>
+          <p>
+            Remember you are dealing with a flying rocket platform; KBoosting classifies its splash as wide enough to tag Raiders even behind waist-high cover. Slide under catwalks or go vertical so the launchers waste volleys into steel instead of your shields.
+          </p>
+          <p>
+            The PDF dossier calls out the audio lock-on cue&mdash;when you hear the targeting tone, bury yourself inside solid cover, let the salvo pass, then pop out during the reload to drill the thrusters. If you're caught in the open, drop smoke or a barricade before the missiles impact.
+          </p>
+            <ul class="list-disc space-y-2 pl-5">
+              <li>Practice lead throws; missing wastes rare ordnance and alerts the Ark.</li>
+              <li>No time to line up? Bring the Wolfpack. One Hullcracker slug or a focused burst of Pharaoh shots will rip the thrusters clean off.</li>
+              <li>If your nade whiffs, switch to sustained fire on the rear vents to bleed thrust&mdash;once two are smoking the drone can no longer hover steadily.</li>
+              <li>Cycle hide-and-shoot windows off each barrage: shelter when missiles scream in, then dash out and hammer exposed engines before the next lock.</li>
+              <li>Lornades stick to the chassis and bait nearby ARCs into friendly fire, buying escape time if the duel goes loud.</li>
+            </ul>
+          <p class="text-sm text-cyan-200/70">
+            Treat every Rocketeer engagement like a free throw: land it, and the flight ends on your terms.
+          </p>
+          <p class="text-xs text-cyan-200/60">
+            Intel cross-check: <a class="underline decoration-dotted decoration-cyan-300/60 hover:text-cyan-100" href="https://kboosting.com/arc-raiders/guides/enemy-weaknesses-guide" target="_blank" rel="noopener">KBoosting enemy dossier</a>, <a class="underline decoration-dotted decoration-cyan-300/60 hover:text-cyan-100" href="ARC%20Weakness%20Dossier_%20Defeating%20Every%20Major%20ARC%20Threat.pdf" target="_blank" rel="noopener">Field dossier PDF</a>.
+          </p>
+        </div>
+      </article>
+
+      <article data-target="bombardier" class="hidden rounded-3xl border border-red-500/30 bg-red-500/10 p-8 shadow-lg shadow-red-500/10">
+          <header class="flex items-baseline justify-between gap-4">
+            <h2 class="text-2xl font-semibold text-red-100">Bombardier &mdash; Spine Breaks</h2>
+            <span class="text-xs uppercase tracking-[0.3em] text-red-200/70">Stick &amp; Strike</span>
+          </header>
+          <div class="mt-4 space-y-4 text-base text-red-50/90">
+            <p>
+              Sneak up before aggro and plant a Snap Hook, Trigger, or any adhesive grenade dead center on the exposed rear module. Direct hits vent the missile rack before it wakes up.
+            </p>
+            <p>
+              The PDF dossier reiterates what squads already feel in raids: the Spotter drone is the real problem. Delete it first, then hunt roofs or rock overhangs so the mortar can't arc shells straight onto your position.
+            </p>
+          <ul class="list-disc space-y-2 pl-5">
+            <li>Keep moving between volleys; the shells travel slow enough to sidestep as long as you never root in place.</li>
+            <li>Pop the Spotter before committing heavy ammo&mdash;without it, the Bombardier overshoots and exposes its back more often.</li>
+            <li>Fight from cover with a roof or thick canopy so mortar arcs slam harmlessly overhead.</li>
+            <li>From cover, strip knee armor to induce the same stun window you get on Bastions, then dump mags into the core.</li>
+          </ul>
+          <p class="text-sm text-red-200/70">
+            If you arrive late, bait its knee armor from cover. Ruptured joints trigger a self-stun&mdash;empty mags into the core while it reboots.
+          </p>
+          <p class="text-xs text-red-200/60">
+            Intel cross-check: <a class="underline decoration-dotted decoration-red-300/60 hover:text-red-100" href="https://kboosting.com/arc-raiders/guides/enemy-weaknesses-guide" target="_blank" rel="noopener">KBoosting enemy dossier</a>, <a class="underline decoration-dotted decoration-red-300/60 hover:text-red-100" href="ARC%20Weakness%20Dossier_%20Defeating%20Every%20Major%20ARC%20Threat.pdf" target="_blank" rel="noopener">Field dossier PDF</a>.
+          </p>
+          </div>
+        </article>
+
+      <article data-target="bastion" class="hidden rounded-3xl border border-slate-500/40 bg-slate-500/10 p-8 shadow-lg shadow-slate-500/10">
+          <header class="flex items-baseline justify-between gap-4">
+            <h2 class="text-2xl font-semibold text-slate-100">Bastion &mdash; Collapse the Frame</h2>
+            <span class="text-xs uppercase tracking-[0.3em] text-slate-300/70">Close-Quarters Risk</span>
+          </header>
+          <div class="mt-4 space-y-4 text-base text-slate-100/80">
+            <p>
+              Bastions post up over high-value loot nodes with a front-facing minigun that liquefies shields in seconds. Treat every peek like a boss mechanic: let it spool the barrels into hard cover before you swing a counter-angle.
+            </p>
+            <p>
+              Aim where the armor is thinnest. The field dossier notes the yellow kneecaps and the rear fuel canister as the quickest way through the plating&mdash;snap a knee, then pivot to the back can before the machine re-centers.
+            </p>
+            <p>
+              The same sticky grenades work, but the Bastion punishes sloppy approach angles. Use hard cover to bait the cannons, then pop out long enough to wreck a knee.
+            </p>
+            <ul class="list-disc space-y-2 pl-5">
+              <li>Bait one knee at a time&mdash;as soon as it vents, sprint in and unload into the exposed chassis.</li>
+              <li>If it refuses to budge, toss Snap Hooks or Trigger grenades onto the back plate to force a stagger.</li>
+              <li>Expect reinforcements: Bastions often spawn with drones, so clear the adds before committing to the shove.</li>
+              <li>Maintain a medium buffer; the Bastion's grab-and-crush melee can down anyone hugging its legs.</li>
+            </ul>
+            <p>
+              The knee explosion mirrors the Bombardier stun window. Once those stabilizers vent, pour every spare round into the chassis before it recalibrates.
+            </p>
+            <p class="text-xs text-slate-300/70">
+              Intel cross-check: <a class="underline decoration-dotted decoration-slate-400/60 hover:text-slate-100" href="https://kboosting.com/arc-raiders/guides/enemy-weaknesses-guide" target="_blank" rel="noopener">KBoosting enemy dossier</a>, <a class="underline decoration-dotted decoration-slate-400/60 hover:text-slate-100" href="ARC%20Weakness%20Dossier_%20Defeating%20Every%20Major%20ARC%20Threat.pdf" target="_blank" rel="noopener">Field dossier PDF</a>.
+            </p>
+          </div>
+        </article>
+      <article data-target="lornade" class="hidden rounded-3xl border border-lime-500/30 bg-lime-500/10 p-8 shadow-lg shadow-lime-500/10">
+        <header class="flex items-baseline justify-between gap-4">
+          <h2 class="text-2xl font-semibold text-lime-100">Forced Friendly Fire &mdash; Lornade Chaos</h2>
+          <span class="text-xs uppercase tracking-[0.3em] text-lime-200/70">Cross-Aggro Control</span>
+        </header>
+        <div class="mt-4 space-y-4 text-base text-lime-50/90">
+          <p>
+            Facing mixed packs? Tag one Ark with a Lornade and let its allies do the work. Bombardiers happily rocket stunned Leapers, and twin Lornades can turn whole patrols on each other.
+          </p>
+          <p class="text-sm text-lime-200/70">
+            Reserve a grenade for emergencies&mdash;redirecting a Rocketeer or Bastion buys a clean escape if your fireteam needs a reset.
+          </p>
+        </div>
+      </article>
+
+      <article data-target="wasp" class="hidden rounded-3xl border border-violet-500/30 bg-violet-500/10 p-8 shadow-lg shadow-violet-500/10">
+            <header class="flex items-baseline justify-between gap-4">
+              <h2 class="text-2xl font-semibold text-violet-100">Wasp &mdash; Anti-Swarm Priority</h2>
+              <span class="text-xs uppercase tracking-[0.3em] text-violet-200/70">Hit First</span>
+            </header>
+            <div class="mt-4 space-y-4 text-base text-violet-50/90">
+              <p>
+                Wasps aggro fast and never let go. Skip the thrusters and drill straight through the main body before it closes distance&mdash;three Anvil rounds or a solid rifle volley does the job.
+              </p>
+              <p>
+                Patrol logs note they travel in tidy formations of two or three, then break into erratic zigzags the moment you shoot. Crack the lead drone quickly so the rest lose their sync and drift into easier lanes.
+              </p>
+              <ul class="list-disc space-y-2 pl-5">
+                <li>Focus centre mass for a fast kill&mdash;every second spent aiming at thrusters is a second the swarm can flank.</li>
+                <li>Pop two exposed thrusters when you need control, then finish the wobbling chassis before it stabilises.</li>
+                <li>Slip behind cover when you see the yellow targeting laser, then counter immediately after the burst.</li>
+                <li>Clear the skies before re-engaging heavier ARCs so Wasps cannot drag you out of position mid-fight.</li>
+              </ul>
+              <p class="text-sm text-violet-200/70">
+                Break a wing and it spirals erratically, still shooting. End the fight early so you control the sky.
+              </p>
+              <p class="text-xs text-violet-200/60">
+                Intel cross-check: <a class="underline decoration-dotted decoration-violet-300/60 hover:text-violet-100" href="https://kboosting.com/arc-raiders/guides/enemy-weaknesses-guide" target="_blank" rel="noopener">KBoosting enemy dossier</a>, <a class="underline decoration-dotted decoration-violet-300/60 hover:text-violet-100" href="ARC%20Weakness%20Dossier_%20Defeating%20Every%20Major%20ARC%20Threat.pdf" target="_blank" rel="noopener">Field dossier PDF</a>.
+              </p>
+            </div>
+          </article>
+
+      <article data-target="hornet" class="hidden rounded-3xl border border-sky-500/30 bg-sky-500/10 p-8 shadow-lg shadow-sky-500/10">
+          <header class="flex items-baseline justify-between gap-4">
+            <h2 class="text-2xl font-semibold text-sky-100">Hornet &mdash; Armor Peel Sequence</h2>
+            <span class="text-xs uppercase tracking-[0.3em] text-sky-200/70">Two-Layer Break</span>
+          </header>
+          <div class="mt-4 space-y-4 text-base text-sky-50/90">
+            <p>
+              Instead of chasing rear thrusters, strip the front plating. Once it drops, the exposed first thruster crumbles quickly.
+            </p>
+            <p>
+              Dexerto's field log calls out the Hornet's lock-on laser: when you see the red beam, get moving before the stun bolt lands. The projectile crawls through the air, so wide strafes or hard cover swaps keep you in the fight.
+            </p>
+            <ul class="list-disc space-y-2 pl-5">
+              <li>Stay mobile between shots&mdash;any stun leaves you helpless for the follow-up burst.</li>
+              <li>If you can't break the front plate quickly, swing wide and chain precision shots into the rear thrusters to collapse one flank.</li>
+              <li>Loot the driver module; the Hornet Driver grenade is tailor-made to ground Rocketeers.</li>
+            </ul>
+            <p>
+              Keep firing into the second thruster in the same line. Removing both on one side drags the Hornet to the dirt faster than circling behind it.
+            </p>
+            <p class="text-xs text-sky-200/60">
+              Intel cross-check: <a class="underline decoration-dotted decoration-sky-300/60 hover:text-sky-100" href="https://www.dexerto.com/wikis/arc-raiders/how-to-beat-hornet/" target="_blank" rel="noopener">Dexerto Hornet guide</a>, <a class="underline decoration-dotted decoration-sky-300/60 hover:text-sky-100" href="ARC%20Weakness%20Dossier_%20Defeating%20Every%20Major%20ARC%20Threat.pdf" target="_blank" rel="noopener">Field dossier PDF</a>.
+            </p>
+          </div>
+        </article>
+      <article data-target="queen" class="hidden rounded-3xl border border-slate-800/60 bg-slate-900/70 p-8">
+          <header class="flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between">
+            <h2 class="text-2xl font-semibold text-slate-50">Next Target: The Queen</h2>
+            <span class="text-xs uppercase tracking-[0.3em] text-slate-400/70">Extreme Threat Level</span>
+          </header>
+          <div class="mt-4 space-y-4 text-base text-slate-300">
+            <p>
+              The Queen is ARC's apex war machine: six legs, rotating beam arrays, EMP pulses, and the authority to summon Rocketeers mid-fight. The field dossier makes it clear that victory demands a coordinated squad with heavy launchers, spare batteries, and a plan to loop knockdowns.
+            </p>
+            <ul class="list-disc space-y-2 pl-5">
+              <li>Focus fire on one leg at a time. Break the armored plate, destroy the joint beneath, and repeat until the Queen collapses.</li>
+              <li>When she crashes, her brain/core opens. Dump Hullcracker rounds, Tempest rails, and heavy grenades during this stagger window before retreating.</li>
+              <li>Expect retaliatory lasers and add spawns as she recovers. Clear Rocketeers and drones immediately so the arena stays manageable.</li>
+              <li>Restock often and keep moving&mdash;static teams get erased by sweeping beams or point-blank EMPs.</li>
+            </ul>
+            <p class="text-sm text-slate-400">
+              Few squads take her down on the first cycle. Treat each knockdown as progress, rotate heavy ammo duties, and bail if your supplies dry up&mdash;the Harvester objective is usually safer than a wipe.
+            </p>
+            <p class="text-xs text-slate-500">
+              Intel cross-check: <a class="underline decoration-dotted decoration-slate-400/60 hover:text-slate-100" href="ARC%20Weakness%20Dossier_%20Defeating%20Every%20Major%20ARC%20Threat.pdf" target="_blank" rel="noopener">Field dossier PDF</a>.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const canvas = document.getElementById('backdrop');
+    const ctx = canvas.getContext('2d');
+    const motes = [];
+    const density = 150;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      motes.length = 0;
+      for (let i = 0; i < density; i += 1) {
+        motes.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: 1 + Math.random() * 2.5,
+          speed: 0.25 + Math.random() * 0.5,
+          hue: 190 + Math.random() * 40,
+        });
+      }
+    }
+
+    function tick() {
+      ctx.fillStyle = 'rgba(7, 11, 23, 0.4)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      motes.forEach((p) => {
+        ctx.beginPath();
+        ctx.fillStyle = `hsla(${p.hue}, 80%, 60%, 0.6)`;
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+        p.y -= p.speed;
+        if (p.y < -4) {
+          p.y = canvas.height + Math.random() * 12;
+          p.x = Math.random() * canvas.width;
+        }
+      });
+      requestAnimationFrame(tick);
+    }
+
+    resizeCanvas();
+    tick();
+    window.addEventListener('resize', resizeCanvas);
+
+    const targetList = document.getElementById('target-list');
+    const targetArticles = Array.from(document.querySelectorAll('#target-details [data-target]'));
+    const targetButtons = [];
+
+    function createTargetButton(article, index) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.dataset.target = article.dataset.target;
+      button.className =
+        'w-full rounded-2xl border border-transparent px-4 py-3 text-left text-sm text-slate-200 transition hover:border-cyan-400/40 hover:bg-cyan-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60';
+      const title = article.querySelector('h2')?.textContent?.trim() ?? article.dataset.target;
+      button.innerHTML = `
+        <p class="text-xs uppercase tracking-[0.2em] text-cyan-200/70">${String(index + 1).padStart(2, '0')}</p>
+        <p class="mt-1 text-base font-semibold text-slate-50">${title}</p>
+      `;
+      return button;
+    }
+
+    function setActiveTarget(targetId) {
+      targetArticles.forEach((article) => {
+        if (article.dataset.target === targetId) {
+          article.classList.remove('hidden');
+          article.setAttribute('aria-hidden', 'false');
+        } else {
+          article.classList.add('hidden');
+          article.setAttribute('aria-hidden', 'true');
+        }
+      });
+
+      targetButtons.forEach((button) => {
+        if (button.dataset.target === targetId) {
+          button.classList.add('border-cyan-400/60', 'bg-cyan-500/15', 'text-cyan-100');
+          button.setAttribute('aria-current', 'true');
+        } else {
+          button.classList.remove('border-cyan-400/60', 'bg-cyan-500/15', 'text-cyan-100');
+          button.removeAttribute('aria-current');
+        }
+      });
+    }
+
+    function handleNavClick(event) {
+      const button = event.target.closest('button[data-target]');
+      if (!button) return;
+      setActiveTarget(button.dataset.target);
+    }
+
+    function handleNavKeydown(event) {
+      if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
+      const activeButton = targetList.querySelector('button[aria-current="true"]');
+      if (!activeButton) return;
+      event.preventDefault();
+      const index = targetButtons.indexOf(activeButton);
+      if (index === -1) return;
+      let nextIndex = index;
+      if (event.key === 'ArrowDown') {
+        nextIndex = (index + 1) % targetButtons.length;
+      } else if (event.key === 'ArrowUp') {
+        nextIndex = (index - 1 + targetButtons.length) % targetButtons.length;
+      }
+      const nextButton = targetButtons[nextIndex];
+      nextButton?.focus({ preventScroll: true });
+      setActiveTarget(nextButton.dataset.target);
+    }
+
+    if (targetList && targetArticles.length > 0) {
+      targetArticles.forEach((article, index) => {
+        const button = createTargetButton(article, index);
+        targetButtons.push(button);
+        targetList.append(button);
+        article.setAttribute('aria-hidden', 'true');
+      });
+
+      targetList.addEventListener('click', handleNavClick);
+      targetList.addEventListener('keydown', handleNavKeydown);
+
+      const firstTarget = targetArticles[0];
+      if (firstTarget) {
+        setActiveTarget(firstTarget.dataset.target);
+      }
+    }
+  </script>
+</body>
+</html>
