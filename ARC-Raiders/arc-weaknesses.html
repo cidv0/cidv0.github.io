@@ -20,7 +20,7 @@
           <p class="text-xs uppercase tracking-[0.25em] text-cyan-300/70">ARC Raiders Recon Archive</p>
           <h1 class="text-4xl font-semibold text-slate-50 md:text-5xl">ARC Weakness Dossier</h1>
           <p class="text-base text-slate-300">
-            Veteran field runs turned up reliable counters for every serious Ark threat. These notes skip the easy targets&mdash;Snitches, Pops, Fireballs, and Ticks go down to disciplined fire. Instead, you'll find the tactics that melt Leapers, ground Rocketeers, and keep Bombardiers from carving the squad apart.
+            Veteran field runs turned up reliable counters for every serious ARC threat. These notes skip the easy targets&mdash;Snitches, Pops, Fireballs, and Ticks go down to disciplined fire. Instead, you'll find the tactics that melt Leapers, ground Rocketeers, and keep Bombardiers from carving the squad apart.
           </p>
         </div>
         <aside class="flex flex-col gap-3 text-sm text-slate-300">
@@ -32,7 +32,7 @@
           <div class="rounded-2xl border border-slate-800/60 bg-slate-900/70 px-4 py-3">
             <p class="text-xs uppercase tracking-wide text-slate-400">Recon Primer</p>
             <p class="mt-2 text-xs text-slate-400">
-              Most counters hinge on status effects, forced friendly fire, or mobility denial. Pack the right grenade or gadget before drop and stay flexible once the Ark reacts.
+              Most counters hinge on status effects, forced friendly fire, or mobility denial. Pack the right grenade or gadget before drop and stay flexible once the ARC reacts.
             </p>
           </div>
         </aside>
@@ -174,7 +174,7 @@
         </header>
         <div class="mt-4 space-y-4 text-base text-lime-50/90">
           <p>
-            Facing mixed packs? Tag one Ark with a Lornade and let its allies do the work. Bombardiers happily rocket stunned Leapers, and twin Lornades can turn whole patrols on each other.
+            Facing mixed packs? Tag one ARC with a Lornade and let its allies do the work. Bombardiers happily rocket stunned Leapers, and twin Lornades can turn whole patrols on each other.
           </p>
           <p class="text-sm text-lime-200/70">
             Reserve a grenade for emergencies&mdash;redirecting a Rocketeer or Bastion buys a clean escape if your fireteam needs a reset.
@@ -264,38 +264,136 @@
   <script>
     const canvas = document.getElementById('backdrop');
     const ctx = canvas.getContext('2d');
-    const motes = [];
-    const density = 150;
+    const tunnelRings = [];
+    const tunnelBeams = [];
+    let centerX = 0;
+    let centerY = 0;
+    let focalRadius = 0;
+    let maxRadius = 0;
+    let perspectiveSquash = 0.5;
+    let lastTime = 0;
 
     function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      motes.length = 0;
-      for (let i = 0; i < density; i += 1) {
-        motes.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          r: 1 + Math.random() * 2.5,
-          speed: 0.25 + Math.random() * 0.5,
-          hue: 190 + Math.random() * 40,
+      const ratio = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * ratio;
+      canvas.height = window.innerHeight * ratio;
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(ratio, ratio);
+
+      centerX = window.innerWidth / 2;
+      centerY = window.innerHeight * 0.18;
+      maxRadius = Math.hypot(window.innerWidth, window.innerHeight) * 1.2;
+      focalRadius = Math.max(80, window.innerWidth * 0.08);
+      perspectiveSquash = 0.35 + Math.min(0.35, window.innerHeight / (window.innerWidth || 1) * 0.25);
+
+      const ringTotal = Math.round(16 + window.innerWidth / 200);
+      const beamTotal = 28;
+      tunnelRings.length = 0;
+      tunnelBeams.length = 0;
+
+      for (let i = 0; i < ringTotal; i += 1) {
+        tunnelRings.push({
+          radius: Math.random() * maxRadius,
+          thickness: 6 + Math.random() * 10,
+          speed: 70 + Math.random() * 60,
+          dash: 10 + Math.random() * 14,
+          gap: 12 + Math.random() * 26,
+          offset: Math.random() * 200,
+        });
+      }
+
+      for (let i = 0; i < beamTotal; i += 1) {
+        tunnelBeams.push({
+          angle: (i / beamTotal) * Math.PI * 2,
+          phase: Math.random() * Math.PI * 2,
+          speed: 0.18 + Math.random() * 0.15,
         });
       }
     }
 
-    function tick() {
-      ctx.fillStyle = 'rgba(7, 11, 23, 0.4)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      motes.forEach((p) => {
+    function drawBackdrop() {
+      const gradient = ctx.createRadialGradient(
+        centerX,
+        centerY,
+        focalRadius * 0.2,
+        centerX,
+        centerY,
+        maxRadius
+      );
+      gradient.addColorStop(0, 'rgba(130, 130, 140, 0.08)');
+      gradient.addColorStop(0.45, 'rgba(5, 6, 8, 0.96)');
+      gradient.addColorStop(1, 'rgba(2, 2, 4, 1)');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+    }
+
+    function drawBeams(delta) {
+      tunnelBeams.forEach((beam) => {
+        beam.phase += beam.speed * delta;
+        const depth = (Math.sin(beam.phase) + 1) / 2;
+        const start = focalRadius * (0.6 + depth * 0.3);
+        const end = maxRadius * 1.05;
+        const cos = Math.cos(beam.angle);
+        const sin = Math.sin(beam.angle);
+
         ctx.beginPath();
-        ctx.fillStyle = `hsla(${p.hue}, 80%, 60%, 0.6)`;
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fill();
-        p.y -= p.speed;
-        if (p.y < -4) {
-          p.y = canvas.height + Math.random() * 12;
-          p.x = Math.random() * canvas.width;
-        }
+        ctx.moveTo(centerX + cos * start, centerY + sin * start * perspectiveSquash);
+        ctx.lineTo(centerX + cos * end, centerY + sin * end * perspectiveSquash);
+        ctx.lineWidth = 0.5 + (1 - depth) * 2;
+        const intensity = 0.012 + 0.04 * (1 - depth);
+        ctx.strokeStyle = `rgba(180, 180, 190, ${intensity})`;
+        ctx.stroke();
       });
+    }
+
+    function drawRings(delta) {
+      tunnelRings.forEach((ring) => {
+        ring.radius += ring.speed * delta;
+        if (ring.radius > maxRadius) {
+          ring.radius = focalRadius * (0.4 + Math.random() * 0.3);
+          ring.speed = 70 + Math.random() * 60;
+          ring.thickness = 6 + Math.random() * 10;
+          ring.dash = 10 + Math.random() * 14;
+          ring.gap = 12 + Math.random() * 26;
+          ring.offset = Math.random() * 200;
+        }
+        const progress = ring.radius / maxRadius;
+        ring.offset -= delta * 60;
+        ctx.beginPath();
+        ctx.ellipse(centerX, centerY, ring.radius, ring.radius * perspectiveSquash, 0, 0, Math.PI * 2);
+        ctx.setLineDash([ring.dash, ring.gap]);
+        ctx.lineDashOffset = ring.offset;
+        ctx.lineWidth = ring.thickness * (1 - progress * 0.7);
+        ctx.strokeStyle = `rgba(140, 140, 150, ${0.04 + (1 - progress) * 0.18})`;
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.lineDashOffset = 0;
+      });
+    }
+
+    function addDirectionalGlow() {
+      const overlay = ctx.createLinearGradient(0, 0, 0, window.innerHeight);
+      overlay.addColorStop(0, 'rgba(90, 90, 105, 0.08)');
+      overlay.addColorStop(0.35, 'rgba(2, 6, 12, 0)');
+      overlay.addColorStop(1, 'rgba(2, 6, 12, 0.85)');
+      ctx.fillStyle = overlay;
+      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+    }
+
+    function tick(now = 0) {
+      const delta = Math.min((now - lastTime) / 1000, 0.05) || 0.016;
+      lastTime = now;
+
+      ctx.save();
+      drawBackdrop();
+      ctx.globalCompositeOperation = 'lighter';
+      drawBeams(delta);
+      drawRings(delta);
+      ctx.restore();
+      addDirectionalGlow();
+
       requestAnimationFrame(tick);
     }
 
