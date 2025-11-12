@@ -101,77 +101,8 @@
           data-sheet-image
         />
       </div>
-      <div class="zoom-window" aria-hidden="true" data-zoom-window></div>
     </figure>
-    <p class="hint">Move your cursor to zoom</p>
   </main>
 
-  <script>
-    (() => {
-      const wrapper = document.querySelector("[data-zoom-wrapper]");
-      const sheet = document.querySelector("[data-sheet-image]");
-      const lens = document.querySelector("[data-zoom-window]");
-      if (!wrapper || !sheet || !lens) return;
-
-      const state = {
-        zoom: 2.25,
-      };
-
-      const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
-
-      const moveLens = (event) => {
-        const rect = sheet.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-        if (x < 0 || y < 0 || x > rect.width || y > rect.height) {
-          hideLens();
-          return;
-        }
-
-        if (!lens.classList.contains("is-visible")) {
-          lens.classList.add("is-visible");
-        }
-
-        const lensWidth = lens.offsetWidth || 1;
-        const lensHeight = lens.offsetHeight || 1;
-        const left = clamp(x - lensWidth / 2, 0, rect.width - lensWidth);
-        const top = clamp(y - lensHeight / 2, 0, rect.height - lensHeight);
-
-        lens.style.setProperty("--lens-x", `${left}px`);
-        lens.style.setProperty("--lens-y", `${top}px`);
-
-        const scaledWidth = rect.width * state.zoom;
-        const scaledHeight = rect.height * state.zoom;
-        lens.style.backgroundSize = `${scaledWidth}px ${scaledHeight}px`;
-        const bgX = -(x * state.zoom - lensWidth / 2);
-        const bgY = -(y * state.zoom - lensHeight / 2);
-        lens.style.backgroundPosition = `${bgX}px ${bgY}px`;
-      };
-
-      const hideLens = () => {
-        lens.classList.remove("is-visible");
-        lens.style.setProperty("--lens-x", `-9999px`);
-        lens.style.setProperty("--lens-y", `-9999px`);
-      };
-
-      const handlePointerLeave = () => {
-        hideLens();
-      };
-
-      const setup = () => {
-        const src = sheet.currentSrc || sheet.src;
-        lens.style.backgroundImage = `url('${src}')`;
-        wrapper.addEventListener("pointermove", moveLens);
-        wrapper.addEventListener("pointerleave", handlePointerLeave);
-        wrapper.addEventListener("pointercancel", handlePointerLeave);
-      };
-
-      if (sheet.complete) {
-        setup();
-      } else {
-        sheet.addEventListener("load", setup, { once: true });
-      }
-    })();
-  </script>
 </body>
 </html>
