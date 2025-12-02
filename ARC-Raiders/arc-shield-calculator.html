@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ARC Raiders Damage Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #020617;
+      --bg-card: rgba(15, 23, 42, 0.82);
+      --bg-card-soft: rgba(17, 24, 39, 0.7);
+      --accent: #22d3ee;
+      --accent-soft: rgba(34, 211, 238, 0.16);
+      --accent-strong: #67e8f9;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --danger: #f87171;
+      --success: #34d399;
+      --border: rgba(148, 163, 184, 0.28);
+      --font: system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(2, 6, 17, 0.65), rgba(2, 6, 17, 0.85)),
+        url('images/release-date-reveal-trailer.jpg') center center / cover no-repeat;
+      transform: scale(1.02);
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 20% 18%, rgba(34, 211, 238, 0.12), transparent 36%),
+        radial-gradient(circle at 78% 10%, rgba(56, 189, 248, 0.12), transparent 32%),
+        radial-gradient(circle at 50% 65%, rgba(15, 23, 42, 0.35), transparent 50%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: 1.5rem;
+      border: 1px solid var(--border);
+      padding: 1.1rem 1.2rem 1rem;
+      box-shadow: 0 22px 55px rgba(2, 6, 23, 0.6);
+    }
+
+    .card h2 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-strong);
+    }
+
+    .card small {
+      color: var(--text-muted);
+      display: block;
+      line-height: 1.4;
+    }
+
+    .field-group {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .field {
+      flex: 1 1 120px;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .field label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    input[type="number"],
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 7px 9px;
+      border-radius: 0.75rem;
+      border: 1px solid var(--border);
+      background: rgba(2, 6, 23, 0.9);
+      color: var(--text);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+    }
+
+    input[type="number"]:focus,
+    input[type="text"]:focus,
+    select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.25);
+      background: rgba(10, 12, 25, 0.98);
+    }
+
+    select {
+      padding-right: 26px;
+    }
+
+    button {
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.14), rgba(14, 165, 233, 0.22));
+      color: var(--text);
+      font-size: 0.82rem;
+      padding: 7px 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background 0.12s ease, border-color 0.1s ease, transform 0.05s ease;
+      white-space: nowrap;
+    }
+
+    button.primary {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, #22d3ee 0, #0ea5e9 55%, #2563eb 100%);
+      color: #0b1220;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    button.ghost {
+      background: rgba(15, 23, 42, 0.65);
+      border-color: rgba(148, 163, 184, 0.35);
+      color: var(--text-muted);
+    }
+
+    button.small {
+      padding: 5px 9px;
+      font-size: 0.75rem;
+    }
+
+    button:hover {
+      border-color: var(--accent);
+      transform: translateY(-0.5px);
+    }
+
+    button:active {
+      transform: translateY(0);
+      filter: brightness(0.97);
+    }
+
+    button:disabled {
+      opacity: 0.45;
+      cursor: default;
+      transform: none;
+    }
+
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .stat-pill {
+      flex: 1 1 120px;
+      min-width: 0;
+      border-radius: 0.9rem;
+      border: 1px solid var(--border);
+      padding: 7px 10px;
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      background: var(--bg-card-soft);
+    }
+
+    .stat-pill .label {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .stat-pill .value {
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stat-pill .value strong {
+      font-weight: 600;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      border: 1px solid rgba(34, 211, 238, 0.4);
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+    }
+
+    .badge-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(0, 0, 0, 0.4);
+      color: var(--text-muted);
+    }
+
+    .badge-inline.live {
+      border-color: rgba(52, 211, 153, 0.7);
+      color: var(--success);
+    }
+
+    .badge-inline.dead {
+      border-color: rgba(248, 113, 113, 0.7);
+      color: var(--danger);
+    }
+
+    .hit-modes {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .hit-modes button {
+      flex: 1 1 60px;
+    }
+
+    .hit-modes button.active {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent-strong);
+    }
+
+    #log {
+      max-height: 280px;
+      overflow: auto;
+      padding: 6px 4px 2px;
+      border-radius: 0.85rem;
+      background: rgba(8, 12, 24, 0.8);
+      font-size: 0.82rem;
+      line-height: 1.4;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    #log div {
+      padding: 4px 4px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      white-space: normal;
+      word-break: break-word;
+      font-variant-numeric: tabular-nums;
+    }
+
+    #log div:last-child {
+      border-bottom: none;
+    }
+
+    .log-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      gap: 8px;
+    }
+
+    .muted {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .shield-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      align-items: center;
+    }
+
+    .shield-row .field {
+      flex: 1 1 110px;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .chip-row .chip {
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px dashed rgba(255, 255, 255, 0.14);
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      background: rgba(2, 6, 23, 0.5);
+    }
+
+    .right-align {
+      text-align: right;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      align-items: center;
+      padding-top: 0.35rem;
+    }
+
+    .flat-btn {
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: rgba(15, 23, 42, 0.6);
+      color: var(--text);
+      box-shadow: none;
+    }
+
+    .bar-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .bar-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .bar-track {
+      position: relative;
+      height: 24px;
+      border-radius: 999px;
+      overflow: visible;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: rgba(7, 10, 20, 0.75);
+      box-shadow: inset 0 4px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: inherit;
+      transition: width 180ms ease-out;
+    }
+
+    .bar-fill.shield {
+      background: linear-gradient(90deg, #38bdf8 0%, #0ea5e9 60%, #2563eb 100%);
+      box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.5), 0 8px 18px rgba(14, 165, 233, 0.35);
+    }
+
+    .bar-fill.life {
+      background: #f8fafc;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6), 0 8px 16px rgba(255, 255, 255, 0.25);
+    }
+
+    .bar-title {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #f8fafc;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+      pointer-events: none;
+    }
+
+    .bar-tooltip {
+      position: absolute;
+      transform: translate(-50%, -120%);
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      color: #e2e8f0;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.75rem;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 80ms ease;
+    }
+
+    .step-row {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+      padding: 4px 4px 6px;
+    }
+
+    .step-marker {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--text);
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .step-marker .step-label {
+      position: absolute;
+      top: -10px;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+
+    .step-text {
+      flex: 1;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .shield-switch {
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .shield-switch button {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.7);
+      color: #cbd5e1;
+      padding: 3px 9px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: border-color 0.1s ease, background 0.1s ease, color 0.1s ease;
+    }
+
+    .shield-switch button.active {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+    }
+
+    .mono {
+      font-variant-numeric: tabular-nums;
+      font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    .header-badge {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-weight: 700;
+    }
+
+    @media (max-width: 1024px) {
+      #log {
+        max-height: 220px;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased">
+  <main class="relative mx-auto flex min-h-screen max-w-6xl flex-col gap-10 px-6 py-16 lg:px-10">
+    <header class="rounded-3xl border border-slate-800/60 bg-slate-900/70 p-8 shadow-xl shadow-cyan-500/10 backdrop-blur">
+      <div class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+        <div class="space-y-3">
+          <p class="text-xs uppercase tracking-[0.25em] text-cyan-300/70">ARC Raiders Damage Calculator</p>
+          <h1 class="flex flex-wrap items-center gap-3 text-4xl font-semibold text-slate-50 md:text-5xl">
+            ARC Raiders Damage Calculator
+          </h1>
+          <p class="text-base text-slate-300">
+            Simulates how shields soak damage and logs every step while you adjust life or shield.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <section class="rounded-3xl border border-slate-800/60 bg-slate-900/70 p-5 shadow-xl shadow-cyan-500/10">
+        <div class="bar-block">
+          <div class="bar-label">
+            <span>Shield</span>
+            <div class="shield-switch" id="shieldSwitch">
+              <button type="button" data-shield="none">None</button>
+              <button type="button" data-shield="light">Light</button>
+              <button type="button" data-shield="medium">Medium</button>
+              <button type="button" data-shield="heavy" class="active">Heavy</button>
+              <button type="button" data-shield="custom">Custom</button>
+            </div>
+            <span class="mono text-slate-200" id="shieldBarLabel">80.0 / 80</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-title" id="shieldBarTitle">Heavy Shield (52.5% DR)</div>
+            <div id="shieldBar" class="bar-fill shield" style="width: 100%;"></div>
+            <div id="shieldTooltip" class="bar-tooltip"></div>
+          </div>
+        </div>
+        <div class="bar-block" style="margin-top:0.75rem;">
+          <div class="bar-label">
+            <span>Life</span>
+            <span class="mono text-slate-200" id="lifeBarLabel">100.0 / 100</span>
+          </div>
+          <div class="bar-track">
+            <div id="lifeBar" class="bar-fill life" style="width: 100%;"></div>
+            <div id="lifeTooltip" class="bar-tooltip"></div>
+          </div>
+        </div>
+    </section>
+
+    <section class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <!-- APPLY DAMAGE -->
+      <section class="card shadow-xl shadow-cyan-500/5 lg:col-span-2">
+        <h2>Apply Damage</h2>
+        <small>Select damage type and amount, then hit Apply Damage.</small>
+
+        <div class="field-group" style="margin-top:6px;">
+          <div class="field">
+            <label for="weaponPreset">Weapon / grenade preset</label>
+            <select id="weaponPreset">
+              <option value="">Custom</option>
+              <optgroup label="Assault Rifles">
+                <option value="kettle" data-damage="10">Kettle (10)</option>
+                <option value="arpeggio" data-damage="9.5">Arpeggio (9.5, per bullet)</option>
+                <option value="tempest" data-damage="10">Tempest (10)</option>
+              </optgroup>
+              <optgroup label="Battle Rifles">
+                <option value="ferro" data-damage="40">Ferro / Pharaoh (40)</option>
+                <option value="renegade" data-damage="35">Renegade (35)</option>
+              </optgroup>
+              <optgroup label="SMGs">
+                <option value="stitcher" data-damage="7">Stitcher (7)</option>
+                <option value="bobcat" data-damage="6">Bobcat (6)</option>
+              </optgroup>
+              <optgroup label="Shotguns (per pellet)">
+                <option value="iltoro" data-damage="67.5">Il Toro (67.5)</option>
+                <option value="vulcano" data-damage="49.5">Vulcano (49.5)</option>
+              </optgroup>
+              <optgroup label="Pistols">
+                <option value="hairpin" data-damage="20">Hairpin (20)</option>
+                <option value="burletta" data-damage="10">Burletta (10)</option>
+                <option value="anvil" data-damage="40">Anvil (40)</option>
+                <option value="venator" data-damage="18">Venator (18)</option>
+              </optgroup>
+              <optgroup label="Special / LMG">
+                <option value="torrente" data-damage="8">Torrente (8)</option>
+                <option value="hullcracker" data-damage="100">Hullcracker (100)</option>
+                <option value="equalizer" data-damage="8">Equalizer (8)</option>
+              </optgroup>
+              <optgroup label="Grenades">
+                <option value="lightImpact" data-damage="30">Light Impact Grenade (30)</option>
+                <option value="snapBlast" data-damage="70">Snap Blast Grenade (70)</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="field">
+            <label for="baseDamage">Base damage per hit</label>
+            <input id="baseDamage" type="number" min="0" step="0.1" value="70">
+          </div>
+          <div class="field" style="max-width:120px;">
+            <label for="numHits">Number of hits</label>
+            <input id="numHits" type="number" min="1" step="1" value="1">
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="field">
+            <label for="hitMultiplier">Damage multiplier (hit location)</label>
+            <input id="hitMultiplier" type="number" min="0" step="0.05" value="1">
+          </div>
+        </div>
+
+        <div class="hit-modes" style="margin-bottom:4px;">
+          <button type="button" class="small" data-mult="0.75" id="legBtn">Leg (×0.75)</button>
+          <button type="button" class="small active" data-mult="1" id="bodyBtn">Body (×1)</button>
+          <button type="button" class="small" data-mult="2.5" id="headBtn">Head (×2.5)</button>
+        </div>
+
+        <div class="toolbar">
+          <button id="applyDamageBtn" class="primary" type="button" style="width:100%;color:#f8fafc;">
+            Apply Damage
+          </button>
+        </div>
+
+        <div class="stats-row" style="margin-top:6px;">
+          <div class="stat-pill">
+            <div class="label">Damage reduction (DR)</div>
+            <div class="value mono">
+              <strong id="drValue">52.5%</strong>
+            </div>
+          </div>
+          <div class="stat-pill">
+            <div class="label">Shots fired</div>
+            <div class="value mono"><strong id="shotsFiredValue">0</strong></div>
+          </div>
+          <div class="stat-pill">
+            <div class="label">Damage mitigated (total)</div>
+            <div class="value mono"><strong id="mitigatedValue">0.0</strong></div>
+          </div>
+          <div class="stat-pill">
+            <div class="label">Potential damage (total)</div>
+            <div class="value mono">
+              <strong id="potentialValue">0.0</strong>
+              <span class="muted">Life lost + mitigated (includes hit multiplier)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LOG -->
+      <section class="card shadow-xl shadow-cyan-500/5">
+        <h2>Action Log</h2>
+        <small>See every hit step-by-step. Latest entries append to the bottom.</small>
+
+        <div class="log-header" style="margin-top:6px;">
+          <div class="muted">
+            Undo or redo to fix mistakes.
+          </div>
+          <div>
+            <button id="undoBtn" class="small flat-btn" type="button">Undo</button>
+            <button id="redoBtn" class="small flat-btn" type="button">Redo</button>
+          </div>
+        </div>
+
+        <div id="log"></div>
+      </section>
+    </section>
+
+    <section class="card">
+      <h2>Notes</h2>
+      <small>Quick reminders for how this model behaves.</small>
+      <ul class="list-disc space-y-2 pl-5 text-sm text-slate-200">
+        <li>As long as shield had at least 1 charge at impact, damage reduction applies for that hit.</li>
+        <li>Shield charge is consumed only by base damage (no head/leg multipliers).</li>
+        <li>Headshot or leg multipliers are applied after damage reduction; the shield only ever sees base damage.</li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    // --- CONFIG DATA -------------------------------------------------------
+
+    const SHIELDS = {
+      none:   { key: 'none',   label: 'No Shield',     capacity: 0,   dr: 0.0,   life: 100 },
+      light:  { key: 'light',  label: 'Light Shield',  capacity: 40,  dr: 0.40,  life: 100 },
+      medium: { key: 'medium', label: 'Medium Shield', capacity: 70,  dr: 0.425, life: 100 },
+      heavy:  { key: 'heavy',  label: 'Heavy Shield',  capacity: 80,  dr: 0.525, life: 100 },
+      custom: { key: 'custom', label: 'Custom Shield', capacity: 1000, dr: 0.525, life: 100 }
+    };
+
+    const WEAPON_LABELS = {
+      'kettle': 'Kettle',
+      'arpeggio': 'Arpeggio',
+      'tempest': 'Tempest',
+      'ferro': 'Ferro / Pharaoh',
+      'renegade': 'Renegade',
+      'stitcher': 'Stitcher',
+      'bobcat': 'Bobcat',
+      'iltoro': 'Il Toro',
+      'vulcano': 'Vulcano',
+      'hairpin': 'Hairpin',
+      'burletta': 'Burletta',
+      'anvil': 'Anvil',
+      'venator': 'Venator',
+      'torrente': 'Torrente',
+      'hullcracker': 'Hullcracker',
+      'equalizer': 'Equalizer',
+      'lightImpact': 'Light Impact Grenade',
+      'snapBlast': 'Snap Blast Grenade'
+    };
+
+    // --- STATE -------------------------------------------------------------
+
+    let state = {
+      shieldKey: 'heavy',
+      maxLife: 100,
+      life: 100,
+      shieldCapacityMax: 80,
+      shieldCapacity: 80,
+      shieldDR: 0.525,
+      shotsFired: 0,
+      totalMitigated: 0,
+      totalPotential: 0,
+      log: [],
+      defeated: false,
+      stepCounter: 0
+    };
+
+    const undoStack = [];
+    const redoStack = [];
+
+    function cloneState(s) {
+      return JSON.parse(JSON.stringify(s));
+    }
+
+    function pushUndo() {
+      undoStack.push(cloneState(state));
+      if (undoStack.length > 100) undoStack.shift();
+      redoStack.length = 0;
+      updateUndoRedoButtons();
+    }
+
+    function pushLog(text) {
+      state.stepCounter += 1;
+      state.log.push({ step: state.stepCounter, text });
+      if (state.log.length > 120) state.log.shift();
+    }
+
+    function applyState(newState) {
+      state = cloneState(newState);
+      updateUndoRedoButtons();
+      render();
+    }
+
+    function undo() {
+      if (!undoStack.length) return;
+      const prev = undoStack.pop();
+      redoStack.push(cloneState(state));
+      applyState(prev);
+    }
+
+    function redo() {
+      if (!redoStack.length) return;
+      const next = redoStack.pop();
+      undoStack.push(cloneState(state));
+      applyState(next);
+    }
+
+    function updateUndoRedoButtons() {
+      document.getElementById('undoBtn').disabled = !undoStack.length;
+      document.getElementById('redoBtn').disabled = !redoStack.length;
+    }
+
+    // --- INITIALIZATION ----------------------------------------------------
+
+    const els = {
+      drValue: document.getElementById('drValue'),
+
+      weaponPreset: document.getElementById('weaponPreset'),
+      baseDamage: document.getElementById('baseDamage'),
+      numHits: document.getElementById('numHits'),
+      hitMultiplier: document.getElementById('hitMultiplier'),
+      legBtn: document.getElementById('legBtn'),
+      bodyBtn: document.getElementById('bodyBtn'),
+      headBtn: document.getElementById('headBtn'),
+
+      applyDamageBtn: document.getElementById('applyDamageBtn'),
+      shotsFiredValue: document.getElementById('shotsFiredValue'),
+      mitigatedValue: document.getElementById('mitigatedValue'),
+      potentialValue: document.getElementById('potentialValue'),
+
+      log: document.getElementById('log'),
+      undoBtn: document.getElementById('undoBtn'),
+      redoBtn: document.getElementById('redoBtn'),
+
+      shieldBar: document.getElementById('shieldBar'),
+      lifeBar: document.getElementById('lifeBar'),
+      shieldBarLabel: document.getElementById('shieldBarLabel'),
+      lifeBarLabel: document.getElementById('lifeBarLabel'),
+      shieldBarTitle: document.getElementById('shieldBarTitle'),
+      shieldTooltip: document.getElementById('shieldTooltip'),
+      lifeTooltip: document.getElementById('lifeTooltip'),
+      shieldSwitch: document.getElementById('shieldSwitch')
+    };
+
+    function setShieldFromPreset(key) {
+      const preset = SHIELDS[key] || SHIELDS.heavy;
+      pushUndo();
+      state.shieldKey = key;
+      state.maxLife = preset.life;
+      state.life = preset.life;
+      state.shieldCapacityMax = preset.capacity;
+      state.shieldCapacity = preset.capacity;
+      state.shieldDR = preset.dr;
+      state.shotsFired = 0;
+      state.totalMitigated = 0;
+      state.totalPotential = 0;
+      state.log = [];
+      state.defeated = false;
+      state.stepCounter = 0;
+      render();
+    }
+
+    function resetAll() {
+      undoStack.length = 0;
+      redoStack.length = 0;
+      updateUndoRedoButtons();
+      setShieldFromPreset('heavy');
+    }
+
+    // --- DAMAGE LOGIC ------------------------------------------------------
+
+    function applyHits(baseDamage, hitMult, count, sourceLabel) {
+      baseDamage = Number(baseDamage) || 0;
+      hitMult = Number(hitMult) || 1;
+      count = Number(count) || 0;
+      if (baseDamage <= 0 || count <= 0) return;
+
+      const name = sourceLabel || 'Custom';
+
+      for (let i = 0; i < count; i++) {
+        const shieldUp = (state.shieldCapacity > 0) && (state.shieldDR > 0);
+        const potential = baseDamage * hitMult;
+        let lifeDamage = 0;
+        let mitigated = 0;
+
+        if (shieldUp) {
+          // Shield loses base damage (no multiplier).
+          state.shieldCapacity -= baseDamage;
+          if (state.shieldCapacity < 0) state.shieldCapacity = 0;
+
+          const reducedBase = baseDamage * (1 - state.shieldDR);
+          lifeDamage = reducedBase * hitMult;
+
+          mitigated = potential - lifeDamage;
+        } else {
+          lifeDamage = potential;
+          mitigated = 0;
+        }
+
+        const beforeLife = state.life;
+        state.life -= lifeDamage;
+        state.totalPotential += potential;
+        state.totalMitigated += mitigated;
+        state.shotsFired += 1;
+
+        if (state.life < 0) state.life = 0;
+
+        // Defeat threshold: game treats below 1 HP as down.
+        if (state.life < 1 && !state.defeated) {
+          state.defeated = true;
+        }
+
+        const entry = `${name} hit #${i + 1} — base ${baseDamage.toFixed(2)} x ${hitMult.toFixed(2)} `
+          + `-> potential ${potential.toFixed(2)}, mitigated ${mitigated.toFixed(2)}, `
+          + `life -${lifeDamage.toFixed(2)} (${beforeLife.toFixed(2)} -> ${state.life.toFixed(2)}), `
+          + `shield ${state.shieldCapacity.toFixed(2)} / ${state.shieldCapacityMax.toFixed(2)}`;
+        pushLog(entry);
+      }
+    }
+
+    function adjustViaBar(type, event, tooltipEl, trackEl) {
+      const rect = trackEl.getBoundingClientRect();
+      const ratio = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
+      const maxVal = type === 'life' ? state.maxLife : state.shieldCapacityMax;
+      const current = type === 'life' ? state.life : state.shieldCapacity;
+      const target = maxVal * ratio;
+      const delta = target - current;
+      const direction = delta >= 0 ? 'Add' : 'Remove';
+      const amount = Math.abs(delta);
+      tooltipEl.style.left = `${(ratio * 100).toFixed(2)}%`;
+      tooltipEl.textContent = `${direction} ${amount.toFixed(1)} ${type}`;
+      tooltipEl.style.opacity = '1';
+    }
+
+    function commitBarAdjust(type, event, tooltipEl, trackEl) {
+      const rect = trackEl.getBoundingClientRect();
+      const ratio = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
+      const maxVal = type === 'life' ? state.maxLife : state.shieldCapacityMax;
+      const current = type === 'life' ? state.life : state.shieldCapacity;
+      const target = Math.min(maxVal, Math.max(0, maxVal * ratio));
+      const delta = target - current;
+      if (Math.abs(delta) < 0.01) return;
+
+      pushUndo();
+      if (type === 'life') {
+        state.life = target;
+        state.defeated = state.life < 1;
+      } else {
+        state.shieldCapacity = target;
+      }
+
+      const direction = delta >= 0 ? '+' : '';
+      pushLog(`Adjusted ${type} ${direction}${delta.toFixed(2)} (bar) -> ${target.toFixed(2)} / ${maxVal.toFixed(2)}`);
+      render();
+      tooltipEl.style.opacity = '0';
+    }
+
+    // --- RENDER ------------------------------------------------------------
+
+    function render() {
+      // Life & shield derived stats
+      els.drValue.textContent = `${(state.shieldDR * 100).toFixed(1)}%`;
+
+      // Totals
+      els.shotsFiredValue.textContent = state.shotsFired;
+      els.mitigatedValue.textContent = state.totalMitigated.toFixed(1);
+      els.potentialValue.textContent = state.totalPotential.toFixed(1);
+
+      // Bars
+      const shieldPct = state.shieldCapacityMax > 0 ? Math.max(0, Math.min(100, (state.shieldCapacity / state.shieldCapacityMax) * 100)) : 0;
+      const lifePct = state.maxLife > 0 ? Math.max(0, Math.min(100, (state.life / state.maxLife) * 100)) : 0;
+      els.shieldBar.style.width = `${shieldPct}%`;
+      els.lifeBar.style.width = `${lifePct}%`;
+      els.shieldBarLabel.textContent = `${state.shieldCapacity.toFixed(1)} / ${state.shieldCapacityMax.toFixed(1)}`;
+      els.lifeBarLabel.textContent = `${state.life.toFixed(1)} / ${state.maxLife.toFixed(1)}`;
+      els.shieldBarTitle.textContent = `${(state.shieldKey === 'custom' ? 'Custom Shield' : SHIELDS[state.shieldKey]?.label || 'Shield')} (${(state.shieldDR * 100).toFixed(1)}% DR)`;
+
+      if (els.shieldSwitch) {
+        els.shieldSwitch.querySelectorAll('button[data-shield]').forEach((btn) => {
+          if (btn.getAttribute('data-shield') === state.shieldKey) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      }
+
+      // Log
+      els.log.innerHTML = '';
+      state.log.forEach(entry => {
+        const row = document.createElement('div');
+        row.className = 'step-row';
+        const marker = document.createElement('div');
+        marker.className = 'step-marker';
+        const label = document.createElement('span');
+        label.className = 'step-label';
+        label.textContent = 'Step';
+        const num = document.createElement('span');
+        num.textContent = entry.step;
+        marker.appendChild(label);
+        marker.appendChild(num);
+        const text = document.createElement('div');
+        text.className = 'step-text';
+        text.textContent = entry.text;
+        row.appendChild(marker);
+        row.appendChild(text);
+        els.log.appendChild(row);
+      });
+
+      updateUndoRedoButtons();
+    }
+
+    // --- EVENT WIRING ------------------------------------------------------
+
+    els.weaponPreset.addEventListener('change', () => {
+      const opt = els.weaponPreset.options[els.weaponPreset.selectedIndex];
+      const dmgAttr = opt ? opt.getAttribute('data-damage') : null;
+      if (dmgAttr) {
+        els.baseDamage.value = dmgAttr;
+      }
+    });
+
+    function setHitModeButton(activeButton) {
+      [els.legBtn, els.bodyBtn, els.headBtn].forEach(btn => {
+        if (btn === activeButton) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    [els.legBtn, els.bodyBtn, els.headBtn].forEach(btn => {
+      btn.addEventListener('click', () => {
+        const mult = Number(btn.getAttribute('data-mult')) || 1;
+        els.hitMultiplier.value = mult;
+        setHitModeButton(btn);
+      });
+    });
+
+    els.hitMultiplier.addEventListener('input', () => {
+      // If the user types a custom multiplier, clear active state on buttons.
+      [els.legBtn, els.bodyBtn, els.headBtn].forEach(btn => btn.classList.remove('active'));
+    });
+
+    els.applyDamageBtn.addEventListener('click', () => {
+      const base = Number(els.baseDamage.value) || 0;
+      const hits = Number(els.numHits.value) || 1;
+      const mult = Number(els.hitMultiplier.value) || 1;
+
+      if (base <= 0 || hits <= 0) return;
+
+      let label = 'Custom';
+      const selectedId = els.weaponPreset.value;
+      if (selectedId && WEAPON_LABELS[selectedId]) {
+        label = WEAPON_LABELS[selectedId];
+      }
+
+      pushUndo();
+      applyHits(base, mult, hits, label);
+      render();
+    });
+
+    els.shieldBar.parentElement.addEventListener('mousemove', (event) => adjustViaBar('shield', event, els.shieldTooltip, els.shieldBar.parentElement));
+    els.shieldBar.parentElement.addEventListener('mouseleave', () => { els.shieldTooltip.style.opacity = '0'; });
+    els.shieldBar.parentElement.addEventListener('click', (event) => commitBarAdjust('shield', event, els.shieldTooltip, els.shieldBar.parentElement));
+
+    els.lifeBar.parentElement.addEventListener('mousemove', (event) => adjustViaBar('life', event, els.lifeTooltip, els.lifeBar.parentElement));
+    els.lifeBar.parentElement.addEventListener('mouseleave', () => { els.lifeTooltip.style.opacity = '0'; });
+    els.lifeBar.parentElement.addEventListener('click', (event) => commitBarAdjust('life', event, els.lifeTooltip, els.lifeBar.parentElement));
+
+    if (els.shieldSwitch) {
+      els.shieldSwitch.addEventListener('click', (event) => {
+        const btn = event.target.closest('button[data-shield]');
+        if (!btn) return;
+        const key = btn.getAttribute('data-shield');
+        if (!key) return;
+        setShieldFromPreset(key === 'custom' ? 'custom' : key);
+      });
+    }
+
+    els.undoBtn.addEventListener('click', () => undo());
+    els.redoBtn.addEventListener('click', () => redo());
+
+    // --- BOOTSTRAP ---------------------------------------------------------
+
+    resetAll();
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
