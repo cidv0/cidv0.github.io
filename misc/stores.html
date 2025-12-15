@@ -2,128 +2,95 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Grocery Addresses</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Stores</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root { color-scheme: light dark; }
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; }
-    header { padding: 16px 16px 8px; position: sticky; top: 0; backdrop-filter: blur(10px); background: rgba(0,0,0,.04); }
-    h1 { margin: 0 0 10px; font-size: 18px; }
-    .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-    .pill {
-      border: 1px solid rgba(127,127,127,.35);
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-size: 14px;
-      background: transparent;
+    :root {
+      color-scheme: dark;
+      --bg: #020617;
+      --panel: rgba(15, 23, 42, 0.85);
+      --accent: #22d3ee;
+      --accent-strong: #67e8f9;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --border: rgba(148, 163, 184, 0.28);
     }
-    main { padding: 12px 16px 24px; display: grid; gap: 12px; }
-    .card {
-      border: 1px solid rgba(127,127,127,.25);
-      border-radius: 14px;
-      padding: 14px;
-      box-shadow: 0 2px 14px rgba(0,0,0,.06);
+    * { box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      position: relative;
+      overflow: hidden;
     }
-    .name { font-weight: 700; font-size: 16px; margin-bottom: 6px; }
-    .addr { opacity: .85; font-size: 14px; margin-bottom: 12px; line-height: 1.25rem; }
-    .btns { display: flex; gap: 10px; flex-wrap: wrap; }
-    a.btn {
-      text-decoration: none;
-      display: inline-block;
-      padding: 12px 14px;
-      border-radius: 12px;
-      border: 1px solid rgba(127,127,127,.35);
-      font-weight: 600;
-      font-size: 14px;
-      flex: 1 1 auto;
-      text-align: center;
-      min-width: 140px;
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(34, 211, 238, 0.12), transparent 36%),
+        radial-gradient(circle at 78% 10%, rgba(56, 189, 248, 0.12), transparent 32%),
+        radial-gradient(circle at 55% 70%, rgba(15, 23, 42, 0.45), transparent 52%),
+        linear-gradient(160deg, rgba(6, 8, 26, 0.9), rgba(2, 6, 23, 0.96));
+      z-index: -1;
+      pointer-events: none;
     }
-    a.primary { border-width: 2px; }
-    footer { padding: 0 16px 18px; opacity: .7; font-size: 12px; }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(145deg, rgba(34, 211, 238, 0.04), transparent 55%);
+      z-index: -2;
+      pointer-events: none;
+    }
   </style>
 </head>
-<body>
-  <header>
-    <h1>Quick Addresses</h1>
-    <div class="row">
-      <span class="pill">Default map:</span>
-      <label class="pill"><input type="radio" name="provider" value="apple"> Apple Maps</label>
-      <label class="pill"><input type="radio" name="provider" value="google"> Google Maps</label>
+<body class="h-screen w-screen text-slate-50 flex items-center justify-center">
+  <main class="w-full h-full max-w-xl mx-auto px-4 py-5 flex flex-col gap-5">
+    <div class="flex items-center justify-center gap-3">
+      <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-cyan-300 shadow-lg shadow-cyan-500/10 border border-white/10 backdrop-blur">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 13h2m14 0h2m-7-2.5 2.5.5a1.5 1.5 0 0 1 1.2 1.47V15a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-.53a2 2 0 0 1 1.44-1.93L10 11m2-6 2.12 4.24a2 2 0 0 0 1.35 1.06l2.6.65a.8.8 0 0 1-.19 1.58H6.12a.8.8 0 0 1-.2-1.57l2.58-.66a2 2 0 0 0 1.36-1.07L12 5Z" />
+        </svg>
+      </span>
+      <div class="text-center">
+        <p class="text-xs font-semibold tracking-[0.3em] text-cyan-300 uppercase">Directions</p>
+        <h1 class="text-2xl font-bold leading-tight text-slate-50">Stores</h1>
+        <p class="text-sm text-slate-400">Apple Maps links</p>
+      </div>
     </div>
-  </header>
 
-  <main id="list"></main>
+    <div id="buttons" class="flex-1 flex flex-col gap-3"></div>
+  </main>
 
-  <footer>
-    Tip: in iOS Safari you can use Share → “Add to Home Screen” for one-tap access.
-  </footer>
+  <script>
+    const stores = [
+      { name: "ACME", address: "39 Leopard Rd, Paoli, PA 19301" },
+      { name: "Giant", address: "225 Lancaster Ave, Malvern, PA 19355" },
+      { name: "Walmart", address: "270 Indian Run St, Exton, PA 19341" },
+      { name: "Lidl", address: "104 Bartlett Ave #100, Exton, PA 19341" },
+    ];
 
-<script>
-  const stores = [
-    { name: "ACME",   address: "39 Leopard Rd, Paoli, PA 19301" },
-    { name: "Giant",  address: "225 Lancaster Ave, Malvern, PA 19355" },
-    { name: "Walmart",address: "270 Indian Run St, Exton, PA 19341" },
-    { name: "Lidl",   address: "104 Bartlett Ave #100, Exton, PA 19341" },
-  ];
+    const appleLink = (query) => `https://maps.apple.com/?q=${encodeURIComponent(query)}`;
 
-  const qs = (s) => document.querySelector(s);
-  const enc = (s) => encodeURIComponent(s);
-
-  function appleLink(query) {
-    // Apple Maps supports query-only; it’ll pick the best match.
-    return `https://maps.apple.com/?q=${enc(query)}`;
-  }
-
-  function googleLink(query) {
-    return `https://www.google.com/maps/search/?api=1&query=${enc(query)}`;
-  }
-
-  function guessDefaultProvider() {
-    const saved = localStorage.getItem("mapProvider");
-    if (saved === "apple" || saved === "google") return saved;
-
-    // iOS users often prefer Apple Maps; otherwise Google is a safe default.
-    const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-    return isiOS ? "apple" : "google";
-  }
-
-  function render(provider) {
-    const list = qs("#list");
-    list.innerHTML = "";
-
-    for (const s of stores) {
-      const q = `${s.name} ${s.address}`;
-      const aApple = appleLink(q);
-      const aGoogle = googleLink(q);
-      const primaryHref = provider === "apple" ? aApple : aGoogle;
-
-      const card = document.createElement("section");
-      card.className = "card";
-      card.innerHTML = `
-        <div class="name">${s.name}</div>
-        <div class="addr">${s.address}</div>
-        <div class="btns">
-          <a class="btn primary" href="${primaryHref}" target="_blank" rel="noopener">Open in ${provider === "apple" ? "Apple Maps" : "Google Maps"}</a>
-          <a class="btn" href="${aApple}" target="_blank" rel="noopener">Apple Maps</a>
-          <a class="btn" href="${aGoogle}" target="_blank" rel="noopener">Google Maps</a>
-        </div>
-      `;
-      list.appendChild(card);
-    }
-  }
-
-  // Init
-  const provider = guessDefaultProvider();
-  qs(`input[name="provider"][value="${provider}"]`).checked = true;
-  render(provider);
-
-  document.querySelectorAll('input[name="provider"]').forEach(r => {
-    r.addEventListener("change", () => {
-      localStorage.setItem("mapProvider", r.value);
-      render(r.value);
+    const holder = document.getElementById("buttons");
+    stores.forEach((store) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.textContent = store.name;
+      btn.className = [
+        "flex-1 w-full rounded-2xl border border-white/10",
+        "bg-gradient-to-br from-slate-900/70 via-slate-800/60 to-slate-900/80",
+        "text-slate-50 font-semibold text-lg tracking-wide",
+        "py-4 px-4 shadow-xl shadow-cyan-900/30",
+        "active:translate-y-[1px] active:shadow-lg transition",
+        "hover:border-cyan-300/40 hover:shadow-cyan-500/25"
+      ].join(" ");
+      btn.addEventListener("click", () => {
+        window.location.href = appleLink(`${store.name} ${store.address}`);
+      });
+      holder.appendChild(btn);
     });
-  });
-</script>
+  </script>
 </body>
 </html>
