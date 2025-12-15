@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grocery Addresses</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; }
+    header { padding: 16px 16px 8px; position: sticky; top: 0; backdrop-filter: blur(10px); background: rgba(0,0,0,.04); }
+    h1 { margin: 0 0 10px; font-size: 18px; }
+    .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .pill {
+      border: 1px solid rgba(127,127,127,.35);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 14px;
+      background: transparent;
+    }
+    main { padding: 12px 16px 24px; display: grid; gap: 12px; }
+    .card {
+      border: 1px solid rgba(127,127,127,.25);
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: 0 2px 14px rgba(0,0,0,.06);
+    }
+    .name { font-weight: 700; font-size: 16px; margin-bottom: 6px; }
+    .addr { opacity: .85; font-size: 14px; margin-bottom: 12px; line-height: 1.25rem; }
+    .btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    a.btn {
+      text-decoration: none;
+      display: inline-block;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(127,127,127,.35);
+      font-weight: 600;
+      font-size: 14px;
+      flex: 1 1 auto;
+      text-align: center;
+      min-width: 140px;
+    }
+    a.primary { border-width: 2px; }
+    footer { padding: 0 16px 18px; opacity: .7; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Quick Addresses</h1>
+    <div class="row">
+      <span class="pill">Default map:</span>
+      <label class="pill"><input type="radio" name="provider" value="apple"> Apple Maps</label>
+      <label class="pill"><input type="radio" name="provider" value="google"> Google Maps</label>
+    </div>
+  </header>
+
+  <main id="list"></main>
+
+  <footer>
+    Tip: in iOS Safari you can use Share → “Add to Home Screen” for one-tap access.
+  </footer>
+
+<script>
+  const stores = [
+    { name: "ACME",   address: "39 Leopard Rd, Paoli, PA 19301" },
+    { name: "Giant",  address: "225 Lancaster Ave, Malvern, PA 19355" },
+    { name: "Walmart",address: "270 Indian Run St, Exton, PA 19341" },
+    { name: "Lidl",   address: "104 Bartlett Ave #100, Exton, PA 19341" },
+  ];
+
+  const qs = (s) => document.querySelector(s);
+  const enc = (s) => encodeURIComponent(s);
+
+  function appleLink(query) {
+    // Apple Maps supports query-only; it’ll pick the best match.
+    return `https://maps.apple.com/?q=${enc(query)}`;
+  }
+
+  function googleLink(query) {
+    return `https://www.google.com/maps/search/?api=1&query=${enc(query)}`;
+  }
+
+  function guessDefaultProvider() {
+    const saved = localStorage.getItem("mapProvider");
+    if (saved === "apple" || saved === "google") return saved;
+
+    // iOS users often prefer Apple Maps; otherwise Google is a safe default.
+    const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    return isiOS ? "apple" : "google";
+  }
+
+  function render(provider) {
+    const list = qs("#list");
+    list.innerHTML = "";
+
+    for (const s of stores) {
+      const q = `${s.name} ${s.address}`;
+      const aApple = appleLink(q);
+      const aGoogle = googleLink(q);
+      const primaryHref = provider === "apple" ? aApple : aGoogle;
+
+      const card = document.createElement("section");
+      card.className = "card";
+      card.innerHTML = `
+        <div class="name">${s.name}</div>
+        <div class="addr">${s.address}</div>
+        <div class="btns">
+          <a class="btn primary" href="${primaryHref}" target="_blank" rel="noopener">Open in ${provider === "apple" ? "Apple Maps" : "Google Maps"}</a>
+          <a class="btn" href="${aApple}" target="_blank" rel="noopener">Apple Maps</a>
+          <a class="btn" href="${aGoogle}" target="_blank" rel="noopener">Google Maps</a>
+        </div>
+      `;
+      list.appendChild(card);
+    }
+  }
+
+  // Init
+  const provider = guessDefaultProvider();
+  qs(`input[name="provider"][value="${provider}"]`).checked = true;
+  render(provider);
+
+  document.querySelectorAll('input[name="provider"]').forEach(r => {
+    r.addEventListener("change", () => {
+      localStorage.setItem("mapProvider", r.value);
+      render(r.value);
+    });
+  });
+</script>
+</body>
+</html>
