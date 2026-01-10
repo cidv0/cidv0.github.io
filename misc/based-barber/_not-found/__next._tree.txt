@@ -1,0 +1,2 @@
+:HL["/misc/based-barber/_next/static/chunks/32a5e3c7bd5c0e89.css","style"]
+0:{"buildId":"kE7X81etHE_Tn7U9utVOH","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"/_not-found","paramType":null,"paramKey":"/_not-found","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
