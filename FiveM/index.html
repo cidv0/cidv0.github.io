@@ -224,7 +224,7 @@
           <a class="cta rounded-2xl px-5 py-4 text-left text-base font-semibold text-slate-100"
              href="steam://install/271590">
             Install GTA V on Steam
-            <span class="mt-1 block text-sm font-normal text-slate-300">Launches Steam and queues the install.</span>
+            <span class="mt-1 block text-sm font-normal text-slate-300">Launches Steam and queues App ID 271590.</span>
           </a>
           <a class="cta secondary rounded-2xl px-5 py-4 text-left text-base font-semibold text-slate-100"
              href="https://fivem.net/"
@@ -234,13 +234,17 @@
             <span class="mt-1 block text-sm font-normal text-slate-300">Official FiveM client download page.</span>
           </a>
         </div>
+        <p class="mt-4 text-xs text-slate-400">
+          Steam currently lists <span class="mono">Grand Theft Auto V Legacy</span> (App ID 271590) and
+          <span class="mono">Grand Theft Auto V Enhanced</span>. FiveM uses the Legacy/standard build.
+        </p>
         <div class="mt-4 text-xs text-slate-400">
           <p>If the Steam link does not open, visit the store page instead:</p>
           <a class="mt-2 inline-flex items-center gap-2 text-sm font-medium text-sky-300 hover:text-sky-200"
              href="https://store.steampowered.com/app/271590/Grand_Theft_Auto_V/"
              target="_blank"
              rel="noreferrer">
-            Open GTA V store page
+            Open GTA V Legacy store page
             <span aria-hidden="true">&nearr;</span>
           </a>
         </div>
@@ -323,7 +327,8 @@
             Run GTA V once from Steam before launching FiveM. This fixes most ownership and launcher detection issues.
           </li>
           <li>
-            Avoid legacy or unsupported GTA V builds. FiveM expects a fully updated, legitimate install.
+            FiveM uses the Steam listing <span class="mono">Grand Theft Auto V Legacy</span> (App ID 271590), not
+            <span class="mono">Grand Theft Auto V Enhanced</span>. Stay on the default branch and keep it updated.
           </li>
           <li>
             If FiveM fails to start, check antivirus or firewall interference and retry.
