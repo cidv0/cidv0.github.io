@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FiveM Install Flow | GTA V (Steam) Quickstart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+    :root {
+      color-scheme: dark;
+      --bg: #05070d;
+      --panel: rgba(11, 16, 28, 0.78);
+      --panel-strong: rgba(15, 22, 38, 0.9);
+      --line: rgba(148, 163, 184, 0.18);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+      --accent-3: #f59e0b;
+      --glow: rgba(56, 189, 248, 0.12);
+    }
+
+    body {
+      font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(1200px 800px at 12% 8%, rgba(56, 189, 248, 0.16), transparent 60%),
+        radial-gradient(900px 700px at 88% 18%, rgba(34, 197, 94, 0.12), transparent 65%),
+        radial-gradient(700px 500px at 80% 90%, rgba(245, 158, 11, 0.08), transparent 60%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(transparent 0 94%, rgba(148, 163, 184, 0.06) 100%),
+        linear-gradient(90deg, transparent 0 94%, rgba(148, 163, 184, 0.06) 100%);
+      background-size: 32px 32px;
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: 0 30px 80px rgba(2, 6, 23, 0.45);
+    }
+
+    .panel-strong {
+      background: var(--panel-strong);
+      border: 1px solid var(--line);
+    }
+
+    .glow {
+      box-shadow: 0 18px 45px var(--glow);
+    }
+
+    .chip {
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      background: rgba(56, 189, 248, 0.1);
+      color: #e0f2fe;
+    }
+
+    .mono {
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    .cta {
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(56, 189, 248, 0.05));
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.8);
+      box-shadow: 0 16px 35px rgba(56, 189, 248, 0.2);
+    }
+
+    .cta.secondary {
+      border-color: rgba(34, 197, 94, 0.5);
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.05));
+    }
+
+    .cta.secondary:hover {
+      border-color: rgba(34, 197, 94, 0.8);
+      box-shadow: 0 16px 35px rgba(34, 197, 94, 0.2);
+    }
+
+    .step-card {
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      background: rgba(15, 23, 42, 0.5);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      animation: rise 0.6s ease forwards;
+    }
+
+    .reveal.delay-1 { animation-delay: 0.08s; }
+    .reveal.delay-2 { animation-delay: 0.16s; }
+    .reveal.delay-3 { animation-delay: 0.24s; }
+    .reveal.delay-4 { animation-delay: 0.32s; }
+    .reveal.delay-5 { animation-delay: 0.4s; }
+    .reveal.delay-6 { animation-delay: 0.48s; }
+
+    @keyframes rise {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+      .cta {
+        transition: none;
+      }
+    }
+
+    details summary {
+      list-style: none;
+      cursor: pointer;
+    }
+
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .accordion-chevron {
+      transition: transform 0.25s ease;
+    }
+
+    details[open] .accordion-chevron {
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body class="antialiased">
+  <main class="relative mx-auto flex min-h-screen max-w-6xl flex-col gap-10 px-6 py-16 lg:px-10">
+    <header class="panel rounded-3xl p-8 backdrop-blur glow reveal">
+      <div class="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+        <div class="max-w-3xl space-y-4">
+          <p class="text-xs uppercase tracking-[0.35em] text-slate-400">FiveM Install Quickstart</p>
+          <h1 class="text-4xl font-semibold text-slate-50 md:text-5xl">Steam GTA V + FiveM Install Flow</h1>
+          <p class="text-base text-slate-300">
+            This page reduces the setup friction for new FiveM players. Click the Steam install button to queue GTA V,
+            launch it once to finish Rockstar setup, then grab the FiveM client and point it at your GTA V folder if
+            prompted.
+          </p>
+          <div class="flex flex-wrap items-center gap-3 text-sm text-slate-300">
+            <span class="chip inline-flex items-center gap-2 rounded-full px-3 py-1 font-medium">
+              Steam App ID <span class="mono text-xs">271590</span>
+            </span>
+            <span class="chip inline-flex items-center gap-2 rounded-full px-3 py-1 font-medium">
+              Legit + fully updated GTA V required
+            </span>
+          </div>
+        </div>
+        <div class="flex flex-col gap-3 text-sm text-slate-300">
+          <a class="inline-flex items-center gap-2 self-start rounded-full border border-slate-700 bg-slate-900/60 px-4 py-2 font-medium text-slate-200 transition hover:border-slate-500"
+             href="../index.html">
+            <span aria-hidden="true">&larr;</span>
+            Return to Site Landing
+          </a>
+          <div class="rounded-2xl border border-slate-800/80 bg-slate-900/70 p-4 text-xs text-slate-400">
+            <p class="uppercase tracking-[0.2em] text-slate-500">Quick checklist</p>
+            <ul class="mt-3 space-y-2">
+              <li>Steam GTA V installed and updated.</li>
+              <li>GTA V launched once from Steam.</li>
+              <li>FiveM installer downloaded from official site.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="panel rounded-3xl p-6 backdrop-blur glow reveal delay-1">
+      <details class="group">
+        <summary class="flex items-center justify-between gap-4 text-lg font-semibold text-slate-100">
+          Why install FiveM?
+          <span class="accordion-chevron text-slate-400" aria-hidden="true">&darr;</span>
+        </summary>
+        <div class="mt-4 space-y-3 text-sm text-slate-300">
+          <p>
+            FiveM is a multiplayer modification framework for GTA V that lets you play on customized dedicated servers
+            run by communities.
+          </p>
+          <ul class="space-y-2">
+            <li>
+              Play roleplay, drifting, racing, deathmatch, or entirely custom game modes hosted by server operators.
+            </li>
+            <li>
+              Servers can add custom cars, maps, weapons, and scripts for experiences you cannot get in standard GTA V.
+            </li>
+            <li>
+              FiveM does not modify your GTA V installation, so you can switch between GTA Online and FiveM.
+            </li>
+          </ul>
+          <p class="text-xs uppercase tracking-[0.2em] text-slate-500">
+            Source: fivem.net
+          </p>
+        </div>
+      </details>
+    </section>
+
+    <section class="grid gap-6 lg:grid-cols-2">
+      <article class="panel-strong rounded-3xl p-6 reveal delay-2">
+        <h2 class="text-lg font-semibold text-slate-100">One-click actions</h2>
+        <p class="mt-2 text-sm text-slate-400">
+          If Steam is installed, the first button should start the GTA V install immediately.
+        </p>
+        <div class="mt-5 flex flex-col gap-3">
+          <a class="cta rounded-2xl px-5 py-4 text-left text-base font-semibold text-slate-100"
+             href="steam://install/271590">
+            Install GTA V on Steam
+            <span class="mt-1 block text-sm font-normal text-slate-300">Launches Steam and queues the install.</span>
+          </a>
+          <a class="cta secondary rounded-2xl px-5 py-4 text-left text-base font-semibold text-slate-100"
+             href="https://fivem.net/"
+             target="_blank"
+             rel="noreferrer">
+            Download FiveM.exe
+            <span class="mt-1 block text-sm font-normal text-slate-300">Official FiveM client download page.</span>
+          </a>
+        </div>
+        <div class="mt-4 text-xs text-slate-400">
+          <p>If the Steam link does not open, visit the store page instead:</p>
+          <a class="mt-2 inline-flex items-center gap-2 text-sm font-medium text-sky-300 hover:text-sky-200"
+             href="https://store.steampowered.com/app/271590/Grand_Theft_Auto_V/"
+             target="_blank"
+             rel="noreferrer">
+            Open GTA V store page
+            <span aria-hidden="true">&nearr;</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="panel-strong rounded-3xl p-6 reveal delay-3">
+        <h2 class="text-lg font-semibold text-slate-100">Where FiveM installs</h2>
+        <p class="mt-2 text-sm text-slate-400">
+          The installer uses the folder you run it from if it is empty. Otherwise it defaults to:
+        </p>
+        <div class="mt-4 rounded-2xl border border-slate-700/80 bg-slate-900/70 p-4 text-sm text-slate-200 mono">
+          %localappdata%\FiveM
+        </div>
+        <p class="mt-4 text-sm text-slate-400">
+          If FiveM asks for your GTA V location, point it to the folder that contains:
+        </p>
+        <div class="mt-3 rounded-2xl border border-slate-700/80 bg-slate-900/70 p-4 text-sm text-slate-200 mono">
+          GTA5.exe
+        </div>
+        <p class="mt-3 text-xs text-slate-500">
+          Typical Steam path: <span class="mono">...\Steam\steamapps\common\Grand Theft Auto V\</span>
+        </p>
+      </article>
+    </section>
+
+    <section class="panel rounded-3xl p-8 reveal delay-4">
+      <header class="flex flex-col gap-2">
+        <p class="text-xs uppercase tracking-[0.28em] text-slate-400">Step-by-step</p>
+        <h2 class="text-2xl font-semibold text-slate-50">Steam GTA V + FiveM install flow</h2>
+      </header>
+      <ol class="mt-6 space-y-4">
+        <li class="step-card rounded-2xl p-5">
+          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Step 1</p>
+          <h3 class="mt-2 text-lg font-semibold text-slate-100">Install and update GTA V in Steam</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Install GTA V through Steam, then launch it once so Rockstar and Social Club setup finishes and the game
+            creates its first files. Make sure it is fully updated before moving on.
+          </p>
+        </li>
+        <li class="step-card rounded-2xl p-5">
+          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Step 2</p>
+          <h3 class="mt-2 text-lg font-semibold text-slate-100">Download the official FiveM client</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Grab <span class="mono">FiveM.exe</span> from the official site so you get the latest build and security
+            checks.
+          </p>
+        </li>
+        <li class="step-card rounded-2xl p-5">
+          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Step 3</p>
+          <h3 class="mt-2 text-lg font-semibold text-slate-100">Run the installer</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Run <span class="mono">FiveM.exe</span>. Use an empty folder if you want a custom install location; otherwise
+            it installs under <span class="mono">%localappdata%\FiveM</span>.
+          </p>
+        </li>
+        <li class="step-card rounded-2xl p-5">
+          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Step 4</p>
+          <h3 class="mt-2 text-lg font-semibold text-slate-100">Launch FiveM</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Start FiveM from the Start Menu or desktop. It will validate your GTA V ownership and may ask you to sign
+            in to Rockstar if automatic validation fails.
+          </p>
+        </li>
+        <li class="step-card rounded-2xl p-5">
+          <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Step 5</p>
+          <h3 class="mt-2 text-lg font-semibold text-slate-100">Select your GTA V folder if prompted</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Point FiveM to the folder that contains <span class="mono">GTA5.exe</span>. For most Steam installs it is:
+            <span class="mono">...\Steam\steamapps\common\Grand Theft Auto V\</span>.
+          </p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="grid gap-6 lg:grid-cols-2">
+      <article class="panel-strong rounded-3xl p-6 reveal delay-5">
+        <h2 class="text-lg font-semibold text-slate-100">Common gotchas</h2>
+        <ul class="mt-4 space-y-3 text-sm text-slate-300">
+          <li>
+            Run GTA V once from Steam before launching FiveM. This fixes most ownership and launcher detection issues.
+          </li>
+          <li>
+            Avoid legacy or unsupported GTA V builds. FiveM expects a fully updated, legitimate install.
+          </li>
+          <li>
+            If FiveM fails to start, check antivirus or firewall interference and retry.
+          </li>
+        </ul>
+      </article>
+      <article class="panel-strong rounded-3xl p-6 reveal delay-6">
+        <h2 class="text-lg font-semibold text-slate-100">Need help?</h2>
+        <p class="mt-3 text-sm text-slate-300">
+          Capture the exact error message or screenshot and share it. That makes it easy to map you to the fastest fix.
+        </p>
+        <div class="mt-4 rounded-2xl border border-slate-700/80 bg-slate-900/70 p-4 text-xs text-slate-400">
+          <p class="uppercase tracking-[0.2em] text-slate-500">Helpful docs</p>
+          <div class="mt-3 flex flex-col gap-2">
+            <a class="text-sky-300 hover:text-sky-200"
+               href="https://docs.fivem.net/docs/client-manual/installing-fivem/"
+               target="_blank"
+               rel="noreferrer">
+              Installing FiveM - Cfx.re Docs
+            </a>
+            <a class="text-sky-300 hover:text-sky-200"
+               href="https://docs.fivem.net/docs/client-manual/where-to-buy-gtav/"
+               target="_blank"
+               rel="noreferrer">
+              Where to buy GTA V - Cfx.re Docs
+            </a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <footer class="pb-6 text-xs text-slate-500">
+      Sources:
+      <a class="text-slate-400 hover:text-slate-300"
+         href="https://fivem.net/"
+         target="_blank"
+         rel="noreferrer">fivem.net</a>,
+      <a class="text-slate-400 hover:text-slate-300"
+         href="https://docs.fivem.net/docs/client-manual/installing-fivem/"
+         target="_blank"
+         rel="noreferrer">Cfx.re install docs</a>,
+      <a class="text-slate-400 hover:text-slate-300"
+         href="https://docs.fivem.net/docs/client-manual/where-to-buy-gtav/"
+         target="_blank"
+         rel="noreferrer">Cfx.re purchase docs</a>.
+    </footer>
+  </main>
+</body>
+</html>
